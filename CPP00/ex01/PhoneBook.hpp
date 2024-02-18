@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:39:45 by vtestut           #+#    #+#             */
-/*   Updated: 2023/12/19 19:40:48 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/18 23:50:43 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __PHONEBOOK_HPP__
-#define __PHONEBOOK_HPP__
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include <iomanip>
-#include <iostream>
-#include <locale>
-#include <string>
-#include "Contact.class.hpp"
+# include <iomanip>
+# include <iostream>
 
-class PhoneBook
-{
+# include "Contact.hpp"
+
+class PhoneBook {
+	
 public:
-	PhoneBook(void);
-	~PhoneBook(void);
+	Contact contacts_tab[8];
 
-	bool addContact(void);
-	void previewContacts(void) const;
-	void showContactInformations(int index) const;
+	PhoneBook();
+	~PhoneBook();
+	
+	void	addContact();
+	void	searchContact();
+	void	exitContact();
+	int		
 
 private:
-	int oldestIndex;
-	Contact contacts[8];
-
-	Contact &wipeContact(int index);
-	std::string getContactInfo(std::string const label) const;
-	void showContactInfo(std::string const label,
-						 std::string const info) const;
-	std::string truncate(std::string const str) const;
+	int	_nbContacts;
+	
 };
+
+
 
 #endif

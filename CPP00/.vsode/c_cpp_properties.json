@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": ["/mnt/nfs/homes/vtestut/Documents/CPP00/**"],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

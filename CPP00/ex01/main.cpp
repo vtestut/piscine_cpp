@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 19:40:10 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/18 23:48:25 by vtestut          ###   ########.fr       */
+/*   Created: 2023/12/19 19:49:09 by vtestut           #+#    #+#             */
+/*   Updated: 2024/02/18 23:43:36 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-// #include "Contact.hpp"
+#include "Contact.hpp"
 
-PhoneBook::PhoneBook() {
-	
-}
-
-PhoneBook::~PhoneBook() {
-	
-}
-
-void PhoneBook::addContact() {
-	
-}
+/*
+	- Les champs d'un contact ne peuvent etre vide
+	- 
+*/

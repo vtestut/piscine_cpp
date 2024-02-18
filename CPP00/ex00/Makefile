@@ -1,16 +1,16 @@
 TARGET = megaphone
 
-COMPILO = g++
+CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 $(TARGET): $(OBJ)
-	$(COMPILO) $(FLAGS) $^ -o $@
+	$(CC) $(FLAGS) $^ -o $@
 
 %.o: %.cpp
-	$(COMPILO) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(TARGET)
