@@ -6,7 +6,7 @@
 #    By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 19:41:04 by vtestut           #+#    #+#              #
-#    Updated: 2023/12/19 20:14:59 by vtestut          ###   ########.fr        #
+#    Updated: 2024/02/19 17:47:33 by vtestut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@
 NAME := phonebook
 PATH_OBJS := objs
 CXX := c++ -Wall -Wextra -Werror -std=c++98
-SRCS := main.cpp PhoneBook.cpp Contact.cpp
+SRCS := main.cpp PhoneBook.cpp
 HEADERS := Contact.hpp PhoneBook.hpp
 OBJS := ${patsubst %.cpp, ${PATH_OBJS}/%.o, ${SRCS}}
 
