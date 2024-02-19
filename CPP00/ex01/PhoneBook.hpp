@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: virgile <virgile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:39:45 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/18 23:50:43 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:26:35 by virgile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # include <iomanip>
 # include <iostream>
+# include <string>
+# include <vector>
 
 # include "Contact.hpp"
+
+# define MAXCNTCT 3
+# define LASTCNTCT 2
 
 class PhoneBook {
 	
 public:
-	Contact contacts_tab[8];
+	Contact contacts_tab[MAXCNTCT];
 
 	PhoneBook();
 	~PhoneBook();
@@ -29,8 +34,13 @@ public:
 	void	addContact();
 	void	searchContact();
 	void	exitContact();
-	int		
+	std::string formatColumn(std::string str, size_t width);
+	std::string to_str(int i);
 
+
+	int		getNbContacts();
+	void	setNbContacts();
+	
 private:
 	int	_nbContacts;
 	
