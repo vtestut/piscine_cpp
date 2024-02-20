@@ -1,20 +1,23 @@
-TARGET = megaphone
+NAME		= megaphone
+PATH_OBJS	= objs
+CXX			= c++
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+SRC			= megaphone.cpp
+OBJS		= ${patsubst %.cpp, ${PATH_OBJS}/%.o, ${SRC}} # Utilisez SRC, pas SRCS
 
-CC = g++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+all: ${NAME}
 
-SRC = megaphone.cpp
-OBJ = $(SRC:.cpp=.o)
+${OBJS}: ${PATH_OBJS}/%.o: %.cpp
+	mkdir -p ${PATH_OBJS}
+	${CXX} ${FLAGS} -c $< -o $@
 
-$(TARGET): $(OBJ)
-	$(CC) $(FLAGS) $^ -o $@
-
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+${NAME}: ${OBJS}
+	${CXX} ${FLAGS} ${OBJS} -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf ${PATH_OBJS}
 
-re: clean $(TARGET)
+fclean: clean
+	rm -f ${NAME}
 
-.PHONY: clean re
+re: fclean ${NAME}

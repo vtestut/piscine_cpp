@@ -3,6 +3,13 @@
 
 # include <string>
 
+enum e_type {
+	_NULL	= 0,
+	TEXT	= 1,
+	NUM		= 2,
+	SECRET	= 3,
+};
+
 class Contact {
 
 public:

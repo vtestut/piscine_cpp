@@ -1,0 +1,6 @@
+*.o
+objs
+.nfs*
+sves
+phonebook
+megaphone
