@@ -1,44 +1,44 @@
 #include "phonebook.hpp"
 
 void PhoneBook::addContact(Contact current_contact) {
-	if (this->contacts_deque.size() > this->max_usr)
-		this->contacts_deque.pop_front();
-	this->contacts_deque.push_back(current_contact);
+	if (this->contacts.size() > this->_max_usr)
+		this->contacts.pop_front();
+	this->contacts.push_back(current_contact);
 }
 
-void PhoneBook::displayColumn(std::string str) {
-	if (str.size() > this->width)
-		str = str.substr(0, this->width - 1) + '.';
+void PhoneBook::printColumn(std::string str) {
+	if (str.size() > this->_width)
+		str = str.substr(0, this->_width - 1) + '.';
 	std::cout << "|";
-	std::cout << std::right << std::setw(this->width) << str;
+	std::cout << std::right << std::setw(this->_width) << str;
 }
 
 void PhoneBook::clearContactsDeque() {
-	this->contacts_deque.clear();
+	this->contacts.clear();
 }
 
 bool PhoneBook::showAll() {
-	if (this->contacts_deque.size() == 0) {
+	if (this->contacts.size() == 0) {
 		std::cout << "No contacts have been created yet." << std::endl;
 		return false;
 	}
 	std::cout << std::endl;
-	std::cout << std::right << std::setw(this->width) << "Index";
-	displayColumn("firstname");
-	displayColumn("lastname");
-	displayColumn("nickname");
+	std::cout << std::right << std::setw(this->_width) << "Index";
+	printColumn("firstname");
+	printColumn("lastname");
+	printColumn("nickname");
 	std::cout << std::endl;
-	std::cout << std::right << std::setw(this->width) << "";
-	displayColumn("");
-	displayColumn("");
-	displayColumn("");
+	std::cout << std::right << std::setw(this->_width) << "";
+	printColumn("");
+	printColumn("");
+	printColumn("");
 	std::cout << std::endl;
-	for (size_t i = 0; i < this->contacts_deque.size(); ++i) {
-		Contact contact_tmp = this->contacts_deque[i];
-		std::cout << std::right << std::setw(this->width) << i;
-		displayColumn(contact_tmp.firstName);
-		displayColumn(contact_tmp.lastName);
-		displayColumn(contact_tmp.nickName);
+	for (size_t i = 0; i < this->contacts.size(); ++i) {
+		Contact contact_tmp = this->contacts[i];
+		std::cout << std::right << std::setw(this->_width) << i;
+		printColumn(contact_tmp.firstName);
+		printColumn(contact_tmp.lastName);
+		printColumn(contact_tmp.nickName);
 		std::cout << std::endl;
 	};
 	std::cout << std::endl;
@@ -53,7 +53,7 @@ bool PhoneBook::is_valid_index(std::string str_index, int* num_index) {
 			return false;
 		}
 		*num_index = 10 * *num_index + str_index[i] - '0';
-		if ((size_t)*num_index >= this->contacts_deque.size())
+		if ((size_t)*num_index >= this->contacts.size())
 			return false;
 	}
 	return true;
@@ -63,15 +63,15 @@ void PhoneBook::showContact(std::string str_index) {
 	int num_index;
 	if (is_valid_index(str_index, &num_index)) {
 		std::cout << std::endl << "First name	: ";
-		std::cout << this->contacts_deque[num_index].firstName << std::endl;
+		std::cout << this->contacts[num_index].firstName << std::endl;
 		std::cout << "Last name	: ";
-		std::cout << this->contacts_deque[num_index].lastName << std::endl;
+		std::cout << this->contacts[num_index].lastName << std::endl;
 		std::cout << "Nickname	: ";
-		std::cout << this->contacts_deque[num_index].nickName << std::endl;
+		std::cout << this->contacts[num_index].nickName << std::endl;
 		std::cout << "Phone number	: ";
-		std::cout << this->contacts_deque[num_index].phoneNumber << std::endl;
+		std::cout << this->contacts[num_index].phoneNumber << std::endl;
 		std::cout << "Darkest secret	: ";
-		std::cout << this->contacts_deque[num_index].darkestSecret << std::endl;
+		std::cout << this->contacts[num_index].darkestSecret << std::endl;
 		std::cout << std::endl;
 	} else if (is_valid_index(str_index, &num_index)) {
 		std::cout << "index is not valid" << std::endl;

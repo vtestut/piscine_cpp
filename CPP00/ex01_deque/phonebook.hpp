@@ -21,13 +21,13 @@ public :
 
 private :
 
-	static const int max_usr = 8;
-	static const int width = 10;
+	static const int _max_usr = 8;
+	static const int _width = 10;
 	
-	std::deque <Contact> contacts_deque;
+	std::deque <Contact> contacts;
 
 	bool is_valid_index(std::string str_index, int* num_index);
-	void displayColumn(std::string str);
+	void printColumn(std::string str);
 };
 
 #endif
