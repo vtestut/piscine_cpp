@@ -8,7 +8,7 @@
 # include <deque> // push pop
 # include <sstream> // flush
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
 class PhoneBook {
 
@@ -17,17 +17,17 @@ public :
 	void addContact(Contact current_contact);
 	void showContact(std::string str_index);
 	bool showAll();
-	void clearContactsDeque();
 
 private :
 
-	static const int max_usr = 8;
-	static const int width = 10;
-	
-	std::deque <Contact> contacts_deque;
+	// static int			_PET;
+	static int			_index;
+	static const int	_max_usr = 8;
+	static const int	_width = 10;
+	Contact 			contacts[_max_usr];
 
 	bool is_valid_index(std::string str_index, int* num_index);
-	void displayColumn(std::string str);
+	void printColumn(std::string str);
 };
 
 #endif

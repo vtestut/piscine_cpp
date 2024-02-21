@@ -1,8 +1,8 @@
-NAME := phonebook
+NAME := PhoneBook
 PATH_OBJS := objs
 CPP := c++ -Wall -Wextra -Werror -std=c++98
-SRCS := main.cpp phonebook.cpp
-HEADERS := contact.hpp phonebook.hpp
+SRCS := main.cpp PhoneBook.cpp
+HEADERS := Contact.hpp PhoneBook.hpp
 OBJS := ${patsubst %.cpp, ${PATH_OBJS}/%.o, ${SRCS}}
 
 all: ${NAME}

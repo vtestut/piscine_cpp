@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 #include <cstdlib>
 
 static bool catchInput(std::string display, std::string *line) {
@@ -33,12 +33,11 @@ int main() {
 		} else if (usrInput == "SEARCH" || usrInput == "search") {
 			std::string str_index;
 			if (phonebook.showAll())
-				if(catchInput("Select a contact : ", &str_index) && isdigit(str_index[0]))
+				if(catchInput("Enter index to show details : ", &str_index) && isdigit(str_index[0]))
 					phonebook.showContact(str_index);
 		} else
 			std::cout << "Command not found\n";
 	}
 	std::cout << "\n\nExit Phone Book\n\n";
-	phonebook.clearContactsDeque();
 	return (0);
 }
