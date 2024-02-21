@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 #include <cstdlib>
 
 static bool catchInput(std::string display, std::string *line) {
@@ -11,32 +12,32 @@ static bool catchInput(std::string display, std::string *line) {
 }
 
 int main() {
-	std::cout << "\n\nWelcome to phonebook\n\n";
+	std::cout << "\nWelcome to Phone Book\n";
 	PhoneBook phonebook;
 	while (1 && !std::cin.eof()) {
 		std::string usrInput;
-		if (!catchInput("Type ADD, SEARCH or EXIT : ", &usrInput) || 
-		usrInput == "EXIT" || 
-		usrInput == "exit")
+		if (!catchInput("\nType ADD, SEARCH or EXIT : ", &usrInput)
+		|| usrInput == "EXIT"
+		|| usrInput == "exit")
 			break;
 		else if (usrInput == "ADD" || usrInput == "add") {
 			Contact contact;
 			std::cout << "\nAdd a new contact\n\n";
-			if (catchInput("First name	: ", &contact.firstName) &&
-			catchInput("Last name	: ", &contact.lastName) &&
-			catchInput("Nickname	: ", &contact.nickName) &&
-			catchInput("Phone number	: ", &contact.phoneNumber) &&
-			catchInput("Darkest secret	: ", &contact.darkestSecret)) {
+			if (catchInput("First name\t: ", &contact.firstName)
+			&& catchInput("Last name\t: ", &contact.lastName)
+			&& catchInput("Nickname\t: ", &contact.nickName)
+			&& catchInput("Phone number\t: ", &contact.phoneNumber)
+			&& catchInput("Darkest secret\t: ", &contact.darkestSecret)) {
 				std::cout << std::endl;
 				phonebook.addContact(contact);
 			}
 		} else if (usrInput == "SEARCH" || usrInput == "search") {
 			std::string str_index;
 			if (phonebook.showAll())
-				if(catchInput("Enter index to show details : ", &str_index) && isdigit(str_index[0]))
+				if(catchInput("Enter index to show details : ", &str_index))
 					phonebook.showContact(str_index);
 		} else
-			std::cout << "Command not found\n";
+			std::cout << "\nCommand not found\n";
 	}
 	std::cout << "\n\nExit Phone Book\n\n";
 	return (0);
