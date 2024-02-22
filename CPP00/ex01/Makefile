@@ -12,8 +12,6 @@ HEADERS	= Contact.hpp PhoneBook.hpp
 
 OBJS	= ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
-OBJS = ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
-
 all: ${NAME}
 
 ${OBJS}: ${OBJDIR}/%.o: %.cpp ${HEADERS}
@@ -32,4 +30,3 @@ fclean: clean
 re: fclean ${NAME}
 
 .PHONY: all clean fclean re
-

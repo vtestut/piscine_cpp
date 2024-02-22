@@ -12,7 +12,7 @@ OBJS = ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
 all: ${NAME}
 
-${OBJS}: ${OBJDIR}/%.o: %.cpp ${HEADERS}
+${OBJS}: ${OBJDIR}/%.o: %.cpp
 	@mkdir -p ${OBJDIR}
 	${CPP} ${FLAGS} -c $< -o $@
 
