@@ -4,11 +4,11 @@ int PhoneBook::_index = -1;
 int PhoneBook::_n=0;
 
 void PhoneBook::addContact(Contact current_contact) {
-	if (this->_index == -1 || this-> _index == this->_max_usr)
+	if (this->_index == -1 || this-> _index == this->_maxUsr)
 		this->_index = 0;
 	this->contacts[_index] = current_contact;
 	this->_index++;
-	if (this->_n < this->_max_usr)
+	if (this->_n < this->_maxUsr)
 		this->_n++;
 }
 
@@ -17,33 +17,6 @@ void PhoneBook::printColumn(std::string str) const {
 		str = str.substr(0, this->_width - 1) + '.';
 	std::cout << "|";
 	std::cout << std::right << std::setw(this->_width) << str;
-}
-
-bool PhoneBook::showAll() const {
-	if (_index == -1) {
-		std::cout << "\nNo contact yet." << std::endl;
-		return false;
-	}
-	std::cout << std::endl;
-	std::cout << std::right << std::setw(this->_width) << "Index";
-	printColumn("firstname");
-	printColumn("lastname");
-	printColumn("nickname");
-	std::cout  << std::endl << std::right << std::setw(this->_width) << "";
-	printColumn("");
-	printColumn("");
-	printColumn("");
-	std::cout << std::endl;
-	for (int i = 0; i < _n ; ++i) {
-		Contact contact_tmp = this->contacts[i];
-		std::cout << std::right << std::setw(this->_width) << i;
-		printColumn(contact_tmp.firstName);
-		printColumn(contact_tmp.lastName);
-		printColumn(contact_tmp.nickName);
-		std::cout << std::endl;
-	};
-	std::cout << std::endl;
-	return true;
 }
 
 bool PhoneBook::is_valid_index(std::string str_index, int* num_index) const {
@@ -78,3 +51,33 @@ void PhoneBook::showContact(std::string str_index) const {
 		// std::cout << std::endl;
 	}
 }
+
+bool PhoneBook::showAll() const {
+	if (_index == -1) {
+		std::cout << "\nNo contact yet." << std::endl;
+		return false;
+	}
+	std::cout << std::endl;
+	std::cout << std::right << std::setw(this->_width) << "Index";
+	printColumn("firstname");
+	printColumn("lastname");
+	printColumn("nickname");
+	std::cout  << std::endl << std::right << std::setw(this->_width) << "";
+	printColumn("");
+	printColumn("");
+	printColumn("");
+	std::cout << std::endl;
+	for (int i = 0; i < _n ; ++i) {
+		Contact contact_tmp = this->contacts[i];
+		std::cout << std::right << std::setw(this->_width) << i;
+		printColumn(contact_tmp.firstName);
+		printColumn(contact_tmp.lastName);
+		printColumn(contact_tmp.nickName);
+		std::cout << std::endl;
+	};
+	std::cout << std::endl;
+	return true;
+}
+
+
+

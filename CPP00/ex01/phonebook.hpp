@@ -19,11 +19,11 @@ public :
 
 private :
 
-	static const int	_max_usr = 8;
+	static const int	_maxUsr = 8;
 	static const int	_width = 10;
 	static int			_index;
 	static int			_n;
-	Contact 			contacts[_max_usr];
+	Contact 			contacts[_maxUsr];
 
 	bool is_valid_index(std::string str_index, int* num_index) const;
 	void printColumn(std::string str) const;

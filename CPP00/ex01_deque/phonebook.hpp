@@ -21,7 +21,7 @@ public :
 
 private :
 
-	static const int _max_usr = 8;
+	static const int _maxUsr = 8;
 	static const int _width = 10;
 	
 	std::deque <Contact> contacts;

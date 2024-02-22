@@ -1,7 +1,7 @@
 #include "phonebook.hpp"
 
 void PhoneBook::addContact(Contact current_contact) {
-	if (this->contacts.size() > this->_max_usr)
+	if (this->contacts.size() > this->_maxUsr)
 		this->contacts.pop_front();
 	this->contacts.push_back(current_contact);
 }
