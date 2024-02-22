@@ -20,8 +20,7 @@ ${NAME}: ${OBJS}
 	${CPP} ${OBJS} -o $@
 
 clean:
-	rm -rf ${OBJDIR}
-	rm megaphone.o		
+	rm -rf ${OBJDIR}	
 
 fclean: clean
 	rm -f ${NAME}
