@@ -1,7 +1,5 @@
 *.o
 objs
 .nfs*
-sves
-phonebook
-megaphone
 .vscode
+a.*

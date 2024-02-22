@@ -1,10 +1,15 @@
-NAME = zombie
+NAME	= a.brainz
 
-OBJDIR = objs
-CPP = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+OBJDIR	= objs
+
+CPP		= c++
+
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+
+SRCS	= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+
 HEADERS = Zombie.hpp
+
 OBJS = ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
 all: ${NAME}

@@ -1,4 +1,4 @@
-NAME	= a.megaphone
+NAME	= a.zombieHorde
 
 OBJDIR	= objs
 
@@ -6,7 +6,9 @@ CPP		= c++
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS	= megaphone.cpp
+SRCS	= main.cpp Zombie.cpp zombieHorde.cpp
+
+HEADERS = Zombie.hpp
 
 OBJS = ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
@@ -20,8 +22,7 @@ ${NAME}: ${OBJS}
 	${CPP} ${OBJS} -o $@
 
 clean:
-	rm -rf ${OBJDIR}
-	rm megaphone.o		
+	rm -rf ${OBJDIR}		
 
 fclean: clean
 	rm -f ${NAME}
