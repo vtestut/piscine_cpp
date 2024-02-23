@@ -6,20 +6,24 @@
 #include <sstream>
 
 /*
-Concevez un programme prenant trois paramètres dans l’ordre suivant : un nom de
-fichier et deux strings, s1 et s2.
+Concevez un programme prenant trois paramètres dans l’ordre suivant : 
+un nom de fichier et deux strings, s1 et s2.
+
 Le fichier <filename> sera ouvert et son contenu copié dans un nouveau fichier
 <filename>.replace, où chaque occurrence de s1 sera remplacée par s2.
-Avoir recours aux fonctions C de manipulation de fichiers est interdit et sera considéré
-comme de la triche. Toutes les fonctions membres de la classe std::string sont autori-
-sées sauf replace. Utilisez-les intelligemment !
-Bien entendu, vous devez gérer les entrées inattendues et les erreurs possibles. Créez
-et rendez vos propres tests afin de prouver que votre programme fonctionne.
+
+Avoir recours aux fonctions C de manipulation de fichiers est interdit
+
+Toutes les fonctions membres de la classe std::string sont autorisées sauf 'replace'
+
+Bien entendu, vous devez gérer les entrées inattendues et les erreurs possibles. 
+	
+Créez et rendez vos propres tests afin de prouver que votre programme fonctionne.
 */
 
 int main(int argc, char **argv) 
 {
-	
+
 	return (0);
 }
 
