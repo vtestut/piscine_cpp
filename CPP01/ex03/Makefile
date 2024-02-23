@@ -1,4 +1,4 @@
-NAME	= a.Violence
+NAME	= a.pokemon
 
 OBJDIR	= objs
 

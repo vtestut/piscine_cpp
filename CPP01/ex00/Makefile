@@ -1,4 +1,4 @@
-NAME	= a.brainz
+NAME	= a.brainzzzz
 
 OBJDIR	= objs
 

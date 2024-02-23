@@ -3,3 +3,4 @@ objs
 .nfs*
 .vscode
 a.*
+theFile.replace
