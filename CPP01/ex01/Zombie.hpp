@@ -8,18 +8,21 @@
 class Zombie {
 
 	public:
+
+		//	On peut declarer plusieurs constructeurs pour plus de 
+		//	flexibilte lors de l'initialisation d'un objet
+		Zombie();
 		Zombie(std::string p1);
 		~Zombie(void);
 
-		void	announce(void);
+		void announce(void);
+		void setName(std::string p1);
 
 	private:
 
-		std::string	_name;
+		std::string _name;
 };
 
-	// void	randomChump(std::string name);
-	// Zombie*	newZombie(std::string name);
 	Zombie* zombieHorde( int N, std::string name );
 	
 #endif

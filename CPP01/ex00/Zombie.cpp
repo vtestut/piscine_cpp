@@ -1,5 +1,7 @@
 #include "Zombie.hpp"
 
+//  Les constructeurs et destructeurs n'ont pas de type de retour
+
 Zombie::Zombie(std::string p1) : _name(p1) {
     std::cout << this->_name << "\t: Constructed" << std::endl;
 }
