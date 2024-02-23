@@ -1,4 +1,4 @@
-NAME	= 
+NAME	= a.Violence
 
 OBJDIR	= objs
 
@@ -6,9 +6,9 @@ CPP		= c++
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS	= 
+SRCS	= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
-HEADERS	= 
+HEADERS	= Weapon.hpp HumanA.hpp HumanB.hpp
 
 OBJS	= ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
