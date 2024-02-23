@@ -15,20 +15,20 @@ void PhoneBook::addContact(Contact current_contact) {
 void PhoneBook::printColumn(std::string str) const {
 	if (str.size() > this->_width)
 		str = str.substr(0, this->_width - 1) + '.';
-	std::cout << "|";
-	std::cout << std::right << std::setw(this->_width) << str;
+	std::cout << RESET << "|";
+	std::cout << CYAN << std::right << std::setw(this->_width) << str;
 }
 
 bool PhoneBook::is_valid_index(std::string str_index, int* num_index) const {
 	*num_index = 0;
 	for (size_t i = 0; i < str_index.size(); ++i) {
 		if (str_index == "" || str_index.size() > 1 || !isdigit(str_index[0])) {
-			std::cout << "\ninvalid index\n";
+			std::cout << RED << "\ninvalid index\n";
 			return false;
 		}
-		*num_index = 10 * *num_index + str_index[i] - '0';
-		if (*num_index >= this->_index) {
-			std::cout << "\ninvalid index\n";
+		*num_index = (10 * *num_index + str_index[i] - '0') -1;
+		if (*num_index >= this->_n) {
+			std::cout << RED << "\ninvalid index\n";
 			return false;
 		}
 	}
@@ -38,44 +38,51 @@ bool PhoneBook::is_valid_index(std::string str_index, int* num_index) const {
 void PhoneBook::showContact(std::string str_index) const {
 	int num_index;
 	if (is_valid_index(str_index, &num_index)) {
-		std::cout << std::endl << "First name	: ";
+		std::cout << CYAN << std::endl << "First name\t: " << RESET;
 		std::cout << this->contacts[num_index].firstName << std::endl;
-		std::cout << "Last name	: ";
+		std::cout << CYAN << "Last name\t: " << RESET;
 		std::cout << this->contacts[num_index].lastName << std::endl;
-		std::cout << "Nickname	: ";
+		std::cout << CYAN << "Nickname\t: " << RESET;
 		std::cout << this->contacts[num_index].nickName << std::endl;
-		std::cout << "Phone number	: ";
+		std::cout << CYAN << "Phone number\t: " << RESET;
 		std::cout << this->contacts[num_index].phoneNumber << std::endl;
-		std::cout << "Darkest secret	: ";
+		std::cout << CYAN << "Darkest secret\t: " << RESET;
 		std::cout << this->contacts[num_index].darkestSecret << std::endl;
-		// std::cout << std::endl;
+		std::cout << CYAN << "\nSelect enter to return. ";
+		char key;
+		while (std::cin.get(key)) {
+			if (key == '\n') {
+				std::cout << CLEAR;
+				break;
+			}
+		}
 	}
 }
 
 bool PhoneBook::showAll() const {
 	if (_index == -1) {
-		std::cout << "\nNo contact yet." << std::endl;
+		std::cout << RED << CLEAR << "\nNo contact yet.\n";
 		return false;
 	}
-	std::cout << std::endl;
-	std::cout << std::right << std::setw(this->_width) << "Index";
+	std::cout << CYAN << std::endl;
+	std::cout << CYAN << std::right << std::setw(this->_width) << "Index";
 	printColumn("firstname");
 	printColumn("lastname");
 	printColumn("nickname");
-	std::cout  << std::endl << std::right << std::setw(this->_width) << "";
+	std::cout << std::endl << std::right << std::setw(this->_width) << "";
 	printColumn("");
 	printColumn("");
 	printColumn("");
-	std::cout << std::endl;
+	std::cout << CYAN << std::endl;
 	for (int i = 0; i < _n ; ++i) {
 		Contact contact_tmp = this->contacts[i];
-		std::cout << std::right << std::setw(this->_width) << i;
+		std::cout << GREEN << std::right << std::setw(this->_width) << i+1 << RESET;
 		printColumn(contact_tmp.firstName);
 		printColumn(contact_tmp.lastName);
 		printColumn(contact_tmp.nickName);
-		std::cout << std::endl;
+		std::cout << CYAN << std::endl;
 	};
-	std::cout << std::endl;
+	std::cout << CYAN << std::endl;
 	return true;
 }
 

@@ -2,12 +2,19 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
-# include <string>
 # include <iomanip>
 # include <ios>
+# include <string>
 # include <sstream>
+// # include <unistd.h>
 
 # include "Contact.hpp"
+
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define CYAN	"\033[36m"
+# define CLEAR	"\033[2J\033[1;1H"
+# define RESET	"\033[0m"
 
 class PhoneBook {
 
