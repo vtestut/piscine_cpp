@@ -23,8 +23,9 @@ Créez et rendez vos propres tests afin de prouver que votre programme fonctionn
 
 int main(int argc, char **argv) 
 {
-
-	return (0);
+	if (argc != 4 || !argv[1][0] || !argv[2][0])
+		return (1);
+	return (Filestream(argv[1]).ftReplace( argv[2] , argv[3] ));
 }
 
 /*

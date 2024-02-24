@@ -27,7 +27,7 @@ void PhoneBook::printColumn(std::string str) const {
 bool PhoneBook::is_valid_index(std::string str_index, int* num_index) const {
 	*num_index = 0;
 	for (size_t i = 0; i < str_index.size(); ++i) {
-		if (str_index == "" || str_index.size() > 1 || !isdigit(str_index[0])) {
+		if (str_index == "" || str_index.size() > 1 || !isdigit(str_index[0]) || str_index == "0") {
 			std::cout << RED << "\ninvalid index\n";
 			return false;
 		}
