@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:33:41 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/18 13:12:41 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/24 18:24:33 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int main(int argc, char *argv[])
     {
         for (int i = 1; i < argc; i++)
         {
-            std::string chaine = argv[i];
-            for (size_t j = 0; j < chaine.length(); j++)
-                chaine[j] = std::toupper(chaine[j]);
+            std::string str = argv[i];
+            for (size_t j = 0; j < str.length(); j++)
+                str[j] = std::toupper(str[j]);
 
-            std::cout << chaine;
+            std::cout << str;
             if (i == argc - 1)
                 std::cout << std::endl;
         }

@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/24 18:44:45 by vtestut           #+#    #+#             */
+/*   Updated: 2024/02/24 18:47:10 by vtestut          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
+
+// Une reference est un pointeur constant et toujours dereference qui est initialiser a sa declaration
 
 int main() {
 

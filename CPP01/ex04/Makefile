@@ -22,10 +22,11 @@ ${NAME}: ${OBJS}
 	${CPP} ${OBJS} -o $@
 
 clean:
-	rm -rf ${OBJDIR}		
+	rm -rf ${OBJDIR}
 
 fclean: clean
 	rm -f ${NAME}
+	rm infile.replace		
 
 re: fclean ${NAME}
 

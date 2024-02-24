@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/24 18:37:23 by vtestut           #+#    #+#             */
+/*   Updated: 2024/02/24 18:37:24 by vtestut          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 int PhoneBook::_index = -1;
 int PhoneBook::_n=0;
 
-/*	Pour definir une fonction memebre en C++ il faut 
-	commencer par preciser le type de retour comme en C
-	puis preciser le nom de classe ou il y a la fonction
-	puis ajouter l'operateur de resolution de portee ' :: ' suivi de la fonction
-	ajouter 'const' apres les parametres si la fonction ne modifiera jamais l'instance/l'objet */
+/*	pour definir une methode membre en c++ il faut 
+	preciser le type de retour PUIS preciser le nom de classe
+	puis ajouter l'operateur de resolution de portee "::" suivi de la methode/fonction
+	ajouter 'const' apres les parametres si la fonction ne doit jamais modifier jamais l'instance/l'objet */
 void PhoneBook::addContact(Contact current_contact) {
 	if (this->_index == -1 || this-> _index == this->_maxUsr)
 		this->_index = 0;
