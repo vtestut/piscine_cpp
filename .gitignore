@@ -3,4 +3,6 @@ objs
 .nfs*
 .vscode
 a.*
-theFile.replace
+infile
+infile*
+_saves

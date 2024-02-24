@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 18:34:20 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 18:34:21 by vtestut          ###   ########.fr       */
+/*   Created: 2024/02/24 19:07:05 by vtestut           #+#    #+#             */
+/*   Updated: 2024/02/24 21:01:01 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#include "Harl.hpp"
 
-# include <iostream>
-# include <string>
-# include <iomanip>
-# include <ios>
-# include <sstream>
+int main () 
+{
+	Harl Haaaarl;
 
-# include "PhoneBook.hpp"
-
-class Contact {
-
-public:
-	std::string firstName;
-	std::string lastName;
-	std::string nickName;
-	std::string phoneNumber;
-	std::string darkestSecret;
-	Contact(){};
-};
-
-#endif
+	std::cout << std::endl;
+	Haaaarl.complain("debug");
+	std::cout << std::endl;
+	Haaaarl.complain("info");
+	std::cout << std::endl;
+	Haaaarl.complain("warning");
+	std::cout << std::endl;
+	Haaaarl.complain("error");
+	std::cout << std::endl;
+	
+	return (0);
+}

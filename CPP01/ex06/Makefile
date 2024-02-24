@@ -1,4 +1,4 @@
-NAME	= a.filestream
+NAME	= a.harlFilter
 
 OBJDIR	= objs
 
@@ -6,9 +6,9 @@ CPP		= c++
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS	= main.cpp Filestream.cpp
+SRCS	= main.cpp Harl.cpp
 
-HEADERS	= Filestream.hpp
+HEADERS	= Harl.hpp
 
 OBJS	= ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
@@ -26,7 +26,6 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
-	rm infile.replace		
 
 re: fclean ${NAME}
 
