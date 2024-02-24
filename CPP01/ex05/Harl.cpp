@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:07:07 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 20:47:55 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/24 21:06:43 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void Harl::complain(std::string level)
 
 	for (int i = 0; i < 4; i++)
 		if (messages[i] == level)
-		(this->*funcPtr[i])();
+			(this->*funcPtr[i])();
 }
 
 void Harl::debug() {
@@ -39,7 +39,7 @@ void Harl::debug() {
 }
 
 void Harl::warning() {
-	std::cout << WARNING << std::endl;
+	std::cout << WARN << std::endl;
 }
 
 void Harl::info() {

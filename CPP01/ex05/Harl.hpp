@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:07:10 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 21:01:41 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/24 21:06:17 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <string>
 # include <iostream>
 
-# define DEBUG "DEBUG\t: Y'a anguille sous roche"
-# define WARNING "WARNING\t: WOOP WOOP ASSASSIN DE LA POLICE"
+# define DEBUG	"DEBUG\t: Y'a anguille sous roche"
+# define WARN	"WARNING\t: WOOP WOOP ASSASSIN DE LA POLICE"
 # define INFO	"INFO\t: Did you know that Turks calls turkeys 'American birds'"
-# define ERROR "ERREUR\t: Qu'on lui couuuuuupe la tete !"
+# define ERROR	"ERREUR\t: Qu'on lui couuuuuupe la tete !"
 
 class Harl {
 
