@@ -22,10 +22,10 @@ ${NAME}: ${OBJS}
 	${CPP} ${OBJS} -o $@
 
 clean:
-	rm -rf ${OBJDIR}		
+	@rm -rf ${OBJDIR}		
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 re: fclean ${NAME}
 

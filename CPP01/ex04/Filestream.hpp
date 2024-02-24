@@ -11,11 +11,11 @@ class Filestream {
 
 		Filestream(const char *p1);
 
-		int myReplace(std::string s1, std::string s2);
+		int ftReplace(std::string s1, std::string s2);
 
 	private:
 
-		const char *_theFileName;
+		const char *_infile;
 
 };
 
