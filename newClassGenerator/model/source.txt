@@ -36,9 +36,9 @@ XXX::~XXX( void ) {
 /*									TESTS									  */
 /* ************************************************************************** */
 
-int main ( void )
-{
-    XXX foo;
+//  int main ( void )
+//  {
+//      XXX foo;
 
-    return ( 0 );
-}
+//      return ( 0 );
+//  }
