@@ -1,14 +1,14 @@
-NAME	= a.TEEEEEST
+NAME	= a.out
 
 OBJDIR	= objs
 
 CPP		= c++
 
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++17
 
-SRCS	= XXX.cpp
+SRCS	= NewClass.cpp main.cpp
 
-HEADERS = XXX.hpp
+HEADERS = NewClass.hpp
 
 OBJS = ${patsubst %.cpp, ${OBJDIR}/%.o, ${SRCS}}
 
@@ -26,6 +26,7 @@ clean:
 
 fclean: clean
 	@rm -f ${NAME}
+	@rm -rf output
 
 re: fclean ${NAME}
 

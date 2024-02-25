@@ -1,4 +1,5 @@
 
+// ! ajouter des prototypes de pointeurs sur fonctions, sur references etc
 
 #include XXX
 
