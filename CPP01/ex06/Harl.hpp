@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 21:09:11 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 21:14:39 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/25 01:35:13 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@
 # include <string>
 # include <iostream>
 
-# define DEBUG	"[ DEBUG ]\nY'a anguille sous roche"
-# define WARN	"[ WARNING ]\nWOOP WOOP ASSASSIN DE LA POLICE"
-# define INFO	"[ INFO ]\nDid you know that Turks calls turkeys 'American birds'"
-# define ERROR	"[ ERREUR ]\nQu'on lui couuuuuupe la tete !"
+# define RESET	"\033[0m" 
+# define RED	"\033[31m"
+# define CYAN	"\033[34m"
+# define YELLOW	"\033[93m"
+
+# define DEBUG	"[ DEBUG ]\nReprend du café ca va aller\n"
+# define INFO	"[ INFO ]\nLes loutres gardent leur petit cailloux favoris dans une poche sous leur bras\n"
+# define WARN	"[ WARNING ]\nWOOP WOOOOOP WOOOOOOOOP\n"
+# define ERROR	"[ ERROR ]\nQu'on lui couuuuuupe la tete !"
 
 class Harl {
 
@@ -29,10 +34,10 @@ class Harl {
 		
 	private:
 		
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
 };
 
 #endif

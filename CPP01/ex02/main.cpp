@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 18:44:45 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 18:47:10 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/24 23:59:58 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-// Une reference est un pointeur constant et toujours dereference qui est initialiser a sa declaration
-
+/*
+	Une référence est un pointeur constant et toujours déréférencé qui est 
+	initialisé à sa déclaration. (Jamais NULL)	*/
 int main() {
 
 	std::string str = "HI THIS IS BRAIN";

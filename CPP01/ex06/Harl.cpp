@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 21:09:14 by vtestut           #+#    #+#             */
-/*   Updated: 2024/02/24 21:10:53 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/02/25 01:36:04 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 void Harl::complain(std::string level) 
-{
-	void (Harl::*funcPtr[4])();
-	
-	std::string messages[4] = 
+{	
+	std::string levels[4] = 
 	{	
 		"debug", 
 		"info",
@@ -24,28 +22,43 @@ void Harl::complain(std::string level)
 		"error"
 	};
 
-	funcPtr[0] = &Harl::debug;
-	funcPtr[1] = &Harl::info;
-	funcPtr[2] = &Harl::warning;
-	funcPtr[3] = &Harl::error;
-
-	for (int i = 0; i < 4; i++)
-		if (messages[i] == level)
-			(this->*funcPtr[i])();
+	int i = -1;
+	for (int j=0; j<4; j++){
+		if ( levels[j] == level ){
+			i = j;
+			break ;
+		}
+	} switch (i) {
+		case 0:
+			this->_debug();
+			i++;
+		case 1:
+			this->_info();
+			i++;
+		case 2:
+			this->_warning();
+			i++;
+		case 3:
+			this->_error();
+			i++;
+			break;
+		default:
+			std::cout << "complaining about something" << std::endl;	
+	}
 }
 
-void Harl::debug() {
+void Harl::_debug() {
 	std::cout << DEBUG << std::endl;
 }
 
-void Harl::warning() {
-	std::cout << WARN << std::endl;
+void Harl::_info() {
+	std::cout << CYAN << INFO<< RESET << std::endl;
 }
 
-void Harl::info() {
-	std::cout << INFO << std::endl;
+void Harl::_warning() {
+	std::cout << YELLOW << WARN << RESET << std::endl;
 }
 
-void Harl::error() {
-	std::cout << ERROR << std::endl;
+void Harl::_error() {
+	std::cout << RED << ERROR << RESET << std::endl;
 }
