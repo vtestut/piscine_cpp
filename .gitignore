@@ -6,3 +6,4 @@ a.*
 infile
 infile*
 _saves
+.DS_Store
