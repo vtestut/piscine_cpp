@@ -23,6 +23,7 @@ void ClapTrap::takeDamage(int amount) {
 void ClapTrap::beRepaired(int amount) {
 	// win n hit
 	// need 1 nrj
+	if ()
 }
 
 
