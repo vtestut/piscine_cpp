@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:43:12 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 18:51:14 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:54:21 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	Fixed::setRawBits(const int raw_) {
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
+//	Assignment operator 
 Fixed &	Fixed::operator=(const Fixed & obj) {
 	std::cout << "Copy assignment operator called." << std::endl;
 	if (this != &obj)

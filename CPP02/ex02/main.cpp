@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:41:50 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 21:09:38 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:46:31 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main( void )
 	// std::cout << a++ << std::endl;
 	// std::cout << a << std::endl;
 
-	// std::cout << "b = " << b << std::endl;
+	// std::cout << b << std::endl;
 
-	// std::cout << "max = " << Fixed::max( a, b ) << std::endl;
+	// std::cout << Fixed::max( a, b ) << std::endl;
 
 /*****************************************************************************/
 

@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:20:38 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 21:07:25 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:48:48 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define _FIXED_HPP
 
 # include <iostream>
-# include <string>
+// # include <string>
 # include <fstream>
-// # include <map>
 # include <cmath>
-# include <climits>
+// # include <climits>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -38,51 +37,48 @@
 
 class Fixed
 {
-	public:
-		Fixed();
-		Fixed(const Fixed & src);
+
+private:
+	
+		int _raw;
+		static const int _bits = 8;
+	
+public:
+	
+		Fixed();									//	Canonical
+		Fixed(const Fixed & obj);					//	Canonical
 		Fixed(const int n);
 		Fixed(const float f);
-		~Fixed();
-
-		Fixed &	operator=(const Fixed & src);
-
-		bool	operator>(const Fixed & rhs) const;
-		bool	operator<(const Fixed & rhs) const;
-		bool	operator>=(const Fixed & rhs) const;
-		bool	operator<=(const Fixed & rhs) const;
-		bool	operator==(const Fixed & rhs) const;
-		bool	operator!=(const Fixed & rhs) const;
-
-		Fixed	operator+(const Fixed & rhs) const;
-		Fixed	operator-(const Fixed & rhs) const;
-		Fixed	operator*(const Fixed & rhs) const;
-		Fixed	operator/(const Fixed & rhs) const;
-
-		Fixed &	operator++(void);
-		Fixed	operator++(int);
-		Fixed &	operator--(void);
-		Fixed	operator--(int);
+		~Fixed();									//	Canonical
 
 		int		getRawBits(void) const;
 		void	setRawBits(const int raw);
-		float	toFloat(void) const;
+		
 		int		toInt(void) const;
+		float	toFloat(void) const;
 
 		static Fixed &			min(Fixed & lhs, Fixed & rhs);
 		static Fixed &			max(Fixed & lhs, Fixed & rhs);
 		static const Fixed &	min(const Fixed & lhs, const Fixed & rhs);
 		static const Fixed &	max(const Fixed & lhs, const Fixed & rhs);
 
-	private:
-		int					_raw;
-		static const int	_Bits = 8;
+		Fixed &	operator=(const Fixed & obj);		//	Canonical
+		Fixed	operator+(const Fixed & rhs) const;
+		Fixed	operator-(const Fixed & rhs) const;
+		Fixed	operator*(const Fixed & rhs) const;
+		Fixed	operator/(const Fixed & rhs) const;
+		Fixed &	operator++(void); // ++i 				pre incrementation
+		Fixed &	operator--(void); // --i 				pre decrementation
+		Fixed	operator++(int);
+		Fixed	operator--(int);
+		bool	operator>(const Fixed & rhs) const;
+		bool	operator<(const Fixed & rhs) const;
+		bool	operator>=(const Fixed & rhs) const;
+		bool	operator<=(const Fixed & rhs) const;
+		bool	operator==(const Fixed & rhs) const;
+		bool	operator!=(const Fixed & rhs) const;
 };
 
-/******************************************************************************/
-/*									PROTOYPES								  */
-/******************************************************************************/
-
-std::ostream & operator<<(std::ostream & os, const Fixed & number);
+std::ostream & operator<<(std::ostream & os, const Fixed & f);
 
 #endif

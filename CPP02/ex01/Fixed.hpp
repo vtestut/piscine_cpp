@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:10:20 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 20:30:30 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:07:52 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ public:
 
 		Fixed(void);								// Canonical
 		Fixed(Fixed const & obj);					// Canonical
-		Fixed(const int raw_);						// NEW converts p to the corresponding fpv, n is initialized to 8
-		Fixed(const float raw_);					// NEW converts p to the corresponding fpv, n is initialized to 8
+		Fixed(const int raw_);						// ! NEW
+		Fixed(const float raw_);					// ! NEW
 		~Fixed();									// Canonical
 
 		int		getRawBits(void) const;
@@ -55,10 +55,6 @@ public:
 		Fixed &	operator=(const Fixed & obj);		// Canonical
 };
 
-/******************************************************************************/
-/*								PROTOTYPES									  */
-/******************************************************************************/
-
-std::ostream&      operator<<(std::ostream& os, Fixed const & f); // NEW overload of the insertion operator <<, inserts a floating-p representation of the fp number into the output stream object passed as param
+std::ostream&      operator<<(std::ostream& os, Fixed const & f); // ! NEW
 
 #endif

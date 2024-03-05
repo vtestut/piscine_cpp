@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:10:20 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 18:51:42 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:51:08 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,14 @@ private:
 
 public:
 
-		Fixed(void);
-		Fixed(const Fixed & obj);
-		~Fixed();
+		Fixed(void);							// Canonical
+		Fixed(const Fixed & obj);				// Canonical
+		~Fixed();								// Canonical
 
 		int		getRawBits(void) const;
 		void	setRawBits(const int raw_);
 
-		Fixed &	operator=(const Fixed & obj);
-
+		Fixed &	operator=(const Fixed & obj);	// Canonical
 };
 
 #endif
