@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/05 20:43:06 by vtestut           #+#    #+#             */
+/*   Updated: 2024/03/05 21:20:59 by vtestut          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _CLAPTRAP_HPP
 # define _CLAPTRAP_HPP
 
 # include <iostream>
 # include <iomanip>
 # include <string>
-//# include <>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -26,24 +37,24 @@ class ClapTrap {
 
 private:
 	
-	int	_hit = 10;
-	int _nrj = 10;
-	int _atk = 0;
+	int	_hit;
+	int _nrj;
+	int _atk;
 
 	std::string _name;
 
-	int	_getHitPoints(void) const;
-	int _getEnergyPoints(void) const;
-	int _getAttackPoints(void) const;
-	std::string _getName(void) const;
 
 public:
 
 	ClapTrap(void);
 	ClapTrap(std::string name_);
-	ClapTrap(ClapTrap const & src);
-	~ClapTrap(void);
+	ClapTrap(const ClapTrap & obj);
+	~ClapTrap();
 	
+	int	getHitPoints(void) const;
+	int getEnergyPoints(void) const;
+	int getAttackPoints(void) const;
+	std::string getName(void) const;
 	// void	setHitPoints(int const hit_);
 	// void	setEnergyPoints(int const nrj_);
 	// void	setAttackPoints(int const atk_);
@@ -54,7 +65,6 @@ public:
 	void beRepaired(int amount);
 
 	ClapTrap &	operator=(const ClapTrap & rhs);	
-
 };
 
 #endif
