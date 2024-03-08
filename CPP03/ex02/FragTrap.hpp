@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 20:43:06 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 18:25:19 by vtestut          ###   ########.fr       */
+/*   Created: 2024/03/08 18:30:18 by vtestut           #+#    #+#             */
+/*   Updated: 2024/03/08 18:30:19 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CLAPTRAP_HPP
-# define _CLAPTRAP_HPP
+#ifndef  _FRAGTRAP_HPP
+# define _FRAGTRAP_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <string>
+# include "ClapTrap.hpp"
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -29,44 +29,22 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define ATK	2
-
 /******************************************************************************/
 /*									CLASS									  */
 /******************************************************************************/
 
-class ClapTrap {
-
-private:
-	
-	int	_hit;
-	int _nrj;
-	int _atk;
-
-	std::string _name;
-
+class FragTrap : public ClapTrap {
 
 public:
 
-	ClapTrap(void);
-	ClapTrap(std::string name_);
-	ClapTrap(const ClapTrap & obj);
-	~ClapTrap();
-	
-	int	getHitPoints(void) const;
-	int getEnergyPoints(void) const;
-	int getAttackPoints(void) const;
-	std::string getName(void) const;
-	// void	setHitPoints(int const hit_);
-	void	setEnergyPoints(int const nrj_);
-	// void	setAttackPoints(int const atk_);
-	// std::string setName(std::string name_);
+	FragTrap(void);
+	FragTrap(std::string name_);
+	FragTrap(FragTrap const & src);
+	~FragTrap(void);
 
-	void attack(const std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	void highFivesGuys(void);
 
-	ClapTrap &	operator=(const ClapTrap & obj);	
+	FragTrap &	operator=(FragTrap const & rhs);
 };
 
 #endif

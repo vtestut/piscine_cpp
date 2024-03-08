@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:43:12 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/05 14:54:21 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/07 14:04:52 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 
 //	Default Constructor
 Fixed::Fixed(void) : _raw(0) {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 //	Copy Constructor
 Fixed::Fixed(const Fixed & obj) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
 //	Default Desctructor
-Fixed::~Fixed() {
-	std::cout << "Destructor called." << std::endl;
+Fixed::~Fixed(void) {
+	std::cout << "Destructor called" << std::endl;
 }
 
 

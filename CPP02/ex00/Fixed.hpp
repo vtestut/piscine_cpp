@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:10:20 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/05 14:51:08 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/07 14:04:30 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ private:
 
 public:
 
-		Fixed(void);							// Canonical
+		Fixed();								// Canonical
 		Fixed(const Fixed & obj);				// Canonical
 		~Fixed();								// Canonical
 

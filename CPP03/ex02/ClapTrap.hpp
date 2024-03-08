@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:43:06 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 18:25:19 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/08 20:37:06 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <iomanip>
 # include <string>
+# include <limits>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -37,14 +38,13 @@
 
 class ClapTrap {
 
-private:
+protected:
 	
-	int	_hit;
-	int _nrj;
-	int _atk;
+	unsigned int _hit;
+	unsigned int _nrj;
+	unsigned int _atk;
 
 	std::string _name;
-
 
 public:
 
@@ -57,16 +57,17 @@ public:
 	int getEnergyPoints(void) const;
 	int getAttackPoints(void) const;
 	std::string getName(void) const;
-	// void	setHitPoints(int const hit_);
-	void	setEnergyPoints(int const nrj_);
-	// void	setAttackPoints(int const atk_);
-	// std::string setName(std::string name_);
+	
+	void setHitPoints(int const hit_);
+	void setEnergyPoints(int const nrj_);
+	void setAttackPoints(int const atk_);
+	void setName(std::string name_);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	ClapTrap &	operator=(const ClapTrap & obj);	
+	ClapTrap &	operator=(const ClapTrap & rhs);	
 };
 
 #endif
