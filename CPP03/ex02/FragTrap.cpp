@@ -6,18 +6,18 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:30:16 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 20:44:03 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 21:01:29 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 /******************************************************************************/
-/*								PUBLIC										  */
+/*							PUBLIC FUNCTIONS								  */
 /******************************************************************************/
 
 void FragTrap::highFivesGuys(void) {
-	std::cout << "Positive highfive !" << std::endl;
+	std::cout << this->_name << " does a positive highfive !" << std::endl;
 }
 
 /******************************************************************************/
@@ -45,22 +45,22 @@ FragTrap::FragTrap(const FragTrap & obj) : ClapTrap() {
 	
 FragTrap::~FragTrap(void) {
 	if (this->_name == "") 
-		std::cout << "Destructor called for unknown ClapTrap" << std::endl;	
+		std::cout << "Destructor called for unknown FragTrap" << std::endl;	
 	else 
-		std::cout << "Destructor called for " << _name << std::endl;
+		std::cout << "Destructor called for FragTrap " << _name << std::endl;
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-FragTrap & FragTrap::operator=(FragTrap const & src) {
+FragTrap & FragTrap::operator=(const FragTrap & obj) {
 	std::cout << "FragTrap assignment operator called" << std::endl;
-	if (this != &src) {
-		this->_name = src.getName();
-		this->_hit = src.getHitPoints();
-		this->_nrj = src.getEnergyPoints();
-		this->_atk = src.getAttackPoints();
+	if (this != &obj) {
+		this->_name = obj.getName();
+		this->_hit = obj.getHitPoints();
+		this->_nrj = obj.getEnergyPoints();
+		this->_atk = obj.getAttackPoints();
 	}
 	return (*this);
 }

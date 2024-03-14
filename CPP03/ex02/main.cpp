@@ -6,15 +6,13 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:30:13 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 20:46:05 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:31:51 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-
-// ! modifier berepaired et take damage dans les previous exo
 
 int main()
 {
@@ -44,10 +42,28 @@ int main()
 	std::cout << std::endl;
 	
 	std::cout << CYAN "Tests for actions :" RESET << std::endl;
-	c.attack(b.getName());
-	c.takeDamage(10);
-	c.beRepaired(-100000);
-	c.highFivesGuys();
+	FragTrap d("CARAPUCE");
+	while(a.getEnergyPoints() != 0 && d.getHitPoints() != 0)
+	{
+		a.attack(d.getName());
+		if (a.getEnergyPoints() >= 0)
+			d.takeDamage(a.getAttackPoints());
+	}
+	d.beRepaired(20);
+	d.attack(a.getName());
+	a.highFivesGuys();
+
+	std::cout << std::endl;
+	std::cout << "Name\t= " << a.getName() << std::endl;
+	std::cout << "Hit\t= " << a.getHitPoints() << std::endl;
+	std::cout << "Energy\t= " << a.getEnergyPoints() << std::endl;
+	std::cout << "Attack\t= " << a.getAttackPoints() << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "Name\t= " << d.getName() << std::endl;
+	std::cout << "Hit\t= " << d.getHitPoints() << std::endl;
+	std::cout << "Energy\t= " << d.getEnergyPoints() << std::endl;
+	std::cout << "Attack\t= " << d.getAttackPoints() << std::endl;
 	std::cout << std::endl;
 
 	return (0);

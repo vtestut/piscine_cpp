@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:31:23 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/09 20:31:24 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 21:12:48 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,27 @@
 # define _DIAMONDTRAP_HPP
 
 # include <iostream>
-# include <string>
-//# include <>
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-/******************************************************************************/
-/*									DEFINES									  */
-/******************************************************************************/
-
-# define RED	"\033[31m"
-# define GREEN	"\033[32m"
-# define CYAN	"\033[36m"
-# define YELLOW	"\033[93m"
-
-# define RESET	"\033[0m"
-# define CLEAR	"\033[2J\033[1;1H"
-
-/******************************************************************************/
-/*									CLASS									  */
-/******************************************************************************/
-
-class DiamondTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 
 private:
 	
-	int	_n;
-	int	_getValue(void) const;
-
+	std::string _name;
+	
 public:
 
-	DiamondTrap(void);
-	DiamondTrap(int const p1);
-	DiamondTrap(DiamondTrap const & src);
-	~DiamondTrap(void);
+	DiamondTrap();
+	DiamondTrap(std::string name_);
+	DiamondTrap(const DiamondTrap & obj);
+	~DiamondTrap();
+
+	using	ScavTrap::attack;
+
+	void	whoAmI(void);
 	
-
-	void	setValue(int const p1);
-
-	DiamondTrap &	operator=(DiamondTrap const & rhs);
-	DiamondTrap		operator+(DiamondTrap const & rhs) const;	
-
+	DiamondTrap & operator=(const DiamondTrap & obj);
 };
-
-/******************************************************************************/
-/*									PROTOYPES								  */
-/******************************************************************************/
-
-// std::ostream &	operator<<(std::ostream & out, DiamondTrap const & i);
 
 #endif

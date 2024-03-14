@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:42:59 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 18:25:29 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 21:06:42 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 
 void ClapTrap::attack(const std::string & target) 
 {
-	this->_nrj -= 1;
 	if (_nrj <= 0) {
 		std::cout << this->_name << " Can't attack. No energy points" << std::endl;
 		return;
+	} else if (_hit <= 0) {
+		std::cout << this->_name << " Can't attack. is dead" << std::endl;
+		return;	
 	} else {
 		std::cout << RED << this->_name << " attacks " << target << " causing " << this->_atk << " points of damage" RESET << std::endl;
+		this->_nrj -= 1;
 		return;
 	}
 }
@@ -33,11 +36,11 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->_hit == 0) {
 		std::cout << YELLOW << this->_name << " is already lying in its blood" RESET << std::endl;
 		return;
-	} else if ((this->_hit - amount) <= 0) {
-		std::cout << YELLOW << this->_name << " takes " << amount << " damage and is KO" RESET << std::endl;
+	} else if (amount >= this->_hit) {
+		std::cout << YELLOW << this->_name << " takes " << amount << " damages and is KO" RESET << std::endl;
 		this->_hit = 0; 
 		return;
-	} else if ((this->_hit - amount) > 0) {
+	} else {
 		std::cout << YELLOW << this->_name << " takes " << amount << " damages and has now " << this->_hit - amount << " life points" RESET << std::endl;
 		this->_hit = this->_hit - amount;
 		return;
@@ -46,12 +49,30 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount) 
 {
+	if (_nrj <= 0) {
+		std::cout << GREEN << this->_name << " Can't repair. No energy" RESET << std::endl;
+		return;
+	} else if (_hit == 0) {
+		std::cout << GREEN << this->_name << " Can't repair. is KO" RESET << std::endl;
+		return;	
+	} else if (amount == 0) {
+		std::cout << GREEN << this->_name << " Can't repair 0. 1 Energy lost" RESET << std::endl;
+		this->_nrj -= 1;
+		return;
+	} else if (amount > _maxHit) {
+		amount = _maxHit - _hit;
+		this->_nrj -= 1;
+		this->_hit += amount;
+		std::cout << GREEN << this->_name << " use a super potion to regain all its Hit points" RESET << std::endl;
+		return;
+	} else if (amount + _hit >= _maxHit) {
+		std::cout << GREEN << this->_name << " use a +" << amount << "PV potion and is now full life" RESET << std::endl;
+		amount = _maxHit - _hit;
+		this->_nrj -= 1;
+		this->_hit += amount;
+		return;
+	}
 	this->_nrj -= 1;
-	if (_nrj <= 0 || _hit == 0) {
-		//std::cout << GREEN << this->_name << " Can't repaire. No energy points" RESET << std::endl;
-		return;
-	} else if (amount == 0)
-		return;
 	this->_hit += amount;
 	std::cout << GREEN << this->_name << " use a potion to regain " << amount << " life points" << " and has now " << this->_hit << " life points" RESET << std::endl;
 }
@@ -77,7 +98,7 @@ ClapTrap::~ClapTrap(void) {
 	if (this->_name == "") 
 		std::cout << "Destructor called for unknown ClapTrap" << std::endl;	
 	else 
-		std::cout << "Destructor called for " << _name << std::endl;
+		std::cout << "Destructor called for ClapTrap " << _name << std::endl;
 }
 
 /******************************************************************************/
@@ -89,17 +110,16 @@ int ClapTrap::getEnergyPoints(void) const {return this->_nrj;}
 int ClapTrap::getAttackPoints(void) const {return this->_atk;}
 std::string ClapTrap::getName(void) const {return this->_name;}
 
-// void ClapTrap::setHitPoints(int const hit_) {this->_hit = hit_;}
-void ClapTrap::setEnergyPoints(int const nrj_) {this->_nrj = nrj_;}
-// void ClapTrap::setAttackPoints(int const atk_) {this->_atk = atk_;}
-// std::string ClapTrap::setName(std::string name_) {this->_name = name_;}
+void ClapTrap::setHitPoints(const int hit_) {this->_hit = hit_;}
+void ClapTrap::setEnergyPoints(const int nrj_) {this->_nrj = nrj_;}
+void ClapTrap::setAttackPoints(const int atk_) {this->_atk = atk_;}
+void ClapTrap::setName(std::string name_) {this->_name = name_;}
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-//	Assignation Operator
-ClapTrap& ClapTrap::operator= (const ClapTrap & obj) {
+ClapTrap & ClapTrap::operator= (const ClapTrap & obj) {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &obj) {
 		this->_name = obj._name;

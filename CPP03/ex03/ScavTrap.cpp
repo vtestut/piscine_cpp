@@ -6,27 +6,27 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:47:17 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 18:24:52 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:24:00 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-// ! modifier dans l'exo 00 la fctn attack : nrj-=1
- 
-
 /******************************************************************************/
-/*								PUBLIC										  */
+/*							PUBLIC FUNCTIONS								  */
 /******************************************************************************/
 
 void ScavTrap::guardGate(void) {
-	std::cout << this->_name << " is now in gate keeper mode. You shall not pass !" << std::endl;
+	std::cout << this->_name << " is now in gate keeper mode" << std::endl;
 }
 
 void ScavTrap::attack(const std::string & target) 
 {
 	if (_nrj <= 0) {
 		std::cout << this->_name << " Can't attack. Need more energy, more passion, more energy, more passion" << std::endl;
+		return;
+	} else if (_hit <= 0) {
+		std::cout << this->_name << " Can't attack. is KO" << std::endl;
 		return;
 	} else {
 		this->_nrj -= 1;
@@ -60,17 +60,10 @@ ScavTrap::ScavTrap(const ScavTrap & obj) : ClapTrap() {
 
 ScavTrap::~ScavTrap(void) {
 	if (this->_name == "") 
-		std::cout << "Destructor called for unknown ClapTrap" << std::endl;	
+		std::cout << "Destructor called for unknown ScavTrap" << std::endl;	
 	else 
-		std::cout << "Destructor called for " << _name << std::endl;
+		std::cout << "Destructor called for ScavTrap " << _name << std::endl;
 }
-
-/******************************************************************************/
-/*							GETTERS & SETTERS								  */
-/******************************************************************************/
-
-
-
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */

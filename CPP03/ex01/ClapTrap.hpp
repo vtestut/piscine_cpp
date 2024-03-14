@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:43:06 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/07 19:30:38 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 21:06:42 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define _CLAPTRAP_HPP
 
 # include <iostream>
-# include <iomanip>
-# include <string>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -29,7 +27,7 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define ATK	2
+# define ATK	0
 
 /******************************************************************************/
 /*									CLASS									  */
@@ -47,7 +45,9 @@ protected:
 
 public:
 
-	ClapTrap(void);
+	static const unsigned int _maxHit = 10;
+	
+	ClapTrap();
 	ClapTrap(std::string name_);
 	ClapTrap(const ClapTrap & obj);
 	~ClapTrap();
@@ -57,16 +57,16 @@ public:
 	int getAttackPoints(void) const;
 	std::string getName(void) const;
 	
-	void	setHitPoints(int const hit_);
-	void	setEnergyPoints(int const nrj_);
-	void	setAttackPoints(int const atk_);
-	void	setName(std::string name_);
+	void setHitPoints(const int hit_);
+	void setEnergyPoints(const int nrj_);
+	void setAttackPoints(const int atk_);
+	void setName(std::string name_);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	ClapTrap &	operator=(const ClapTrap & rhs);	
+	ClapTrap &	operator=(const ClapTrap & obj);	
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 19:46:41 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/08 20:13:47 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:16:09 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main()
 	std::cout << std::endl;
 
 	std::cout << CYAN "Tests for actions :" RESET << std::endl;
-	while(a.getEnergyPoints() != 0)
+	while(a.getEnergyPoints() != 0 && a.getHitPoints() != 0)
 	{
 		a.attack(d.getName());
 		if (a.getEnergyPoints() >= 0)

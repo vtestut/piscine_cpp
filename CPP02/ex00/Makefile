@@ -7,11 +7,10 @@ FLAGS	+=	-Werror
 FLAGS	+=	-std=c++98
 
 SRCDIR	=	.
-# HDRDIR	=	includes
 OBJDIR	=	objs
 
-SOURCES	=	$(wildcard $(SRCDIR)/*.cpp)
-HEADERS =	$(wildcard $(SRCDIR)/*.hpp)
+SOURCES	=	Fixed.cpp main.cpp
+HEADERS =	Fixed.hpp
 OBJECTS	=	$(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
 #****************************************************#
