@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:31:16 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/14 21:35:58 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:30:05 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,6 @@
 
 int main()
 {
-	// std::string diamondTrapName = "DT-XXY";
-	// std::string scavTrapName = "SCVT-2000";
-	// std::string clapTrapName = "CT-42";
-
-	// DiamondTrap	diamondTrap(diamondTrapName);
-	// ScavTrap	scavTrap(scavTrapName);
-	// ClapTrap	clapTrap(clapTrapName);
-
-	// diamondTrap.whoAmI();
-	// clapTrap.attack(scavTrapName);
-	// scavTrap.takeDamage(clapTrap.getAttackPoints());
-	// scavTrap.attack(clapTrapName);
-	// clapTrap.takeDamage(scavTrap.getAttackPoints());
-	// diamondTrap.attack(scavTrapName);
-	// scavTrap.takeDamage(diamondTrap.getAttackPoints());
-	// diamondTrap.highFivesGuys();
-	// diamondTrap.guardGate();
-	// diamondTrap.takeDamage(5000);
-	// diamondTrap.beRepaired(5000);
-	// diamondTrap.whoAmI();
-
 	std::cout << std::endl;
 	std::cout << CYAN "Test for ScavTrap :" RESET << std::endl;
 	ScavTrap a("SCAVTRAP_01");

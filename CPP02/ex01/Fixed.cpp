@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:43:12 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/05 17:53:09 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:58:03 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,81 +16,55 @@
 /*							PUBLIC FUNCTIONS								  */
 /******************************************************************************/
 
-//	! converts the fixed-point value to an integer value
-int Fixed::toInt(void) const {
-	return roundf(this->_raw / 256.0);
-}
+float Fixed::toFloat(void) const { return (this->_value / 256.0); }
 
-//	! converts the fixed-point value to a floating-point value
-float Fixed::toFloat(void) const {
-	return roundf(this->_raw / 256) + ((this->_raw % 256)) / 256.0;
-}
+int Fixed::toInt(void) const { return (this->_value >> _bits); }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-//	Default Constructor
-Fixed::Fixed(void) : _raw(0) {
+Fixed::Fixed(void) : _value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-//	Copy Constructor
-Fixed::Fixed(const Fixed & obj) {
+Fixed::Fixed(const Fixed & obj) /*: _value(obj._value)*/ {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
-//	! Int Constructor NEW converts p to the corresponding fpv
-Fixed::Fixed(const int raw_) {
+Fixed::Fixed(const int n) : _value(n << 8) {
 	std::cout << "Int constructor called" << std::endl;
-	this->_raw = raw_ * 256; // ! raw_ << 8;
 }
 
-//	! Float Constructor NEW converts p to the corresponding fpv
-Fixed::Fixed(const float raw_) {
+Fixed::Fixed(const float n) : _value((int)roundf(256.0 * n)) {
 	std::cout << "Float constructor called" << std::endl;
-	int raw_int = (int)(raw_);
-	int raw_dec = roundf((raw_ - (int)raw_)*256);
-	this->_raw = raw_int * 256 + raw_dec;
 }
 
-//	Default Desctructor
-Fixed::~Fixed() {
+Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 
 /******************************************************************************/
-/*							GETTERS & SETTERS								  */
+/*								ACCESSORS									  */
 /******************************************************************************/
 
-int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
-	return ( this->_raw );
-}
+int Fixed::getRawBits(void) const { return (this->_value); }
 
-
-void Fixed::setRawBits(const int raw_) {
-	std::cout << "setRawBits member funtion called" << std::endl;
-	this->_raw = raw_;
-	return ;
-}
+void Fixed::setRawBits(const int raw) { this->_value = raw; }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-//	Assignment operator 
 Fixed &	Fixed::operator=(const Fixed & obj) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &obj)
-		this->_raw = obj.getRawBits();
+	std::cout << "Copy assignment operator called." << std::endl;
+	this->_value = obj.getRawBits();
+	// this->_value = obj._value;
 	return (*this);
 }
 
-//	Insertion operator
-std::ostream& operator<<(std::ostream& os, Fixed const & f) {
-	std::cout << "Insertion operator called" << std::endl;
-	os << f.toFloat();
-	return os;
+std::ostream& operator<<(std::ostream& os, const Fixed & n) {
+	os << n.toFloat();
+	return (os);
 }

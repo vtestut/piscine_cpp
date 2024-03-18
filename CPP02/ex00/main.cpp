@@ -6,13 +6,13 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:10:33 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/04 17:10:34 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/13 14:25:41 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) 
+int main(void) 
 {
 	Fixed a;
 	Fixed b(a);

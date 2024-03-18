@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:43:12 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/07 14:04:52 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:48:35 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,40 @@
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-//	Default Constructor
-Fixed::Fixed(void) : _raw(0) {
+Fixed::Fixed(void) : _value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-//	Copy Constructor
-Fixed::Fixed(const Fixed & obj) {
+Fixed::Fixed(const Fixed & obj) /*: _value(obj._value)*/ {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
-//	Default Desctructor
 Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << std::endl;
 }
 
-
 /******************************************************************************/
-/*							GETTERS & SETTERS								  */
+/*								ACCESSORS									  */
 /******************************************************************************/
-
 
 int	Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called." << std::endl;
-	return ( this->_raw );
+	return (this->_value);
 }
 
-void	Fixed::setRawBits(const int raw_) {
+void	Fixed::setRawBits(const int raw) {
 	std::cout << "setRawBits member funtion called." << std::endl;
-	this->_raw = raw_;
-	return ;
+	this->_value = raw;
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-//	Assignment operator 
 Fixed &	Fixed::operator=(const Fixed & obj) {
 	std::cout << "Copy assignment operator called." << std::endl;
-	if (this != &obj)
-		this->_raw = obj.getRawBits();
+	this->_value = obj.getRawBits();
+	// this->_value = obj._value;
 	return (*this);
 }

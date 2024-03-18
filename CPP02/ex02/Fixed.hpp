@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:20:38 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/05 17:48:48 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/18 18:03:34 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,51 @@
 # define _FIXED_HPP
 
 # include <iostream>
-// # include <string>
-# include <fstream>
 # include <cmath>
-// # include <climits>
 
-/******************************************************************************/
-/*									DEFINES									  */
-/******************************************************************************/
+# define FIXED_BITS 8
 
-# define RED	"\033[31m"
-# define GREEN	"\033[32m"
-# define CYAN	"\033[36m"
-# define YELLOW	"\033[93m"
-
-# define RESET	"\033[0m"
-# define CLEAR	"\033[2J\033[1;1H"
-
-/******************************************************************************/
-/*									CLASS									  */
-/******************************************************************************/
-
-class Fixed
-{
+class Fixed {
 
 private:
 	
-		int _raw;
+		int _value;
 		static const int _bits = 8;
 	
 public:
 	
-		Fixed();									//	Canonical
-		Fixed(const Fixed & obj);					//	Canonical
+		Fixed();									// Canonical
+		Fixed(const Fixed & obj);					// Canonical
 		Fixed(const int n);
-		Fixed(const float f);
-		~Fixed();									//	Canonical
+		Fixed(const float n);
+		
+		~Fixed();									// Canonical
 
 		int		getRawBits(void) const;
 		void	setRawBits(const int raw);
 		
-		int		toInt(void) const;
 		float	toFloat(void) const;
+		int		toInt(void) const;
 
-		static Fixed &			min(Fixed & lhs, Fixed & rhs);
-		static Fixed &			max(Fixed & lhs, Fixed & rhs);
-		static const Fixed &	min(const Fixed & lhs, const Fixed & rhs);
-		static const Fixed &	max(const Fixed & lhs, const Fixed & rhs);
+		static Fixed &			min(Fixed & a, Fixed & b);
+		static Fixed &			max(Fixed & a, Fixed & b);
+		static const Fixed &	min(const Fixed & a, const Fixed & b);
+		static const Fixed &	max(const Fixed & a, const Fixed & b);
 
-		Fixed &	operator=(const Fixed & obj);		//	Canonical
-		Fixed	operator+(const Fixed & rhs) const;
-		Fixed	operator-(const Fixed & rhs) const;
-		Fixed	operator*(const Fixed & rhs) const;
-		Fixed	operator/(const Fixed & rhs) const;
-		Fixed &	operator++(void); // ++i 				pre incrementation
-		Fixed &	operator--(void); // --i 				pre decrementation
-		Fixed	operator++(int);
+		//	arithmetic operators
+		Fixed &	operator=(const Fixed & obj);		// Canonical
+		Fixed	operator+(const Fixed & rhs);
+		Fixed	operator-(const Fixed & rhs);
+		Fixed	operator*(const Fixed & rhs);
+		Fixed	operator/(const Fixed & rhs);
+
+		//	Pre/De-crementation operators 
+		Fixed &	operator++(void); //			++i		pre incrementation
+		Fixed &	operator--(void); //			--i		pre decrementation
+		Fixed	operator++(int);	
 		Fixed	operator--(int);
+
+		// comparison operators
 		bool	operator>(const Fixed & rhs) const;
 		bool	operator<(const Fixed & rhs) const;
 		bool	operator>=(const Fixed & rhs) const;
@@ -79,6 +67,6 @@ public:
 		bool	operator!=(const Fixed & rhs) const;
 };
 
-std::ostream & operator<<(std::ostream & os, const Fixed & f);
+std::ostream & operator<<(std::ostream & os, const Fixed & n);
 
 #endif
