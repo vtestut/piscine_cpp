@@ -1,44 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 20:19:15 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/19 20:34:30 by vtestut          ###   ########.fr       */
+/*   Created: 2024/03/19 20:29:34 by vtestut           #+#    #+#             */
+/*   Updated: 2024/03/19 20:41:03 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongAnimal.hpp"
 
 /******************************************************************************/
 /*								PUBLIC										  */
 /******************************************************************************/
 
-void Cat::makeSound() const { std::cout << "miaou miaou" << std::endl; }
+void WrongAnimal::makeSound() const { std::cout << "Wrong Animal Noise" << std::endl; }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Cat::Cat(void) {
-	this->_type = "Cat";
-	std::cout << CYAN "Cat constructed" RESET << std::endl;
+WrongAnimal::WrongAnimal(void): _type("WrongAnimal") {
+	std::cout << CYAN "WrongAnimal constructed" RESET << std::endl;
 }
 
-Cat::Cat(const Cat& obj) {
-	this->_type = obj._type;
-	std::cout << CYAN "Cat constructed" RESET << std::endl;
+WrongAnimal::WrongAnimal(WrongAnimal const & obj) : _type(obj._type) {
+	std::cout << CYAN "WrongAnimal constructed." RESET << std::endl;
 }
 
-Cat::~Cat(void) { std::cout << RED "Cat destructed" RESET << std::endl; }
+WrongAnimal::~WrongAnimal(void) { 
+	std::cout << RED "WrongAnimal destructed." RESET << std::endl;
+}
+
+/******************************************************************************/
+/*							GETTERS & SETTERS								  */
+/******************************************************************************/
+
+std::string WrongAnimal::getType() const { return (this->_type); }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Cat & Cat::operator=(const Cat & obj) {
+
+WrongAnimal & WrongAnimal::operator=(const WrongAnimal & obj) {
 	if (this != &obj)
 		this->_type = obj._type;
 	return (*this);

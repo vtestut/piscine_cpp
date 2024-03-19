@@ -1,75 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/19 20:13:24 by vtestut           #+#    #+#             */
+/*   Updated: 2024/03/19 20:16:27 by vtestut          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
-
-/******************************************************************************/
-/*								PRIVATE										  */
-/******************************************************************************/
-
-
-// void Dog:: () {
-// }
-
 
 /******************************************************************************/
 /*								PUBLIC										  */
 /******************************************************************************/
 
-
-// void Dog:: () {
-// }
-
+void Dog::makeSound() const { std::cout << "ouaf ouaf" << std::endl; }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-
-//	Default Constructor
-Dog::Dog(void) {}
-
-//	Parametric Constructor
-Dog::Dog(int const p1) : _n(p1) {}
-
-//	Copy constructor
-Dog::Dog(Dog const & src) {
-	*this = src;
-}
-	
-//	Default Destructor
-Dog::~Dog(void) {}
-
-
-/******************************************************************************/
-/*							GETTERS & SETTERS								  */
-/******************************************************************************/
-
-
-int Dog::_getValue(void) const {
-	return this->_n;
+Dog::Dog(void) {
+	this->_type = "Dog";
+	std::cout << CYAN "Dog constructed" RESET << std::endl;
 }
 
-void Dog::setValue(int const p1) {
-	this->_n = p1;
+Dog::Dog(const Dog& obj) {
+	this->_type = obj._type;
+	std::cout << CYAN "Dog constructed" RESET << std::endl;
 }
 
+Dog::~Dog(void) { std::cout << RED "Dog destructed" RESET << std::endl; }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-
-//	Assignation Operator
-Dog &   Dog::operator=(Dog const & rhs) {
-	this->_n = rhs._getValue();
-	return *this;
+Dog & Dog::operator=(const Dog & obj) {
+	if (this != &obj)
+		this->_type = obj._type;
+	return (*this);
 }
-
-//	Addition Operator
-Dog Dog::operator+(Dog const & rhs) const {
-  return Dog( this->_n + rhs._getValue());
-}
-
-//	Stream Redirection Operator
-// std::ostream &  operator<<(std::ostream & out, Dog const & rhs) {
-//	out << rhs._getValue(); // passer getValue en public
-//	return ( out );
-//}
