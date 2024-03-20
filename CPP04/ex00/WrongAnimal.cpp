@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:29:34 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/19 20:41:03 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/03/20 15:25:40 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*								PUBLIC										  */
 /******************************************************************************/
 
-void WrongAnimal::makeSound() const { std::cout << "Wrong Animal Noise" << std::endl; }
+void WrongAnimal::makeSound() const { std::cout << "Wrong animal noise" << std::endl; }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
