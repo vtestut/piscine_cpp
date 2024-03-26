@@ -1,28 +1,30 @@
 #ifndef  _AANIMAL_HPP
 # define _AANIMAL_HPP
 
-#include "Brain.hpp"
-#include <iostream>
-#include <stdexcept>
-#include <string>
+# include <iostream>
+# include <stdexcept>
+# include <string>
+
+# include "Brain.hpp"
 
 class AAnimal {
 
 protected :
 
-	std::string type;
+	std::string _type;
 
 public :
 
 	AAnimal();
-	AAnimal(const AAnimal & aanimal);
+	AAnimal(const AAnimal & obj);
 
 	virtual ~AAnimal();
 
-	virtual void makeSound() const = 0;
 	std::string getType() const;
 
-	AAnimal& operator=(const AAnimal & aanimal);
+	virtual void makeSound() const = 0;
+
+	AAnimal & operator=(const AAnimal & obj);
 };
 
 #endif

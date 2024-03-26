@@ -16,9 +16,10 @@ public :
 
 	~Cat();
 
-	void makeSound() const;
 	std::string getIdea(int idx) const;
-	void setIdea(int idx, std::string idea);
+	void		setIdea(int idx, std::string idea);
+	
+	void		makeSound() const;
 
 	Cat & operator=(const Cat & cat);
 };

@@ -1,28 +1,30 @@
 #ifndef  _ANIMAL_HPP
 # define _ANIMAL_HPP
 
-# include "Brain.hpp"
 # include <iostream>
-# include <stdexcept>
 # include <string>
+# include <stdexcept>
+
+# include "Brain.hpp"
 
 class Animal {
 
-protected:
+protected :
 
-	std::string type;
+	std::string _type;
 
-public:
+public :
 
 	Animal();
-	Animal(Animal const& animal);
+	Animal(const Animal & obj);
 
 	virtual ~Animal();
 
-	virtual void	makeSound() const;
 	std::string		getType() const;
 
-	Animal& operator=(Animal const& animal);
+	virtual void	makeSound() const;
+
+	Animal & operator=(const Animal & obj);
 };
 
 #endif

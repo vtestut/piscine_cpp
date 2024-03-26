@@ -22,19 +22,20 @@
 
 class Animal {
 
-protected:
+protected :
 
 	std::string _type;
 
-public:
+public :
 
 	Animal();
 	Animal(const Animal & obj);
 
 	virtual ~Animal();
 
-	std::string getType() const;
-	virtual void makeSound() const;
+	std::string		getType() const;
+	
+	virtual void	makeSound() const;
 
 	Animal & operator=(const Animal & obj);
 };

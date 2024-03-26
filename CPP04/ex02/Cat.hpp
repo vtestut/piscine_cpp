@@ -12,15 +12,16 @@ private :
 public :
 
 	Cat();
-	Cat(const Cat & cat);
+	Cat(const Cat & obj);
 
 	~Cat();
 
-	void makeSound() const;
-	std::string getIdea(int idx) const;
-	void setIdea(int idx, std::string idea);
+	std::string	getIdea(int idx) const;
+	void		setIdea(int idx, std::string idea);
+	
+	void		makeSound() const;
 
-	Cat & operator=(const Cat & cat);
+	Cat & operator=(const Cat & obj);
 };
 
 #endif

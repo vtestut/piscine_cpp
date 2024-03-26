@@ -12,17 +12,19 @@ void Cat::makeSound() const {
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Cat::Cat(void) {
+Cat::Cat() {
 	this->_type = "Cat";
-	std::cout << CYAN "Cat constructed" RESET << std::endl;
+	std::cout << GREEN "Cat constructed" RESET << std::endl;
 }
 
-Cat::Cat(const Cat& obj) {
+Cat::Cat(const Cat & obj) {
 	this->_type = obj._type;
-	std::cout << CYAN "Cat constructed" RESET << std::endl;
+	std::cout << GREEN "Cat constructed" RESET << std::endl;
 }
 
-Cat::~Cat(void) { std::cout << RED "Cat destructed" RESET << std::endl; }
+Cat::~Cat() {
+	std::cout << RED "Cat destructed" RESET << std::endl;
+}
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */

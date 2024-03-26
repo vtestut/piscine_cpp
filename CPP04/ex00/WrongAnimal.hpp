@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 20:27:34 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/19 20:40:06 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef  _WRONGANIMAL_HPP
 # define _WRONGANIMAL_HPP
 
@@ -34,14 +22,15 @@
 
 class WrongAnimal {
 
-protected:
+protected :
 	
 	std::string _type;
 
-public:
+public :
 
 	WrongAnimal();
 	WrongAnimal(const WrongAnimal & obj);
+	
 	~WrongAnimal();
 
 	void makeSound() const;

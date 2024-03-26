@@ -6,26 +6,28 @@
 
 Brain::Brain() {
 	for (int i = 0; i < NUM_IDEAS; i++)
-		this->ideas[i] = "Pierre qui roule n'amasse pas mousse.";
-	std::cout << "Brain constructed.\n";
+		this->ideas[i] = "Mens sana in corpore sano";
+	std::cout << GREEN "Brain constructed" RESET << std::endl;
 }
 
-Brain::Brain(Brain const& brain) {
+Brain::Brain(const Brain & obj) {
 	for (int i = 0; i < NUM_IDEAS; i++)
-		this->ideas[i] = brain.ideas[i];
-	std::cout << "Brain copied.\n";
+		this->ideas[i] = obj.ideas[i];
+	std::cout << GREEN "Brain copied" RESET << std::endl;
 }
 
-Brain::~Brain() { std::cout << "Brain destructed.\n"; }
+Brain::~Brain() {
+	std::cout << RED "Brain destructed" RESET << std::endl;
+}
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Brain& Brain::operator=(Brain const& brain) {
-	if (this != &brain)
+Brain & Brain::operator=(const Brain & obj) {
+	if (this != &obj)
 		for (int i = 0; i < NUM_IDEAS; i++)
-			this->ideas[i] = brain.ideas[i];
-	std::cout << "Brain assigned.\n";
-	return *this;
+			this->ideas[i] = obj.ideas[i];
+	std::cout << GREEN "Brain assigned" RESET << std::endl;
+	return (*this);
 }

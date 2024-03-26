@@ -1,12 +1,16 @@
 #include "Cat.hpp"
 
 /******************************************************************************/
-/*								PUBLIC FUNCTIONS							  */
+/*								PUBLIC										  */
 /******************************************************************************/
 
 void Cat::makeSound() const {
-	std::cout << "miaou" << std::endl;
+	std::cout << "miaou miaou" << std::endl;
 }
+
+/******************************************************************************/
+/*								ACCESSORS									  */
+/******************************************************************************/
 
 std::string Cat::getIdea(int idx) const {
 	if (this->brain == NULL)
@@ -29,38 +33,38 @@ void Cat::setIdea(int idx, std::string idea) {
 /******************************************************************************/
 
 Cat::Cat() {
-	this->type = "Cat";
+	this->_type = "Cat";
 	this->brain = new Brain();
-	std::cout << "Cat constructed.\n";
+	std::cout << GREEN "Cat constructed" RESET << std::endl;
 }
 
-Cat::Cat(const Cat & cat) {
-	this->type = cat.type;
-	if (cat.brain == NULL)
+Cat::Cat(const Cat & obj) {
+	this->_type = obj._type;
+	if (obj.brain == NULL)
 		this->brain = NULL;
 	else
-		this->brain = new Brain(*cat.brain);
-	std::cout << "Cat copied.\n";
+		this->brain = new Brain(*obj.brain);
+	std::cout << GREEN "Cat copied" RESET << std::endl;
 }
 
 Cat::~Cat() {
 	delete this->brain;
-	std::cout << "Cat destructed.\n";
+	std::cout << RED "Cat destructed" RESET << std::endl;
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Cat& Cat::operator=(const Cat & cat) {
-	if (this != &cat) {
+Cat & Cat::operator=(const Cat & obj) {
+	if (this != &obj) {
 		delete this->brain;
-		this->type = cat.type;
-		if (cat.brain == NULL)
+		this->_type = obj._type;
+		if (obj.brain == NULL)
 			this->brain = NULL;
 		else
-			this->brain = new Brain(*cat.brain);
+			this->brain = new Brain(*obj.brain);
 	}
-	std::cout << "Cat assigned.\n";
+	std::cout << GREEN "Cat assigned" RESET << std::endl;
 	return (*this);
 }

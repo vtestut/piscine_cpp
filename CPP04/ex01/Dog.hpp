@@ -16,9 +16,10 @@ public :
 
 	~Dog();
 
-	void makeSound() const;
-	std::string getIdea(int idx) const;
-	void setIdea(int idx, std::string idea);
+	std::string	getIdea(int idx) const;
+	void		setIdea(int idx, std::string idea);
+	
+	void		makeSound() const;
 
 	Dog & operator=(const Dog & dog);
 };
