@@ -1,45 +1,64 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 20:13:24 by vtestut           #+#    #+#             */
-/*   Updated: 2024/03/19 20:16:27 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Dog.hpp"
 
 /******************************************************************************/
-/*								PUBLIC										  */
+/*								PUBLIC FUNCTIONS							  */
 /******************************************************************************/
 
-void Dog::makeSound() const { std::cout << "ouaf ouaf" << std::endl; }
+void Dog::makeSound() const { std::cout << "woof" << std::endl; }
+
+std::string Dog::getIdea(int idx) const {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	return this->brain->ideas[idx];
+}
+
+void Dog::setIdea(int idx, std::string idea) {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	this->brain->ideas[idx] = idea;
+}
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Dog::Dog(void) {
-	this->_type = "Dog";
-	std::cout << CYAN "Dog constructed" RESET << std::endl;
+Dog::Dog() {
+	this->type = "Dog";
+	this->brain = new Brain();
+	std::cout << "Dog constructed.\n";
 }
 
-Dog::Dog(const Dog& obj) {
-	this->_type = obj._type;
-	std::cout << CYAN "Dog constructed" RESET << std::endl;
+Dog::Dog(const Dog& dog) {
+	this->type = dog.type;
+	if (dog.brain == NULL)
+		this->brain = NULL;
+	else
+		this->brain = new Brain(*dog.brain);
+	std::cout << "Dog copied.\n";
 }
 
-Dog::~Dog(void) { std::cout << RED "Dog destructed" RESET << std::endl; }
+Dog::~Dog() {
+	delete this->brain;
+	std::cout << "Dog destructed.\n";
+}
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Dog & Dog::operator=(const Dog & obj) {
-	if (this != &obj)
-		this->_type = obj._type;
-	return (*this);
+Dog& Dog::operator=(Dog const& dog) {
+	if (this != &dog) {
+		delete this->brain;
+		this->type = dog.type;
+		if (dog.brain == NULL)
+			this->brain = NULL;
+		else
+			this->brain = new Brain(*dog.brain);
+	}
+	std::cout << "Dog assigned.\n";
+	return *this;
 }

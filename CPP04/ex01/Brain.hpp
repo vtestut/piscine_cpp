@@ -2,11 +2,12 @@
 # define _BRAIN_HPP
 
 # include <iostream>
-//# include <>
 
 /******************************************************************************/
 /*									DEFINES									  */
 /******************************************************************************/
+
+# define NUM_IDEAS 100
 
 # define RED	"\033[31m"
 # define GREEN	"\033[32m"
@@ -22,24 +23,16 @@
 
 class Brain {
 
-private:
-	
-
 public:
 
 	Brain();
 	Brain(const Brain & obj);
+	
 	~Brain();
 
+	std::string ideas[NUM_IDEAS];
 
 	Brain & operator=(const Brain & obj);
-
 };
-
-/******************************************************************************/
-/*									PROTOYPES								  */
-/******************************************************************************/
-
-// std::ostream &	operator<<(std::ostream & out, const Brain & obj);
 
 #endif

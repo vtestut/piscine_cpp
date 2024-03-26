@@ -1,10 +1,10 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-// #define RESET "\033[0m"
-// #define BOLDBLUE "\033[1m\033[34m"
+#define RESET "\033[0m"
+#define BOLDBLUE "\033[1m\033[34m"
 #define NUM_ANIMALS 4
 
 static void display_title(std::string title) {
@@ -12,12 +12,12 @@ static void display_title(std::string title) {
 }
 
 int main() {
-	display_title("PURE ANIMAL");
-	Animal* animal = new Animal();
-	delete animal;
+	// display_title("PURE AANIMAL");
+	// AAnimal *aanimal = new AAnimal();
+	// delete aanimal;
 	display_title("DEFAULT CONSTRUCTORS");
-	Animal* animals[NUM_ANIMALS] = {new Dog(), new Dog(), new Cat(), new Cat()};
-	display_title("ANIMAL INFO");
+	AAnimal* animals[NUM_ANIMALS] = {new Dog(), new Dog(), new Cat(), new Cat()};
+	display_title("AANIMAL INFO");
 	for (int i = 0; i < NUM_ANIMALS; ++i) {
 		std::cout << "i: " << i << " type: " << animals[i]->getType() << " sound: ";
 		animals[i]->makeSound();

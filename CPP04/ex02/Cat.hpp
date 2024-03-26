@@ -1,9 +1,9 @@
 #ifndef  _CAT_HPP
 # define _CAT_HPP
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 
-class Cat : public Animal {
+class Cat : public AAnimal {
 
 private :
 

@@ -1,51 +1,31 @@
 #include "Brain.hpp"
 
 /******************************************************************************/
-/*								PRIVATE										  */
-/******************************************************************************/
-
-
-// void Brain:: () {
-// }
-
-
-/******************************************************************************/
-/*								PUBLIC										  */
-/******************************************************************************/
-
-
-// void Brain:: () {
-// }
-
-
-/******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-
-Brain::Brain(void) {}
-
-
-Brain::Brain(Brain const & obj) {
-	*this = src;
+Brain::Brain() {
+	for (int i = 0; i < NUM_IDEAS; i++)
+		this->ideas[i] = "Pierre qui roule n'amasse pas mousse.";
+	std::cout << "Brain constructed.\n";
 }
 
-Brain::~Brain(void) {}
+Brain::Brain(Brain const& brain) {
+	for (int i = 0; i < NUM_IDEAS; i++)
+		this->ideas[i] = brain.ideas[i];
+	std::cout << "Brain copied.\n";
+}
 
-
-/******************************************************************************/
-/*							GETTERS & SETTERS								  */
-/******************************************************************************/
-
-
+Brain::~Brain() { std::cout << "Brain destructed.\n"; }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-
-Brain & Brain::operator=(const Brain & obj) {
-	if (this != &obj)
-		*this = obj; // this->xxx = obj.xxx
+Brain& Brain::operator=(Brain const& brain) {
+	if (this != &brain)
+		for (int i = 0; i < NUM_IDEAS; i++)
+			this->ideas[i] = brain.ideas[i];
+	std::cout << "Brain assigned.\n";
 	return *this;
 }

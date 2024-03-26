@@ -1,36 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 17:31:31 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/03/20 16:47:56 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _BRAIN_HPP
+# define _BRAIN_HPP
 
-#ifndef BRAIN_CLASS_H
-# define BRAIN_CLASS_H
+# include <iostream>
 
-# include <string>
+/******************************************************************************/
+/*									DEFINES									  */
+/******************************************************************************/
 
-class Brain
-{
-	public:
-		Brain(void);
-		Brain(Brain const & src);
-		~Brain(void);
+# define NUM_IDEAS 100
 
-		Brain &	operator=(Brain const & src);
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define CYAN	"\033[36m"
+# define YELLOW	"\033[93m"
 
-		std::string const &	getIdea(int index) const;
-		void				setIdea(int index, std::string const & idea);
+# define RESET	"\033[0m"
+# define CLEAR	"\033[2J\033[1;1H"
 
-		static int const	nb_ideas = 100;
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
 
-	private:
-		std::string	_ideas[nb_ideas];
+class Brain {
+
+public :
+
+	Brain();
+	Brain(const Brain & brain);
+	
+	~Brain();
+	
+	std::string ideas[NUM_IDEAS];
+
+	Brain& operator=(const Brain & brain);
 };
 
 #endif

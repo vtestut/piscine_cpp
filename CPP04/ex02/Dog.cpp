@@ -1,61 +1,66 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 12:17:38 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/03/20 16:54:11 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Dog.hpp"
-#include <string>
-#include <iostream>
 
-Dog::Dog(void) : Animal(), _brain(new Brain())
-{
-	std::cout << CYAN "Dog default constructor called." RESET << std::endl;
-	this->_type = "Dog";
-	return ;
+/******************************************************************************/
+/*								PUBLIC FUNCTIONS							  */
+/******************************************************************************/
+
+void Dog::makeSound() const {
+	std::cout << "woof" << std::endl;
 }
 
-Dog::Dog(Dog const & src) : Animal(), _brain(NULL)
-{
-	std::cout << CYAN "Dog copy constructor called." RESET << std::endl;
-	*this = src;
-	return ;
+std::string Dog::getIdea(int idx) const {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	return this->brain->ideas[idx];
 }
 
-Dog::~Dog(void)
-{
-	std::cout << CYAN "Dog destructor called." RESET << std::endl;
-	delete this->_brain;
-	return ;
+void Dog::setIdea(int idx, std::string idea) {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	this->brain->ideas[idx] = idea;
 }
 
-Dog &	Dog::operator=(Dog const & src)
-{
-	std::cout << GREEN "Dog assignment overload operator called." RESET << std::endl;
-	if (this != &src)
-	{
-		this->_type = src._type;
-		if (this->_brain != NULL)
-			delete this->_brain;
-		this->_brain = new Brain(*src._brain);
+/******************************************************************************/
+/*						CONSTRUCTORS & DESTRUCTORS							  */
+/******************************************************************************/
+
+Dog::Dog() {
+	this->type = "Dog";
+	this->brain = new Brain();
+	std::cout << "Dog constructed.\n";
+}
+
+Dog::Dog(const Dog & dog) {
+	this->type = dog.type;
+	if (dog.brain == NULL)
+		this->brain = NULL;
+	else
+		this->brain = new Brain(*dog.brain);
+	std::cout << "Dog copied.\n";
+}
+
+Dog::~Dog() {
+	delete this->brain;
+	std::cout << "Dog destructed.\n";
+}
+
+/******************************************************************************/
+/*							OPERATOR OVERLOAD								  */
+/******************************************************************************/
+
+Dog& Dog::operator=(const Dog & dog) {
+	if (this != &dog) {
+		delete this->brain;
+		this->type = dog.type;
+		if (dog.brain == NULL)
+			this->brain = NULL;
+		else
+			this->brain = new Brain(*dog.brain);
 	}
+	std::cout << "Dog assigned.\n";
 	return (*this);
-}
-
-Brain *	Dog::getBrain(void) const
-{
-	return (this->_brain);
-}
-
-void	Dog::makeSound(void) const
-{
-	std::cout << YELLOW << this->_type
-		<< ": * Arf! Arf! Arf! *" RESET << std::endl;
-	return ;
 }

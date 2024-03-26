@@ -1,9 +1,9 @@
 #ifndef  _DOG_HPP
 # define _DOG_HPP
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 
-class Dog : public Animal {
+class Dog : public AAnimal {
 
 private :
 
@@ -20,7 +20,7 @@ public :
 	std::string getIdea(int idx) const;
 	void setIdea(int idx, std::string idea);
 
-	Dog & operator=(const Dog & dog);
+	Dog& operator=(const Dog & dog);
 };
 
 #endif

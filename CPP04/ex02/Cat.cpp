@@ -52,7 +52,7 @@ Cat::~Cat() {
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Cat& Cat::operator=(Cat const& cat) {
+Cat& Cat::operator=(const Cat & cat) {
 	if (this != &cat) {
 		delete this->brain;
 		this->type = cat.type;
@@ -62,5 +62,5 @@ Cat& Cat::operator=(Cat const& cat) {
 			this->brain = new Brain(*cat.brain);
 	}
 	std::cout << "Cat assigned.\n";
-	return *this;
+	return (*this);
 }

@@ -1,40 +1,37 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 /******************************************************************************/
 /*								PUBLIC FUNCTIONS							  */
 /******************************************************************************/
 
-void Animal::makeSound() const {
-	std::cout << "???";
-}
-
-std::string Animal::getType() const {
-	return this->type;
+std::string AAnimal::getType() const { 
+	return (this->type);
 }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Animal::Animal() : type("Animal") { 
-	std::cout << "Animal constructed.\n"; 
+AAnimal::AAnimal() : type("AAnimal") {
+	std::cout << "AAnimal constructed.\n";
 }
 
-Animal::Animal(const Animal& animal) : type(animal.type) { 
-	std::cout << "Animal copied.\n"; 
+AAnimal::AAnimal(const AAnimal& aanimal) : type(aanimal.type) {
+	std::cout << "AAnimal copied.\n";
 }
 
-Animal::~Animal() { 
-	std::cout << "Animal destructed.\n"; 
+AAnimal::~AAnimal() {
+	std::cout << "AAnimal destructed.\n";
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Animal& Animal::operator=(Animal const& animal) {
-	if (this != &animal)
-		this->type = animal.type;
-	std::cout << "Animal assigned.\n";
-	return *this;
+AAnimal& AAnimal::operator=(AAnimal const& aanimal) {
+	if (this != &aanimal)
+		this->type = aanimal.type;
+	std::cout << "AAnimal assigned.\n";
+	return (*this);
 }
+
