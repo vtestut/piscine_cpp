@@ -5,7 +5,7 @@
 /******************************************************************************/
 
 void WrongAnimal::makeSound() const {
-	std::cout << "Wrong animal noise" << std::endl;
+	std::cout << "wrong animal noise" << std::endl;
 }
 
 /******************************************************************************/
