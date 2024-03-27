@@ -17,7 +17,7 @@ WrongAnimal::WrongAnimal(void): _type("WrongAnimal") {
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const & obj) : _type(obj._type) {
-	std::cout << GREEN "WrongAnimal constructed" RESET << std::endl;
+	std::cout << GREEN "WrongAnimal copied" RESET << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void) { 
@@ -40,4 +40,5 @@ WrongAnimal & WrongAnimal::operator=(const WrongAnimal & obj) {
 	if (this != &obj)
 		this->_type = obj._type;
 	return (*this);
+	std::cout << GREEN "WrongAnimal assigned" RESET << std::endl;
 }

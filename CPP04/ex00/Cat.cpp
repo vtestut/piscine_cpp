@@ -19,7 +19,7 @@ Cat::Cat() {
 
 Cat::Cat(const Cat & obj) {
 	this->_type = obj._type;
-	std::cout << GREEN "Cat constructed" RESET << std::endl;
+	std::cout << GREEN "Cat copied" RESET << std::endl;
 }
 
 Cat::~Cat() {

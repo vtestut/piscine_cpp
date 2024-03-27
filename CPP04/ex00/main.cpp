@@ -5,13 +5,31 @@
 #include "WrongCat.hpp"
 
 static void display_title(std::string title) {
-	std::cout << CYAN << "--- " << title << " ---\n" << RESET;
+	std::cout << CYAN << "--- " << title << " ---" RESET << std::endl;
+}
+
+void subjectTest(void)
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	meta->makeSound();
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	delete meta;
+	delete j;
+	delete i;
 }
 
 void wrongAnimal(void) 
 {
 	const WrongAnimal* wrongCat = new WrongCat();
 	const WrongAnimal* wrongAnimal = new WrongAnimal();
+	// const WrongCat * Cat2 = new WrongAnimal();
+	// Cat2->makeSound();
+	// delete Cat2;
 
 	std::cout << wrongCat->getType() << "\t: ";
 	wrongCat->makeSound();
@@ -27,6 +45,9 @@ void rightAnimal(void)
 	const Animal* cat = new Cat();
 	const Animal* dog = new Dog();
 	const Animal* animal = new Animal();
+	// const Dog * dog2 = new Animal();
+	// dog2->makeSound();
+	// delete dog2;
 
 	std::cout << cat->getType() << "\t: ";
 	cat->makeSound();
@@ -42,6 +63,9 @@ void rightAnimal(void)
 
 int main(void) 
 {
+	display_title("SUBJECT TEST");
+	subjectTest();
+	std::cout << std::endl;
 	display_title("RIGHT ANIMAL");
 	rightAnimal();
 	std::cout << std::endl;

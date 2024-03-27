@@ -12,22 +12,38 @@ void Cat::makeSound() const {
 /*								ACCESSORS									  */
 /******************************************************************************/
 
-Brain * Cat::getBrain() const {
-	return (this->brain);
+std::string Cat::getIdea(int idx) const {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	return (this->brain->ideas[idx]);
+}
+
+void Cat::setIdea(int idx, std::string idea) {
+	if (this->brain == NULL)
+		throw std::logic_error("Brain pointer is NULL");
+	if (idx < 0 || idx >= NUM_IDEAS)
+		throw std::out_of_range("ideas[idx] is out of range");
+	this->brain->ideas[idx] = idea;
 }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Cat::Cat() : Animal() {
+Cat::Cat() {
 	this->_type = "Cat";
 	this->brain = new Brain();
 	std::cout << GREEN "Cat constructed" RESET << std::endl;
 }
 
 Cat::Cat(const Cat & obj) {
-	*this = obj;
+	this->_type = obj._type;
+	if (obj.brain == NULL)
+		this->brain = NULL;
+	else
+		this->brain = new Brain(*obj.brain);
 	std::cout << GREEN "Cat copied" RESET << std::endl;
 }
 
@@ -41,8 +57,14 @@ Cat::~Cat() {
 /******************************************************************************/
 
 Cat & Cat::operator=(const Cat & obj) {
-	this->_type = obj._type;
-	this->brain = new Brain(*obj.brain);
+	if (this != &obj) {
+		delete this->brain;
+		this->_type = obj._type;
+		if (obj.brain == NULL)
+			this->brain = NULL;
+		else
+			this->brain = new Brain(*obj.brain);
+	}
 	std::cout << GREEN "Cat assigned" RESET << std::endl;
 	return (*this);
 }

@@ -19,7 +19,7 @@ WrongCat::WrongCat(void) {
 
 WrongCat::WrongCat(const WrongCat & obj) {
 	this->_type = obj._type;
-	std::cout << GREEN "WrongCat constructed" RESET << std::endl;
+	std::cout << GREEN "WrongCat copied" RESET << std::endl;
 }
 
 WrongCat::~WrongCat(void) {
@@ -33,5 +33,6 @@ WrongCat::~WrongCat(void) {
 WrongCat & WrongCat::operator=(const WrongCat & obj) {
 	if (this != &obj)
 		this->_type = obj._type;
+	std::cout << GREEN "WrongCat assigned" RESET << std::endl;
 	return (*this);
 }

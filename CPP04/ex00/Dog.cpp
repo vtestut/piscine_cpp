@@ -19,7 +19,7 @@ Dog::Dog(void) {
 
 Dog::Dog(const Dog & obj) {
 	this->_type = obj._type;
-	std::cout << GREEN "Dog constructed" RESET << std::endl;
+	std::cout << GREEN "Dog copied" RESET << std::endl;
 }
 
 Dog::~Dog(void) {
