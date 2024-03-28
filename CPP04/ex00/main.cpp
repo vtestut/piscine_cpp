@@ -4,7 +4,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-static void display_title(std::string title) {
+static void displayTitle(std::string title) {
 	std::cout << CYAN << "--- " << title << " ---" RESET << std::endl;
 }
 
@@ -63,13 +63,13 @@ void rightAnimal(void)
 
 int main(void) 
 {
-	display_title("SUBJECT TEST");
+	displayTitle("subject test");
 	subjectTest();
 	std::cout << std::endl;
-	display_title("RIGHT ANIMAL");
+	displayTitle("good animal");
 	rightAnimal();
 	std::cout << std::endl;
-	display_title("WRONG ANIMAL");
+	displayTitle("wrong animal");
 	wrongAnimal();
 	return (0);
 }

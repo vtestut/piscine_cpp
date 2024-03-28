@@ -1,27 +1,27 @@
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef  _DOG_HPP
+# define _DOG_HPP
 
 # include "Animal.hpp"
-# include "Brain.hpp"
 
 class Dog : public Animal {
 
 private :
-	
-	Brain *brain;
+
+	Brain* brain;
 
 public :
 
 	Dog();
-	Dog(const Dog & obj);
-	
+	Dog(const Dog & dog);
+
 	~Dog();
 
-	Brain *getBrain  () const;
+	std::string	getIdea(int idx) const;
+	void		setIdea(int idx, std::string idea);
 	
-	void makeSound  () const;
-	
-	Dog & operator=(const Dog & obj);
+	void		makeSound() const;
+
+	Dog & operator=(const Dog & dog);
 };
 
 #endif

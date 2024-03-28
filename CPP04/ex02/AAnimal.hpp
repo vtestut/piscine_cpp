@@ -7,6 +7,10 @@
 
 # include "Brain.hpp"
 
+/*	une "méthode pure" fait référence à une fonction membre virtuelle déclarée dans une classe de base mais non implémentée dans cette classe de base
+	Une classe abstraite doit avoir au moins une méthode pure pour être considérée comme telle
+	Si une classe contient au moins une méthode pure, elle est une classe abstraite et ne peut pas être instanciée directement.*/
+
 class AAnimal {
 
 protected :
@@ -28,3 +32,4 @@ public :
 };
 
 #endif
+

@@ -4,8 +4,8 @@
 /*								PUBLIC										  */
 /******************************************************************************/
 
-void Animal::makeSound () const {
-  std::cout << "amimal noise" << std::endl;
+void Animal::makeSound() const {
+	std::cout << "animal noise" << std::endl;
 }
 
 /******************************************************************************/
@@ -13,26 +13,22 @@ void Animal::makeSound () const {
 /******************************************************************************/
 
 std::string Animal::getType() const {
-  return (this->_type);
-}
-
-void Animal::setType(std::string newType) {
-  this->_type = newType;
+	return (this->_type);
 }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Animal::Animal() : _type("Animal") {
-	std::cout << GREEN "Animal constructed" RESET << std::endl;
+Animal::Animal() : _type("Animal") { 
+	std::cout << GREEN "Animal constructed" RESET << std::endl; 
 }
 
-Animal::Animal(const Animal & obj) : _type(obj._type) {
-	std::cout << GREEN "Animal copied" RESET << std::endl;
+Animal::Animal(const Animal & obj) : _type(obj._type) { 
+	std::cout << GREEN "Animal copied" RESET << std::endl; 
 }
 
-Animal::~Animal() {
+Animal::~Animal() { 
 	std::cout << RED "Animal destructed" RESET << std::endl;
 }
 
@@ -46,13 +42,3 @@ Animal & Animal::operator=(const Animal & obj) {
 	std::cout << GREEN "Animal assigned" RESET << std::endl;
 	return (*this);
 }
-
-// Animal& Animal::operator = (Animal const &ref) {
-//   this->type = ref.type;
-//   std::cout << "Animal      assignment operator   (type = " << this->type << ") VIRTUAL" << std::endl;
-//   return *this;
-// }
-
-
-
-

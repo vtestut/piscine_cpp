@@ -1,18 +1,14 @@
 #ifndef  _BRAIN_HPP
 # define _BRAIN_HPP
 
-# include <string>
 # include <iostream>
-# include <fstream>
-# include <map>
-# include <cmath>
 
 /******************************************************************************/
 /*									DEFINES									  */
 /******************************************************************************/
 
 # define RED	"\033[31m"
-# define GREEN	"\033[32m"
+# define GREEN	"\033[32m"		
 # define CYAN	"\033[36m"
 # define YELLOW	"\033[93m"
 
@@ -27,19 +23,15 @@
 
 class Brain {
 
-private :
-	
-	std::string  *ideas;
-
-public :
+public:
 
 	Brain();
 	Brain(const Brain & obj);
 	
 	~Brain();
 
-	std::string *getIdeas();
-	
+	std::string ideas[NB_IDEAS];
+
 	Brain & operator=(const Brain & obj);
 };
 

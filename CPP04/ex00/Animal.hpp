@@ -22,9 +22,9 @@
 
 /*	Une methode est une fonctiom membre 'virtual' dont la resolution est dynamique.
 	Elle se resoud au moment de la compilation.
-	if not virtual ~Animal, than onnly ~Animal() is called, never ~Cat()
-	non-final class with virtual functions should have virtual destructor
-	Virtual destructor lets delete an instance of a child class through a pointer to parent class */
+	Si la le destructeur ~Animal n'est pas 'virtual', alors seul ~Animal() est appelé, jamais ~Cat()
+	Les classes meres avec des fonctions virtuelles devraient avoir un destructeur virtuel
+	Un destructeur virtuel permet de supprimer une instance d'une classe fille via un pointeur vers la classe parent */
 
 class Animal {
 
