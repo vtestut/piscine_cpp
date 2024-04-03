@@ -6,17 +6,17 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:07:46 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/03 15:22:23 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/04/03 08:46:50 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
-#include "AForm.hpp"
+#include "Form.hpp"
 #include <fstream>
 
-class ShrubberyCreationForm : public AForm {
+class ShrubberyCreationForm : public Form {
 
 private:
     const std::string   _target;

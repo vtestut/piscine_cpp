@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
-// # include "AForm.hpp"
+# include "AForm.hpp"
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -26,7 +26,7 @@ class AForm;
 
 class Bureaucrat {
 
-private : 
+private :
 
 	static const std::string _defaultName;
 	const std::string		 _name;
@@ -35,22 +35,24 @@ private :
 public :
 
 	Bureaucrat();
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(const Bureaucrat & obj);
-	Bureaucrat& operator=(const Bureaucrat & obj);
-	
+	Bureaucrat(const std::string& name, int grade);
+	Bureaucrat(const Bureaucrat& obj);
+	Bureaucrat &operator=(const Bureaucrat& obj);
+
 	~Bureaucrat();
 
-	static const int 		 highestGrade = 1;
-	static const int 		 lowestGrade = 150;
-	
-	std::string	getName() const;
-	int			getGrade() const;
+	static const int highestGrade = 1;
+	static const int lowestGrade = 150;
 
-	void		signForm(AForm& form);
+	std::string getName() const;
+	int         getGrade() const;
 
-	void		incrementGrade();
-	void		decrementGrade();
+	void        incrementGrade();
+	void        decrementGrade();
+
+	void        signForm(AForm& form);
+
+	void        executeForm(const AForm& form) const;  
 
 	class GradeTooHighException : public std::exception {
 	public:
@@ -64,6 +66,6 @@ public :
 
 };
 
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &obj);
+std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
 
 #endif

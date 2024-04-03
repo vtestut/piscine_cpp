@@ -6,16 +6,16 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:44:11 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/03 15:22:23 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/04/03 08:46:02 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
 private:
     std::string _target;

@@ -7,7 +7,7 @@ Bureaucrat::Bureaucrat() : _name(_defaultName) , _grade(lowestGrade) {
 	std::cout << CYAN "constructor called" RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
 	if (grade > this->lowestGrade)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade < this->highestGrade)
@@ -38,7 +38,7 @@ int Bureaucrat::getGrade() const { return _grade; }
 void Bureaucrat::signForm(Form& form) {
 	if (_grade > form.getSignGrade()) {
 		std::cout << _name << " could not sign " << form.getName()
-				  << " because their grade is too low.\n";
+				  << " : grade is too low.\n";
 	} else {
 		form.beSigned(*this);
 	}

@@ -7,6 +7,7 @@ int main() {
 	Bureaucrat marconus("Marconus", 1);
 	Bureaucrat attal("Attal", 2);
 	Bureaucrat poutou("Poutou", 150);
+	
 	Form nuclearStrike("NuclearStrike", 40, 1);
 	Form takeTheGarbageOut("TakeTheGarbageOut", 140, 140);
 

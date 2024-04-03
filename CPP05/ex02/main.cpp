@@ -1,46 +1,34 @@
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-// #include <cstdlib>
+#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
+#include <cstdlib>
 
-int main() {
-	Bureaucrat marconus("Marconus", 1);
-	Bureaucrat attal("Attal", 2);
-	Bureaucrat poutou("Poutou", 150);
-	AForm nuclearStrike("NuclearStrike", 40, 1);
-	AForm takeTheGarbageOut("TakeTheGarbageOut", 140, 140);
+int main( void )
+{
 
-	try {
-		AForm impossible("Impossible", 0, 30);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
+    try {
+        Bureaucrat bureaucrat("ash", 2); // error with 200
+        ShrubberyCreationForm form1("Shrubbery");
+        RobotomyRequestForm form2("Robotomy");
+        PresidentialPardonForm form3("President");
 
-	std::cout << std::endl;
-
-	marconus.signForm(nuclearStrike);
-	attal.signForm(nuclearStrike);
-	poutou.signForm(nuclearStrike);
-	poutou.signForm(takeTheGarbageOut);
-
-	std::cout << std::endl;
-
-	nuclearStrike.beSigned(marconus);
-	takeTheGarbageOut.beSigned(marconus);
-	try {
-		nuclearStrike.beSigned(attal);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	takeTheGarbageOut.beSigned(attal);
-	try {
-		nuclearStrike.beSigned(poutou);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		takeTheGarbageOut.beSigned(poutou);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
+        std::cout << "\n--------------- AForm 1 ( Shrubbery ) ---------------" << std::endl;
+        bureaucrat.signForm(form1);
+        bureaucrat.executeForm(form1);
+        std::cout << "\n--------------- AForm 2 ( Robotomy ) ---------------" << std::endl;
+        bureaucrat.signForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        std::cout << "\n--------------- AForm 3 ( President ) ---------------" << std::endl;
+        bureaucrat.signForm(form3);
+        bureaucrat.executeForm(form3);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    return EXIT_SUCCESS;
 }

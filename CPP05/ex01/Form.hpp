@@ -4,7 +4,6 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
-// # include "Bureaucrat.hpp"
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -37,9 +36,9 @@ private :
 
 public :
 
-	Form(std::string name, int signGrade, int execGrade);
-	Form(const Form & obj);
-	Form& operator=(const Form & obj);
+	Form(const std::string name, int signGrade, int execGrade);
+	Form(const Form & form);
+	Form& operator=(const Form & form);
 
 	~Form();
 
@@ -48,7 +47,7 @@ public :
 	int 		getSignGrade() const;
 	int			getExecGrade() const;
 
-	void beSigned(const Bureaucrat& obj);
+	void beSigned(const Bureaucrat& bureaucrat);
 
 	class GradeTooHighException : public std::exception {
 	public:
@@ -61,6 +60,6 @@ public :
 	};
 };
 
-std::ostream& operator<<(std::ostream &out, const Form &obj);
+std::ostream& operator<<(std::ostream &out, const Form &form);
 
 #endif

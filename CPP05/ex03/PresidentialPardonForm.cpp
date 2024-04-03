@@ -6,15 +6,15 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:45:16 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/03 17:22:03 by vtestut          ###   ########.fr       */
+/*   Updated: 2024/04/03 08:45:55 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm( "PresidentialPardonForm", 25, 5 ), _target( target ) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : Form( "PresidentialPardonForm", 25, 5 ), _target( target ) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) : AForm( src ), _target( src._target ) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) : Form( src ), _target( src._target ) {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
@@ -24,8 +24,8 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void    PresidentialPardonForm::execute(const Bureaucrat& executor) const {
-    if ( executor.getGrade() > this->getExecGrade() )
-        throw AForm::GradeTooLowException();
+    if ( executor.getGrade() > this->getGradeToExecute() )
+        throw Form::GradeTooLowException();
     else {
         std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
     }

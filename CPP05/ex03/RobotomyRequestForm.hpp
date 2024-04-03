@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 15:07:46 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/03 15:22:23 by vtestut          ###   ########.fr       */
+/*   Created: 2022/08/01 16:22:00 by ael-khni          #+#    #+#             */
+/*   Updated: 2024/04/03 08:46:18 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
-#include "AForm.hpp"
-#include <fstream>
+#include "Form.hpp"
 
-class ShrubberyCreationForm : public AForm {
-
+class RobotomyRequestForm : public Form
+{
 private:
     const std::string   _target;
 
-    ShrubberyCreationForm();
+    RobotomyRequestForm();
 
 public:
-    ShrubberyCreationForm( const std::string& target );
-    ShrubberyCreationForm( const ShrubberyCreationForm& src );
-    ~ShrubberyCreationForm();
+    RobotomyRequestForm( const std::string& target );
+    RobotomyRequestForm( const RobotomyRequestForm& src );
+    ~RobotomyRequestForm();
 
-    ShrubberyCreationForm&  operator=( ShrubberyCreationForm& rhs );
+    RobotomyRequestForm &operator=( RobotomyRequestForm& rhs );
 
     void        execute( const Bureaucrat& executor ) const;
-
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif // ROBOTOMYREQUESTFORM_HPP
