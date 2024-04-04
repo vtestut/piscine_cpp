@@ -24,9 +24,16 @@ class IMateriaSource {
 
 public :
 
-	virtual ~IMateriaSource(void) {}
+	virtual ~IMateriaSource() {};
 
+	/*Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
+plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias
+maximum. Ces dernières ne sont pas forcément uniques.*/
 	virtual void		learnMateria(AMateria * m) = 0;
+
+	/*Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédem-
+ment par la MateriaSource et dont le type est le même que celui passé en para-
+mètre. Retourne 0 si le type est inconnu.*/
 	virtual AMateria*	createMateria(std::string const & type) = 0;
 
 };

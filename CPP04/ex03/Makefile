@@ -1,4 +1,4 @@
-NAME := ex03
+NAME := a.out
 PATH_OBJS := objs
 CXX := c++ -Wall -Wextra -Werror -std=c++98 -g3
 CLASSES := AMateria Character Cure Ice MateriaSource

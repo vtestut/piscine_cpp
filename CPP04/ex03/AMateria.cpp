@@ -3,21 +3,10 @@
 #include <string>
 
 /******************************************************************************/
-/*								PROTECTED									  */
-/******************************************************************************/
-
-AMateria::AMateria(void) : _type("unknown")
-{
-	std::cout << CYAN "AMateria default constructor called." RESET << std::endl;
-	return ;
-}
-
-/******************************************************************************/
 /*								PUBLIC										  */
 /******************************************************************************/
 
-void	AMateria::use(ICharacter & target)
-{
+void	AMateria::use(ICharacter & target) {
 	std::cout << RED "* An unknown materia is being used against"
 		<< target.getName() << " *" RESET << std::endl;
 	return ;
@@ -27,8 +16,7 @@ void	AMateria::use(ICharacter & target)
 /*							ACCESSORS										  */
 /******************************************************************************/
 
-std::string const &	AMateria::getType(void) const
-{
+std::string AMateria::getType() const {
 	return (this->_type);
 }
 
@@ -36,16 +24,17 @@ std::string const &	AMateria::getType(void) const
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-// ! While assigning a Materia to another, copying the type doesn’t make sense
-AMateria::AMateria(AMateria const & src) : _type(src._type)
+AMateria::AMateria(void) : _type("unknown")
 {
-	std::cout << CYAN "AMateria copy constructor called." RESET << std::endl;
+	std::cout << CYAN "AMateria default constructor called." RESET << std::endl;
 	return ;
-} /*
+}
+
+// ! While assigning a Materia to another, copying the type doesn’t make sense
 AMateria::AMateria(AMateria const & src) {
   *this = src;
-  std::cout << "Materia     copy    constructor   (type = " << type << ")" << std::endl;
-} */
+  std::cout << "Materia copy constructor called  (type = " << _type << ")" << std::endl;
+} 
 
 AMateria::AMateria(std::string const & type) : _type(type)
 {
