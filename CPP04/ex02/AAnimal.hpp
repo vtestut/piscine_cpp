@@ -19,7 +19,8 @@
 	non implémentée dans cette classe de base.
 
 	Une classe abstraite doit avoir au moins une méthode pure pour être considérée comme abstraite.
-	classe abstraites / classes concrètes */
+	classe abstraites / classes concrètes 
+*/
 
 class AAnimal {
 

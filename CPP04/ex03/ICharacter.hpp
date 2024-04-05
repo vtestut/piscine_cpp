@@ -23,7 +23,7 @@ class ICharacter {
 
 public :
 
-	virtual ~ICharacter(void) {}
+	virtual ~ICharacter() {}
 
 	virtual std::string const & getName(void) const = 0;
 	

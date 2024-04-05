@@ -5,50 +5,38 @@
 /*								PUBLIC										  */
 /******************************************************************************/
 
-AMateria *	Cure::clone(void) const
-{
+AMateria * Cure::clone() const {
 	AMateria *	cureClone = new Cure();
 	return (cureClone);
 }
 
-void	Cure::use(ICharacter & target)
-{
-	std::cout << GREEN "* heals " << target.getName() << "'s wounds *" RESET
-		<< std::endl;
+void Cure::use(ICharacter & target) {
+	std::cout << GREEN "* heals " << target.getName() << "'s wounds *" RESET << std::endl;
 }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Cure::Cure(void) : AMateria("cure")
-{
+Cure::Cure() : AMateria("cure") {
 	std::cout << CYAN "Cure default constructor called." RESET << std::endl;
-	return ;
 }
 
-Cure::Cure(Cure const & src) : AMateria("cure")
-{
+Cure::Cure(const Cure & obj) : AMateria("cure") {
 	std::cout << CYAN "Cure copy constructor called." RESET << std::endl;
-	*this = src;
-	return ;
+	*this = obj;
 }
 
-Cure::~Cure(void)
-{
+Cure::~Cure() {
 	std::cout << CYAN "Cure destructor called." RESET << std::endl;
-	return ;
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Cure &	Cure::operator=(Cure const & src)
-{
+Cure & Cure::operator=(const Cure & obj) {
 	std::cout << CYAN "Cure assignment operator called." RESET << std::endl;
-	this->_type = src._type;
+	this->_type = obj._type;
 	return (*this);
 }
-
-

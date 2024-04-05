@@ -32,6 +32,7 @@
 	non implémentée dans cette classe de base.
 
 	Une classe abstraite doit avoir au moins une méthode pure pour être considérée comme abstraite. 
+	lasse abstraites / classes concrètes
 */
 
 class ICharacter;
@@ -45,18 +46,18 @@ protected :
 public :
 
 	AMateria();
-	AMateria(const AMateria & src);
+	AMateria(const AMateria & obj);
 	AMateria(const std::string & type);
 
 	virtual ~AMateria();
 
-	// std::string const & getType(void) const;
+	// ! std::string const & getType(void) const;
 	std::string getType() const;
 	
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter & target);
 
-	AMateria &	operator=(AMateria const & src);
+	AMateria &	operator=(const AMateria & obj);
 };
 
 #endif

@@ -3,35 +3,19 @@
 
 # include "AMateria.hpp"
 
-/******************************************************************************/
-/*									DEFINES									  */
-/******************************************************************************/
-
-# define RED	"\033[31m"
-# define GREEN	"\033[32m"
-# define CYAN	"\033[36m"
-# define YELLOW	"\033[93m"
-
-# define RESET	"\033[0m"
-# define CLEAR	"\033[2J\033[1;1H"
-
-/******************************************************************************/
-/*									CLASS									  */
-/******************************************************************************/
-
 class Ice : public AMateria {
 	
 public :
 
-	Ice(void);
-	Ice(Ice const & src);
-	~Ice(void);
+	Ice();
+	Ice(const Ice & obj);
 
-	Ice	& operator=(Ice const & src);
+	~Ice();
 
-	AMateria *	clone(void) const;
+	AMateria *	clone() const;
 	void		use(ICharacter & target);
 	
+	Ice	& operator=(const Ice & obj);
 };
 
 #endif

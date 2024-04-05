@@ -5,42 +5,38 @@
 /*								PUBLIC										  */
 /******************************************************************************/
 
-AMateria * Ice::clone(void) const {
-	AMateria *	iceClone = new Ice();
+AMateria * Ice::clone() const {
+	AMateria * iceClone = new Ice();
 	return (iceClone);
 }
 
 void Ice::use(ICharacter & target) {
-	std::cout << YELLOW "* shoots an ice bolt at " << target.getName() << " *"
-		RESET << std::endl;
+	std::cout << YELLOW "* shoots an ice bolt at " << target.getName() << " *" RESET << std::endl;
 }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Ice::Ice(void) : AMateria("ice") {
+Ice::Ice() : AMateria("ice") {
 	std::cout << CYAN "Ice default constructor called." RESET << std::endl;
-	return;
 }
 
-Ice::Ice(Ice const & src) : AMateria("ice") {
+Ice::Ice(const Ice & obj) : AMateria("ice") {
 	std::cout << CYAN "Ice copy constructor called." RESET << std::endl;
-	*this = src;
-	return;
+	*this = obj;
 }
 
-Ice::~Ice(void) {
+Ice::~Ice() {
 	std::cout << CYAN "Ice destructor called." RESET << std::endl;
-	return;
 }
 
 /******************************************************************************/
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-Ice & Ice::operator=(Ice const & src) {
+Ice & Ice::operator=(const Ice & obj) {
 	std::cout << CYAN "Ice assignment operator called." RESET << std::endl;
-	this->_type = src._type;
+	this->_type = obj._type;
 	return (*this);
 }
