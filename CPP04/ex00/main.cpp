@@ -5,7 +5,7 @@
 #include "WrongCat.hpp"
 
 static void displayTitle(std::string title) {
-	std::cout << CYAN << "--- " << title << " ---" RESET << std::endl;
+	std::cout << CYAN << "********** " << title << RESET << std::endl;
 }
 
 void subjectTest(void)
@@ -16,7 +16,7 @@ void subjectTest(void)
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	meta->makeSound();
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	delete meta;
 	delete j;

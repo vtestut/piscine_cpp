@@ -19,16 +19,16 @@ void Cure::use(ICharacter & target) {
 /******************************************************************************/
 
 Cure::Cure() : AMateria("cure") {
-	std::cout << CYAN "Cure default constructor called." RESET << std::endl;
+	// std::cout << CYAN "Cure default constructor called." RESET << std::endl;
 }
 
 Cure::Cure(const Cure & obj) : AMateria("cure") {
-	std::cout << CYAN "Cure copy constructor called." RESET << std::endl;
+	// std::cout << CYAN "Cure copy constructor called." RESET << std::endl;
 	*this = obj;
 }
 
 Cure::~Cure() {
-	std::cout << CYAN "Cure destructor called." RESET << std::endl;
+	// std::cout << CYAN "Cure destructor called." RESET << std::endl;
 }
 
 /******************************************************************************/
@@ -36,7 +36,7 @@ Cure::~Cure() {
 /******************************************************************************/
 
 Cure & Cure::operator=(const Cure & obj) {
-	std::cout << CYAN "Cure assignment operator called." RESET << std::endl;
+	// std::cout << CYAN "Cure assignment operator called." RESET << std::endl;
 	this->_type = obj._type;
 	return (*this);
 }

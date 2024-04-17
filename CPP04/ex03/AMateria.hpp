@@ -51,11 +51,10 @@ public :
 
 	virtual ~AMateria();
 
-	// ! std::string const & getType(void) const;
-	std::string getType() const;
+	std::string const & getType(void) const;
 	
 	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter & target);
+	virtual void use(ICharacter & target) = 0;
 
 	AMateria &	operator=(const AMateria & obj);
 };

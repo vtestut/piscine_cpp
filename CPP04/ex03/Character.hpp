@@ -31,14 +31,18 @@ public :
 	~Character();
 
 	std::string const &	getName() const;
-	void		setName(const std::string & newName);
+	void				setName(const std::string & newName);
 	
 	void equip(AMateria * m);
 	void unequip(int	idx);
 	void use(int idx, ICharacter & target);
-	void displayInventory(void) const;
+	const std::string toDisplay() const;
+
 	
 	Character &	operator=(const Character & obj);
 };
+
+std::ostream& operator<<(std::ostream& os, Character const& character);
+
 
 #endif

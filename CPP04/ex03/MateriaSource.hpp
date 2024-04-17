@@ -2,6 +2,7 @@
 # define _MATERIASOURCE_HPP
 
 # include "IMateriaSource.hpp"
+# include <string>
 
 class MateriaSource : public IMateriaSource {
 
@@ -22,9 +23,12 @@ public :
 
 	void		learnMateria(AMateria * m);
 	AMateria *	createMateria(const std::string & type);
-	void		displayKnownRecipes();
+	const std::string toDisplay() const;
+
 
 	MateriaSource &	operator=(const MateriaSource & obj);
 };
+
+std::ostream& operator<<(std::ostream& os, const MateriaSource & materiaSource);
 
 #endif
