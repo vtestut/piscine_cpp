@@ -1,70 +1,60 @@
-#ifndef  _BUREAUCRAT_HPP
-# define _BUREAUCRAT_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/01 12:26:07 by ael-khni          #+#    #+#             */
+/*   Updated: 2022/08/01 12:55:22y ael-khni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include <iostream>
-# include <string>
-# include <stdexcept>
-# include "AForm.hpp"
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-/******************************************************************************/
-/*									DEFINES									  */
-/******************************************************************************/
+#include <iostream>
+#include "Form.hpp"
 
-# define RED	"\033[31m"
-# define GREEN	"\033[32m"
-# define CYAN	"\033[36m"
-# define YELLOW	"\033[93m"
+class Form;
 
-# define RESET	"\033[0m"
-# define CLEAR	"\033[2J\033[1;1H"
+class Bureaucrat
+{
+private:
+    const std::string   _name;
+    int                 _grade;
 
-/******************************************************************************/
-/*									CLASS									  */
-/******************************************************************************/
+    Bureaucrat();
 
-class AForm;
+public:
+    Bureaucrat( const std::string& name, int grade );
+    Bureaucrat( const Bureaucrat& src );
+    ~Bureaucrat();
 
-class Bureaucrat {
+    Bureaucrat  &operator=( const Bureaucrat& rhs );
 
-private :
+    std::string getName() const;
+    int         getGrade() const;
 
-	static const std::string _defaultName;
-	const std::string		 _name;
-	int						 _grade;
+    void        incrementGrade();
+    void        decrementGrade();
 
-public :
+    void        signForm( Form& form );
 
-	Bureaucrat();
-	Bureaucrat(const std::string& name, int grade);
-	Bureaucrat(const Bureaucrat& obj);
-	Bureaucrat &operator=(const Bureaucrat& obj);
+    void        executeForm( const Form& form ) const;  
 
-	~Bureaucrat();
+    /* ---------------- Exception Classes ---------------- */
+    class GradeTooHighException : public std::exception {
+        public:
+            virtual const char* what() const throw() { return "Grade too high"; }
+    };
+    class GradeTooLowException : public std::exception {
+        public:
+            virtual const char* what() const throw() { return "Grade too low"; }
+    };
 
-	static const int highestGrade = 1;
-	static const int lowestGrade = 150;
-
-	std::string getName() const;
-	int         getGrade() const;
-
-	void        incrementGrade();
-	void        decrementGrade();
-
-	void        signForm(AForm& form);
-
-	void        executeForm(const AForm& form) const;  
-
-	class GradeTooHighException : public std::exception {
-	public:
-		virtual const char* what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception {
-	public:
-		virtual const char* what() const throw();
-	};
 };
 
-std::ostream&   operator<<(std::ostream& out, const Bureaucrat& obj);
+std::ostream&   operator<<( std::ostream& o, const Bureaucrat& rhs );
 
-#endif
+#endif // BUREAUCRAT_HPP

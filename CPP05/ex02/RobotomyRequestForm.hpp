@@ -1,18 +1,28 @@
-#ifndef  _ROBOTOMYREQUESTFORM_HPP
-# define _ROBOTOMYREQUESTFORM_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/01 16:22:00 by ael-khni          #+#    #+#             */
+/*   Updated: 2024/04/29 17:27:15 by vtestut          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "AForm.hpp"
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
-class RobotomyRequestForm : public AForm {
+#include "Form.hpp"
 
-private :
-
+class RobotomyRequestForm : public Form
+{
+private:
     const std::string   _target;
 
     RobotomyRequestForm();
 
-public :
-
+public:
     RobotomyRequestForm( const std::string& target );
     RobotomyRequestForm( const RobotomyRequestForm& src );
     ~RobotomyRequestForm();
@@ -22,4 +32,4 @@ public :
     void        execute( const Bureaucrat& executor ) const;
 };
 
-#endif
+#endif // ROBOTOMYREQUESTFORM_HPP
