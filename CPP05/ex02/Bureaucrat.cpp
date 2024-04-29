@@ -1,29 +1,10 @@
 #include "Bureaucrat.hpp"
 
-const std::string Bureaucrat::_defaultName = "philipe poutou";
+const std::string Bureaucrat::_defaultName = "Newbie";
 
-Bureaucrat::Bureaucrat() : _name(_defaultName) , _grade(lowestGrade) {}
-
-Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
-	if (grade > this->lowestGrade)
-		throw Bureaucrat::GradeTooHighException();
-	else if (grade < this->highestGrade)
-		throw Bureaucrat::GradeTooLowException();
-}
-
-Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name), _grade(obj._grade) {}
-
-Bureaucrat& Bureaucrat::operator=( const Bureaucrat& rhs ) {
-	if ( this != &rhs )
-		_grade = rhs._grade;
-	return *this;
-}
-
-Bureaucrat::~Bureaucrat() {}
-
-std::string Bureaucrat::getName() const {return _name;}
-
-int Bureaucrat::getGrade() const {return _grade;}
+/******************************************************************************/
+/*							PUBLIC											  */
+/******************************************************************************/
 
 void Bureaucrat::incrementGrade() {
 	if (_grade == Bureaucrat::highestGrade)
@@ -58,6 +39,41 @@ void Bureaucrat::executeForm(const AForm& form) const {
 	} catch ( std::exception& e ) {
 		std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
+}
+
+/******************************************************************************/
+/*							ACCESSORS										  */
+/******************************************************************************/
+
+std::string Bureaucrat::getName() const {return _name;}
+
+int Bureaucrat::getGrade() const {return _grade;}
+
+/******************************************************************************/
+/*						CONSTRUCTORS & DESTRUCTORS							  */
+/******************************************************************************/
+
+Bureaucrat::Bureaucrat() : _name(_defaultName), _grade(lowestGrade) {}
+
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
+	if (grade > this->lowestGrade)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade < this->highestGrade)
+		throw Bureaucrat::GradeTooLowException();
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name), _grade(obj._grade) {}
+
+Bureaucrat::~Bureaucrat() {}
+
+/******************************************************************************/
+/*							OPERATOR OVERLOAD								  */
+/******************************************************************************/
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
+	if (this != &obj)
+		_grade = obj._grade;
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj) {

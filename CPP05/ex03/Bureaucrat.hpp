@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:26:07 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/01 12:55:22y vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _BUREAUCRAT_HPP
+# define _BUREAUCRAT_HPP
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
-
-#include <iostream>
-#include "Form.hpp"
+# include <iostream>
+# include "Form.hpp"
 
 class Form;
 
@@ -57,4 +45,4 @@ public:
 
 std::ostream&   operator<<( std::ostream& o, const Bureaucrat& rhs );
 
-#endif // BUREAUCRAT_HPP
+#endif

@@ -27,8 +27,6 @@ class Form {
 
 private : 
 
-	Form();
-
 	const std::string	_formName;
 	const int			_signGrade;
 	const int			_execGrade;
@@ -36,9 +34,10 @@ private :
 
 public :
 
+	Form();
 	Form(const std::string name, int signGrade, int execGrade);
-	Form(const Form & form);
-	Form& operator=(const Form & form);
+	Form(const Form& obj);
+	Form& operator=(const Form& obj);
 
 	~Form();
 
@@ -60,6 +59,6 @@ public :
 	};
 };
 
-std::ostream& operator<<(std::ostream &out, const Form &form);
+std::ostream& operator<<(std::ostream& out, const Form& obj);
 
 #endif

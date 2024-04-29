@@ -1,7 +1,7 @@
-#ifndef INTERN_HPP
-#define INTERN_HPP
+#ifndef  _INTERN_HPP
+# define _INTERN_HPP
 
-#include "Form.hpp"
+# include "Form.hpp"
 
 class Intern {
 

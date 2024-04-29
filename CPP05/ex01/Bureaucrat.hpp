@@ -4,7 +4,6 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
-// # include "Form.hpp"
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -36,8 +35,8 @@ public :
 
 	Bureaucrat();
 	Bureaucrat(const std::string name, int grade);
-	Bureaucrat(const Bureaucrat & obj);
-	Bureaucrat& operator=(const Bureaucrat & obj);
+	Bureaucrat(const Bureaucrat& obj);
+	Bureaucrat& operator=(const Bureaucrat& obj);
 	
 	~Bureaucrat();
 
@@ -61,9 +60,8 @@ public :
 	public:
 		virtual const char* what() const throw();
 	};
-
 };
 
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &obj);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj);
 
 #endif

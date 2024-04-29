@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:43:47 by vtestut           #+#    #+#             */
-/*   Updated: 2024/04/18 12:31:58 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _FORM_HPP
+# define _FORM_HPP
 
-#ifndef FORM_HPP
-#define FORM_HPP
-
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -60,4 +48,4 @@ public:
 
 std::ostream&   operator<<( std::ostream& o, const Form& rhs );
 
-#endif // FORM_HPP
+#endif

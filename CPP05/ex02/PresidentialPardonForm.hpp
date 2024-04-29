@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 16:44:11 by vtestut          #+#    #+#             */
-/*   Updated: 2024/04/03 15:22:23 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _PRESIDENTIALPARDONFORM_HPP
+# define _PRESIDENTIALPARDONFORM_HPP
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-#define PRESIDENTIALPARDONFORM_HPP
-
-#include "AForm.hpp"
+# include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm
 {
@@ -32,4 +20,4 @@ public:
     void execute( const Bureaucrat& executor ) const;
 };
 
-#endif // PRESIDENTIALPARDONFORM_HPP
+#endif

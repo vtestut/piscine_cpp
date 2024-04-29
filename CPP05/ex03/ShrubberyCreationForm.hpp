@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 15:07:46 by vtestut          #+#    #+#             */
-/*   Updated: 2024/04/03 08:46:50 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _SHRUBBERYCREATIONFORM_HPP
+# define _SHRUBBERYCREATIONFORM_HPP
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
-
-#include "Form.hpp"
-#include <fstream>
+# include "Form.hpp"
+# include <fstream>
 
 class ShrubberyCreationForm : public Form {
 
@@ -34,4 +22,4 @@ public:
 
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif

@@ -1,47 +1,58 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-// #include <cstdlib>
-
 
 int main() {
-	Bureaucrat marconus("Marconus", 1);
-	Bureaucrat attal("Attal", 2);
-	Bureaucrat poutou("Poutou", 150);
-	
-	Form nuclearStrike("NuclearStrike", 40, 1);
-	Form takeTheGarbageOut("TakeTheGarbageOut", 140, 140);
 
-	try {
-		Form impossible("Impossible", 0, 30);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
+	// test for << brueaucrats
+    std::cout << YELLOW "creating Bureaucrats and testing operator <<" RESET << std::endl;
+    Bureaucrat macron("Macron", 1);
+    Bureaucrat attal("Attal", 2);
+    Bureaucrat poutou("Poutou", 150);
+    std::cout << macron << attal << poutou;
 
-	std::cout << std::endl;
+	// test for << forms
+    std::cout << YELLOW "\ncreating Forms and testing operator <<" RESET << std::endl;
+    Form nuclearStrike(CYAN "Nuclear Strike Authorization" RESET, 5, 2);
+    Form bulbReplacement(CYAN "Bulb Replacement Authorization" RESET, 149, 150);
+    std::cout << nuclearStrike << bulbReplacement;
 
-	marconus.signForm(nuclearStrike);
-	attal.signForm(nuclearStrike);
-	poutou.signForm(nuclearStrike);
-	poutou.signForm(takeTheGarbageOut);
+    // test for signing
+    std::cout << std::endl << YELLOW "tests for signing" RESET << std::endl;
+    std::cout << GREEN "Macron tries to sign 'Nuclear Strike Authorization':" RESET << std::endl;
+    macron.signForm(nuclearStrike);
+    std::cout << GREEN "Attal tries to sign 'Nuclear Strike Authorization':" RESET << std::endl;
+    attal.signForm(nuclearStrike);
+    std::cout << GREEN "Poutou tries to sign 'Bulb replacement form':" RESET << std::endl;
+    poutou.signForm(bulbReplacement);
+	attal.signForm(bulbReplacement);
 
-	std::cout << std::endl;
+	// more test
+	std::cout << std::endl << YELLOW "other tests" RESET << std::endl;
+    try {
+        std::cout << YELLOW "Try to create a form with a grade too high" RESET << std::endl;
+        Form tooHighForm("tooHighForm", 0, 30);
+    } catch (std::exception& e) {
+        std::cout << RED << e.what() << RESET << std::endl;
+    }
+    try {
+        std::cout << YELLOW "Try to create a form with a grade too low" RESET << std::endl;
+        Form tooLowForm("tooLowForm", 100, 151);
+    } catch (std::exception& e) {
+        std::cout << RED << e.what() << RESET << std::endl;
+    }
+    try {
+        std::cout << YELLOW "Try to create a bureaucrat with a grade too high" RESET << std::endl;
+        Bureaucrat tooHigh("tooHigh", 0);
+    } catch (std::exception& e) {
+        std::cout << RED << e.what() << RESET << std::endl;
+    }
+    try {
+        std::cout << YELLOW "Try to create a bureaucrat with a grade too low" RESET << std::endl;
+        Bureaucrat tooLow("tooLow", 151);
+    } catch (std::exception& e) {
+        std::cout << RED << e.what() << RESET << std::endl;
+    }
 
-	nuclearStrike.beSigned(marconus);
-	takeTheGarbageOut.beSigned(marconus);
-	try {
-		nuclearStrike.beSigned(attal);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	takeTheGarbageOut.beSigned(attal);
-	try {
-		nuclearStrike.beSigned(poutou);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		takeTheGarbageOut.beSigned(poutou);
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
+    std::cout << std::endl << nuclearStrike << bulbReplacement;
+    return (0);
 }

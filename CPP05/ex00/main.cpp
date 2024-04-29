@@ -3,32 +3,38 @@
 int main() {
 	try {
 		std::cout << GREEN "try1 : " RESET << std::endl;
-		Bureaucrat Macronus("Macronus", 1);
-		std::cout << Macronus;
-		Macronus.incrementGrade();
+		Bureaucrat president("President", 1);
+		std::cout << president;
+		std::cout << "try to upgrade President" << std::endl;
+		president.incrementGrade(); // exception thrown 
+		president.decrementGrade(); // should not be executed
+		std::cout << president;		// should not be executed
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
 
 	try {
 		std::cout << GREEN "try2 : " RESET << std::endl;
-		Bureaucrat poutou;
-		std::cout << poutou;
-		poutou.decrementGrade();
+		Bureaucrat newbie;
+		std::cout << newbie;
+		std::cout << "try to decreased Newbie" << std::endl;
+		newbie.decrementGrade();
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
 
 	try {
 		std::cout << GREEN "try3 : " RESET << std::endl;
-		Bureaucrat worker3("worker3", 160);
+		std::cout << "try to create a Bureaucrat rank 160" << std::endl;
+		Bureaucrat random("random", 160);
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
 
 	try {
 		std::cout << GREEN "try4 : " RESET << std::endl;
-		Bureaucrat worker4("worker4", -5);
+		std::cout << "try to create a Bureaucrat rank -5" << std::endl;
+		Bureaucrat random2("ranndom2", -5);
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
