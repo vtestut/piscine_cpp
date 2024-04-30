@@ -1,5 +1,5 @@
-#ifndef  _BUREAUCRAT_HPP
-# define _BUREAUCRAT_HPP
+#ifndef  _AFORM_HPP
+# define _AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -21,37 +21,34 @@
 /*									CLASS									  */
 /******************************************************************************/
 
-class AForm;
+class Bureaucrat;
 
-class Bureaucrat {
+class AForm {
 
 private :
 
-	static const std::string _defaultName;
-	const std::string		 _name;
-	int						 _grade;
-	Bureaucrat();
+	const std::string	_formName;
+	const int			_signGrade;
+	const int			_execGrade;
+	bool 				_status;
 
 public :
 
-	Bureaucrat(const std::string& name, int grade);
-	Bureaucrat(const Bureaucrat& obj);
-	Bureaucrat& operator=(const Bureaucrat& obj);
+	AForm();
+	AForm(const std::string name, int signGrade, int execGrade);
+	AForm(const AForm& obj);
+	AForm& operator=(const AForm& obj);
 
-	~Bureaucrat();
-
-	static const int highestGrade = 1;
-	static const int lowestGrade = 150;
+	virtual ~AForm();
 
 	std::string getName() const;
-	int         getGrade() const;
+	bool		getStatus() const;
+	int			getSignGrade() const;
+	int			getExecGrade() const;
 
-	void        signForm(AForm& form);
+	void		beSigned(const Bureaucrat& bureaucrat);
 
-	void        incrementGrade();
-	void        decrementGrade();
-
-	void        executeForm(const AForm& form) const;  
+	virtual void execute(const Bureaucrat& executor) const = 0;
 
 	class GradeTooHighException : public std::exception {
 	public:
@@ -62,8 +59,13 @@ public :
 	public:
 		virtual const char* what() const throw();
 	};
+
+	class NotSignedException : public std::exception {
+	public:
+		virtual const char* what() const throw();
+	};
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj);
+std::ostream& operator<<(std::ostream& out, const AForm& obj);
 
 #endif

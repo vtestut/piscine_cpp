@@ -39,13 +39,9 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 /*							ACCESSORS										  */
 /******************************************************************************/
 
-std::string Bureaucrat::getName() const { 
-	return _name; 
-}
+std::string Bureaucrat::getName() const { return _name; }
 
-int Bureaucrat::getGrade() const { 
-	return _grade; 
-}
+int Bureaucrat::getGrade() const { return _grade; }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */

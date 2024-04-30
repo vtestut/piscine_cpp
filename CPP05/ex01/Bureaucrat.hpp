@@ -40,8 +40,8 @@ public :
 	
 	~Bureaucrat();
 
-	static const int 		 highestGrade = 1;
-	static const int 		 lowestGrade = 150;
+	static const int highestGrade = 1;
+	static const int lowestGrade = 150;
 	
 	std::string	getName() const;
 	int			getGrade() const;

@@ -1,37 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 15:07:46 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/29 17:35:39 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _SHRUBBERYCREATIONFORM_HPP
+# define _SHRUBBERYCREATIONFORM_HPP
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+# include "AForm.hpp"
+# include <fstream>
 
-#include "Form.hpp"
-#include <fstream>
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
 
 private :
+
     const std::string   _target;
 
     ShrubberyCreationForm();
 
 public :
-    ShrubberyCreationForm( const std::string& target );
-    ShrubberyCreationForm( const ShrubberyCreationForm& src );
+
+    ShrubberyCreationForm(const std::string& target);
+    ShrubberyCreationForm(const ShrubberyCreationForm& obj);
     ~ShrubberyCreationForm();
 
-    ShrubberyCreationForm&  operator=( ShrubberyCreationForm& rhs );
+    ShrubberyCreationForm&  operator=(ShrubberyCreationForm& obj);
 
-    void        execute( const Bureaucrat& executor ) const;
-
+    void        execute(const Bureaucrat& executor) const;
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif

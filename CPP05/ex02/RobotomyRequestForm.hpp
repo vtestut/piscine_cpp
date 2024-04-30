@@ -1,35 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 16:22:00 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/29 17:27:15 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _ROBOTOMYREQUESTFORM_HPP
+# define _ROBOTOMYREQUESTFORM_HPP
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+# include "AForm.hpp"
 
-#include "Form.hpp"
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
 
-class RobotomyRequestForm : public Form
-{
-private:
+class RobotomyRequestForm : public AForm {
+
+private :
+
     const std::string   _target;
 
     RobotomyRequestForm();
 
-public:
-    RobotomyRequestForm( const std::string& target );
-    RobotomyRequestForm( const RobotomyRequestForm& src );
+public :
+
+    RobotomyRequestForm(const std::string& target );
+    RobotomyRequestForm(const RobotomyRequestForm& obj);
     ~RobotomyRequestForm();
 
-    RobotomyRequestForm &operator=( RobotomyRequestForm& rhs );
+    RobotomyRequestForm &operator=(RobotomyRequestForm& obj);
 
-    void        execute( const Bureaucrat& executor ) const;
+    void execute(const Bureaucrat& executor) const;
 };
 
-#endif // ROBOTOMYREQUESTFORM_HPP
+#endif

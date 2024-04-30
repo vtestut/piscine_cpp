@@ -14,6 +14,8 @@ SOURCES	=	$(wildcard $(SRCDIR)/*.cpp)
 HEADERS =	$(wildcard $(SRCDIR)/*.hpp)
 OBJECTS	=	$(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
+FORM	=	Shrubbery_Form_shrubbery
+
 #****************************************************#
 #*						RULES						*#
 #****************************************************#
@@ -28,10 +30,11 @@ ${NAME}: ${OBJECTS}
 	$(CXX) $(FLAGS) ${OBJECTS} -o $@
 
 clean:
-	@rm -rf ${OBJDIR}		
+	@rm -rf ${OBJDIR}
 
 fclean: clean
 	@if [ -f ${NAME} ]; then rm ${NAME}; fi
+	@if [ -f ${FORM} ]; then rm ${FORM}; fi
 	@echo "make fclean : done"
 
 re: fclean ${NAME}
