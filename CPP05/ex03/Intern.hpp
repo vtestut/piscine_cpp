@@ -1,7 +1,7 @@
 #ifndef  _INTERN_HPP
 # define _INTERN_HPP
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class Intern {
 
@@ -12,7 +12,7 @@ public:
 
     Intern& operator=( const Intern& rhs );
 
-    Form*   makeForm( std::string name, std::string target );
+    AForm*   makeForm( std::string name, std::string target );
 };
 
 #endif

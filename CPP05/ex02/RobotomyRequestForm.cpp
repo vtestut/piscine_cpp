@@ -8,12 +8,14 @@
 void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     if ( executor.getGrade() > this->getExecGrade() )
         throw AForm::GradeTooLowException();
-    else {
+    else if (executor.getGrade() > this->getExecGrade()) {
+        throw AForm::GradeTooLowException();
+    } else {
         static int  i;
         if ( i % 2 == 0 )
-            std::cout << "BZZZZZT! " << _target << " has been robotomized!" << std::endl;
+            std::cout << "* Clic Clang Bzzt! * " << _target << " has been robotomized successfully" << std::endl;
         else
-            std::cout << "Robotomy failed! " << _target << " is still alive." << std::endl;
+            std::cout << "Robotomy failed! " << _target << " is still alive" << std::endl;
         i++;
     }
 }

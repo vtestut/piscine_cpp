@@ -1,19 +1,13 @@
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target ) : Form("Robotomy Request Form", 72, 45), _target(target) {}
-
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src ) : Form(src), _target(src._target) {}
-
-RobotomyRequestForm::~RobotomyRequestForm() {}
-
-RobotomyRequestForm&    RobotomyRequestForm::operator=( RobotomyRequestForm& rhs ) {
-    ( void )rhs;
-    return *this;
-}
+/******************************************************************************/
+/*							PUBLIC											  */
+/******************************************************************************/
 
 void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-    if ( executor.getGrade() > this->getGradeToExecute() )
-        throw Form::GradeTooLowException();
+    if ( executor.getGrade() > this->getExecGrade() )
+        throw AForm::GradeTooLowException();
     else {
         static int  i;
         if ( i % 2 == 0 )
@@ -23,3 +17,26 @@ void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
         i++;
     }
 }
+
+/******************************************************************************/
+/*						CONSTRUCTORS & DESTRUCTORS							  */
+/******************************************************************************/
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) 
+    : AForm("Robotomy_Form", 72, 45), _target(target) {}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) 
+    : AForm(obj), _target(obj._target) {}
+
+RobotomyRequestForm::~RobotomyRequestForm() {}
+
+/******************************************************************************/
+/*							OPERATOR OVERLOAD								  */
+/******************************************************************************/
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& obj) {
+    ( void )obj;
+    return *this;
+}
+
+

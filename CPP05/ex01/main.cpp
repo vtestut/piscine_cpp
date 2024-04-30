@@ -2,21 +2,17 @@
 #include "Form.hpp"
 
 int main() {
-
-	// test for << brueaucrats
     std::cout << YELLOW "creating Bureaucrats and testing operator <<" RESET << std::endl;
     Bureaucrat macron("Macron", 1);
     Bureaucrat attal("Attal", 2);
     Bureaucrat poutou("Poutou", 150);
     std::cout << macron << attal << poutou;
 
-	// test for << forms
     std::cout << YELLOW "\ncreating Forms and testing operator <<" RESET << std::endl;
     Form nuclearStrike(CYAN "Nuclear Strike Authorization" RESET, 5, 2);
     Form bulbReplacement(CYAN "Bulb Replacement Authorization" RESET, 149, 150);
     std::cout << nuclearStrike << bulbReplacement;
 
-    // test for signing
     std::cout << std::endl << YELLOW "tests for signing" RESET << std::endl;
     std::cout << GREEN "Macron tries to sign 'Nuclear Strike Authorization':" RESET << std::endl;
     macron.signForm(nuclearStrike);
@@ -26,7 +22,6 @@ int main() {
     poutou.signForm(bulbReplacement);
 	attal.signForm(bulbReplacement);
 
-	// more test
 	std::cout << std::endl << YELLOW "other tests" RESET << std::endl;
     try {
         std::cout << YELLOW "Try to create a form with a grade too high" RESET << std::endl;
@@ -52,7 +47,6 @@ int main() {
     } catch (std::exception& e) {
         std::cout << RED << e.what() << RESET << std::endl;
     }
-
     std::cout << std::endl << nuclearStrike << bulbReplacement;
     return (0);
 }

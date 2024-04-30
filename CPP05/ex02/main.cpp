@@ -1,44 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:39:04 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/04/30 15:12:27 by vtestut          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-int main( void )
-{
+int main() {
+        Bureaucrat macron("Macron", 1);
+        Bureaucrat poutou("Poutou", 140);
+        ShrubberyCreationForm shrub("Home");
+        RobotomyRequestForm robotomy("Employee");
+        PresidentialPardonForm pardon("Criminal");
 
-    try {
-        Bureaucrat bureaucrat("ash", 2); // error with 200
-        ShrubberyCreationForm form1("PLOP");
-        RobotomyRequestForm form2("Robotomy");
-        PresidentialPardonForm form3("President");
+        std::cout << YELLOW << "\nPoutou try to sign forms" << RESET << std::endl;
+        poutou.signForm(shrub);
+        poutou.signForm(robotomy);
+        poutou.signForm(pardon);
 
-        std::cout << "\n--------------- AForm 1 ( Shrubbery ) ---------------" << std::endl;
-        bureaucrat.signForm(form1);
-        bureaucrat.executeForm(form1);
-        std::cout << "\n--------------- AForm 2 ( Robotomy ) ---------------" << std::endl;
-        bureaucrat.signForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        std::cout << "\n--------------- AForm 3 ( President ) ---------------" << std::endl;
-        bureaucrat.signForm(form3);
-        bureaucrat.executeForm(form3);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+        std::cout << YELLOW << "\nPoutou try to execute forms" << RESET << std::endl;
+        poutou.executeForm(shrub);
+        poutou.executeForm(robotomy);
+        poutou.executeForm(pardon);
+
+        std::cout << YELLOW << "\nMacron try to sign forms" << RESET << std::endl;
+        macron.signForm(shrub);
+        macron.signForm(robotomy);
+        macron.signForm(pardon);
+
+        std::cout << YELLOW << "\nMacron try to execute forms" << RESET << std::endl;
+        macron.executeForm(shrub);
+        std::cout << std::endl;
+        for (int i = 0; i < 8; i++) {
+            macron.executeForm(robotomy);
+        }
+        std::cout << std::endl;
+        macron.executeForm(pardon);
+        std::cout << std::endl;
     return 0;
 }

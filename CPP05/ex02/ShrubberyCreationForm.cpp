@@ -42,6 +42,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
         file << "\\  Y  |  \\__,dHHFdHH|HHhoHHb.__Krogg  Y" << std::endl;
         file << "##########################################" << std::endl;
         file.close();
+        std::cout << "Shrubbery file has been created" << std::endl;
     }
 }
 
