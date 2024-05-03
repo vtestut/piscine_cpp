@@ -1,47 +1,49 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
 #include "AForm.hpp"
 
+void subjectTest() {
+	std::cout << "\nSubject Test :" << std::endl;
+	
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", CYAN "Bender" RESET);
+
+	Bureaucrat macron("Macron", 1);
+	macron.signForm(*rrf);
+	macron.executeForm(*rrf);
+	std::cout << std::endl;
+	delete rrf;
+}
+
 int main() {
+	subjectTest();
 
-    Bureaucrat macron("Macron", 1);
-    Bureaucrat poutou("Poutou", 135);
-    Intern intern;
+	Bureaucrat macron("Macron", 1);
+	Intern intern;
 
-    AForm* form1;
-    AForm* form2;
-    AForm* form3;
-    AForm* formNull;
+	AForm* forms[4];
+	std::string formNames[4] = {"shrubbery creation", 
+								"robotomy request", 
+								"presidential pardon", 
+								"Unknown"};
+	std::string targets[4] = {"Home", CYAN "Robocop" RESET, CYAN "Thug" RESET , "Unknown"};
 
-    // Création des formulaires
-    form1 = intern.makeForm("shrubbery creation", "Home");
-    form2 = intern.makeForm("robotomy request", "Employee");
-    form3 = intern.makeForm("presidential pardon", "Criminal");
-    formNull = intern.makeForm("unknown form", "Nowhere");
-
-    // Test des formulaires
-    std::cout << YELLOW << "\nMacron tries to execute and sign forms:" << RESET << std::endl;
-    if (form1) {
-        macron.signForm(*form1);
-        macron.executeForm(*form1);
-    }
-    if (form2) {
-        macron.signForm(*form2);
-        macron.executeForm(*form2);
-    }
-    if (form3) {
-        macron.signForm(*form3);
-        macron.executeForm(*form3);
-    }
-    if (formNull) {
-        std::cout << RED << "An attempt was made to create and use an invalid form." << RESET << std::endl;
-    }
-
-    // Nettoyage
-    delete form1;
-    delete form2;
-    delete form3;
-
-    return 0;
+	for (int i = 0; i < 4; i++) {
+		try {
+			forms[i] = intern.makeForm(formNames[i], targets[i]);
+			if (forms[i] == NULL) {
+				throw std::runtime_error("Form creation failed: " + formNames[i]);
+			}
+			macron.signForm(*forms[i]);
+			macron.executeForm(*forms[i]);
+			std::cout << std::endl;
+		} catch (const std::exception& e) {
+			std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		delete forms[i];
+	}
+	return 0;
 }

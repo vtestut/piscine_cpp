@@ -12,7 +12,7 @@ int main() {
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
-
+	std::cout << std::endl;
 	try {
 		std::cout << GREEN "try2 : " RESET << std::endl;
 		Bureaucrat newbie;
@@ -22,7 +22,7 @@ int main() {
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
-
+	std::cout << std::endl;
 	try {
 		std::cout << GREEN "try3 : " RESET << std::endl;
 		std::cout << "try to create a Bureaucrat rank 160" << std::endl;
@@ -30,7 +30,7 @@ int main() {
 	} catch (const std::exception& e) {
 		std::cout << YELLOW "catch = " << e.what() << RESET << std::endl;
 	}
-
+	std::cout << std::endl;
 	try {
 		std::cout << GREEN "try4 : " RESET << std::endl;
 		std::cout << "try to create a Bureaucrat rank -5" << std::endl;

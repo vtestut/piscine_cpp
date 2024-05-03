@@ -12,19 +12,19 @@ class ShrubberyCreationForm : public AForm {
 
 private :
 
-    const std::string   _target;
+	std::string   _target;
 
-    ShrubberyCreationForm();
+	ShrubberyCreationForm();
 
 public :
 
-    ShrubberyCreationForm(const std::string& target);
-    ShrubberyCreationForm(const ShrubberyCreationForm& obj);
-    ~ShrubberyCreationForm();
+	ShrubberyCreationForm(const std::string& target);
+	ShrubberyCreationForm(const ShrubberyCreationForm& obj);
+	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
+	
+	~ShrubberyCreationForm();
 
-    ShrubberyCreationForm&  operator=(ShrubberyCreationForm& obj);
-
-    void        execute(const Bureaucrat& executor) const;
+	void        execute(const Bureaucrat& executor) const;
 };
 
 #endif

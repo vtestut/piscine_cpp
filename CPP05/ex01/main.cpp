@@ -2,13 +2,13 @@
 #include "Form.hpp"
 
 int main() {
-    std::cout << YELLOW "creating Bureaucrats and testing operator <<" RESET << std::endl;
+    std::cout << YELLOW "Bureaucrats operator <<" RESET << std::endl;
     Bureaucrat macron("Macron", 1);
     Bureaucrat attal("Attal", 2);
     Bureaucrat poutou("Poutou", 150);
     std::cout << macron << attal << poutou;
 
-    std::cout << YELLOW "\ncreating Forms and testing operator <<" RESET << std::endl;
+    std::cout << YELLOW "\nForms operator <<" RESET << std::endl;
     Form nuclearStrike(CYAN "Nuclear Strike Authorization" RESET, 5, 2);
     Form bulbReplacement(CYAN "Bulb Replacement Authorization" RESET, 149, 150);
     std::cout << nuclearStrike << bulbReplacement;
@@ -21,8 +21,9 @@ int main() {
     std::cout << GREEN "Poutou tries to sign 'Bulb replacement form':" RESET << std::endl;
     poutou.signForm(bulbReplacement);
 	attal.signForm(bulbReplacement);
+    std::cout << std::endl << nuclearStrike << bulbReplacement;
 
-	std::cout << std::endl << YELLOW "other tests" RESET << std::endl;
+	std::cout << std::endl;
     try {
         std::cout << YELLOW "Try to create a form with a grade too high" RESET << std::endl;
         Form tooHighForm("tooHighForm", 0, 30);
@@ -47,6 +48,5 @@ int main() {
     } catch (std::exception& e) {
         std::cout << RED << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl << nuclearStrike << bulbReplacement;
     return (0);
 }

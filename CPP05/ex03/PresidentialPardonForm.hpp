@@ -11,19 +11,19 @@ class PresidentialPardonForm : public AForm {
 
 private :
 
-    std::string _target;
+	std::string _target;
 
-    PresidentialPardonForm();
+	PresidentialPardonForm();
 
 public :
 
-    PresidentialPardonForm(const std::string& target);
-    PresidentialPardonForm(const PresidentialPardonForm& obj);
-    ~PresidentialPardonForm();
+	PresidentialPardonForm(const std::string& target);
+	PresidentialPardonForm(const PresidentialPardonForm& obj);
+	PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
 
-    PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
-    
-    void execute(const Bureaucrat& executor) const;
+	~PresidentialPardonForm();
+	
+	void execute(const Bureaucrat& executor) const;
 };
 
 #endif

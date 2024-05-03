@@ -27,7 +27,6 @@ class Bureaucrat {
 
 private : 
 
-	static const std::string _defaultName;
 	const std::string		 _name;
 	int						 _grade;
 

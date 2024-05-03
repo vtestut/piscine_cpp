@@ -6,11 +6,13 @@
 /******************************************************************************/
 
 void    PresidentialPardonForm::execute(const Bureaucrat& executor) const {
-    if (executor.getGrade() > this->getExecGrade())
-        throw AForm::GradeTooLowException();
-    else {
-        std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-    }
+	if (executor.getGrade() > this->getExecGrade())
+		throw AForm::GradeTooLowException();
+	else if (executor.getGrade() > this->getExecGrade()) {
+		throw AForm::GradeTooLowException();
+	} else {
+		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	}
 }
 
 /******************************************************************************/
@@ -18,10 +20,10 @@ void    PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 /******************************************************************************/
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target) 
-    : AForm("Presidential_Pardon", 25, 5), _target(target) {}
+	: AForm(GREEN "presidential pardon" RESET, 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) 
-    : AForm(obj), _target(obj._target) {}
+	: AForm(obj), _target(obj._target) {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
@@ -30,6 +32,6 @@ PresidentialPardonForm::~PresidentialPardonForm() {}
 /******************************************************************************/
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj) {
-    (void)obj;
-    return *this;
+	this->_target = obj._target;
+	return *this;
 }

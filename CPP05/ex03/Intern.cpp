@@ -7,39 +7,36 @@
 /*							PUBLIC											  */
 /******************************************************************************/
 
-AForm* Intern::createRobotomyRequestForm(std::string target) {
-    return new RobotomyRequestForm(target);
+AForm* Intern::createRobotomyRequestForm(const std::string& target) {
+	return new RobotomyRequestForm(target);
 }
 
-AForm* Intern::createPresidentialPardonForm(std::string target) {
-    return new PresidentialPardonForm(target);
+AForm* Intern::createPresidentialPardonForm(const std::string& target) {
+	return new PresidentialPardonForm(target);
 }
 
-AForm* Intern::createShrubberyCreationForm(std::string target) {
-    return new ShrubberyCreationForm(target);
+AForm* Intern::createShrubberyCreationForm(const std::string& target) {
+	return new ShrubberyCreationForm(target);
 }
 
-AForm* Intern::makeForm(std::string name, std::string target) {
-    struct FormPair {
-        std::string name;
-        AForm* (*create)(std::string);
-    };
-
-    FormPair formPairs[] = {
-        {"robotomy request", createRobotomyRequestForm},
-        {"presidential pardon", createPresidentialPardonForm},
-        {"shrubbery creation", createShrubberyCreationForm}
-    };
-
-    for (int i = 0; i < 3; ++i) {
-        if (name == formPairs[i].name) {
-            std::cout << "Intern creates " << name << std::endl;
-            return formPairs[i].create(target);
-        }
-    }
-
-    std::cout << "Intern cannot create " << name << " form" << std::endl;
-    return NULL;
+AForm* Intern::makeForm(const std::string& name, const std::string& target) {
+	struct FormPair {
+		std::string name;
+		AForm* (*create)(const std::string&);
+	};
+	FormPair formPairs[] = {
+		{"robotomy request", createRobotomyRequestForm},
+		{"presidential pardon", createPresidentialPardonForm},
+		{"shrubbery creation", createShrubberyCreationForm}
+	};
+	for (int i = 0; i < 3; ++i) {
+		if (name == formPairs[i].name) {
+			std::cout << "Intern creates " YELLOW << name << RESET " form" << std::endl;
+			return formPairs[i].create(target);
+		}
+	}
+	std::cout << "Intern can't create " YELLOW << name <<  RESET " form" << std::endl;
+	return NULL;
 }
 
 /******************************************************************************/
@@ -57,6 +54,6 @@ Intern::~Intern() {}
 /******************************************************************************/
 
 Intern& Intern::operator=(const Intern& obj) {
-    (void)obj;
-    return *this;
+	(void)obj;
+	return *this;
 }

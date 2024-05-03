@@ -1,8 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-const std::string Bureaucrat::_defaultName = "Newbie";
-
 /******************************************************************************/
 /*							PUBLIC											  */
 /******************************************************************************/
@@ -47,7 +45,7 @@ int Bureaucrat::getGrade() const { return _grade; }
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Bureaucrat::Bureaucrat() : _name(_defaultName) , _grade(lowestGrade) {}
+Bureaucrat::Bureaucrat() : _name("Noob") , _grade(lowestGrade) {}
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
 	if (grade > this->lowestGrade)
@@ -67,11 +65,9 @@ Bureaucrat::~Bureaucrat() {}
 /******************************************************************************/
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
-	if (this != &obj) {
-		_grade = obj._grade;
-		*const_cast<std::string*>(&_name) = obj._name;
-	}
-	return *this;
+    if ( this != &obj)
+        _grade = obj._grade;
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj) {

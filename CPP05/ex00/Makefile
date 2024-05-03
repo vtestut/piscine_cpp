@@ -7,7 +7,6 @@ FLAGS	+=	-Werror
 FLAGS	+=	-std=c++98
 
 SRCDIR	=	.
-# HDRDIR	=	includes
 OBJDIR	=	objs
 
 SOURCES	=	$(wildcard $(SRCDIR)/*.cpp)

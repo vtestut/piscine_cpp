@@ -25,7 +25,7 @@ class Bureaucrat {
 
 private : 
 
-	static const std::string _defaultName;
+	// static const std::string _defaultName;
 	static const int 		 _highestGrade = 1;
 	static const int 		 _lowestGrade = 150;
 
@@ -49,7 +49,7 @@ public :
 
 	class GradeTooHighException : public std::exception {
 	public:
-		virtual const char* what() const throw(); // pure virtual method inherited from std::exception
+		virtual const char* what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception {

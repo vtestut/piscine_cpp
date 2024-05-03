@@ -32,9 +32,10 @@ private :
 	const int			_execGrade;
 	bool 				_status;
 
+	AForm();
+	
 public :
 
-	AForm();
 	AForm(const std::string name, int signGrade, int execGrade);
 	AForm(const AForm& obj);
 	AForm& operator=(const AForm& obj);

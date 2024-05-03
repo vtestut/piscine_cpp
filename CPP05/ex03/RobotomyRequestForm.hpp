@@ -11,19 +11,19 @@ class RobotomyRequestForm : public AForm {
 
 private :
 
-    const std::string   _target;
+	std::string   _target;
 
-    RobotomyRequestForm();
+	RobotomyRequestForm();
 
 public :
 
-    RobotomyRequestForm(const std::string& target );
-    RobotomyRequestForm(const RobotomyRequestForm& obj);
-    ~RobotomyRequestForm();
+	RobotomyRequestForm(const std::string& target );
+	RobotomyRequestForm(const RobotomyRequestForm& obj);
+	RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 
-    RobotomyRequestForm &operator=(RobotomyRequestForm& obj);
+	~RobotomyRequestForm();
 
-    void execute(const Bureaucrat& executor) const;
+	void execute(const Bureaucrat& executor) const;
 };
 
 #endif

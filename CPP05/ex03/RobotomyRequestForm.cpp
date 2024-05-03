@@ -6,16 +6,18 @@
 /******************************************************************************/
 
 void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-    if ( executor.getGrade() > this->getExecGrade() )
-        throw AForm::GradeTooLowException();
-    else {
-        static int  i;
-        if ( i % 2 == 0 )
-            std::cout << "BZZZZZT! " << _target << " has been robotomized!" << std::endl;
-        else
-            std::cout << "Robotomy failed! " << _target << " is still alive." << std::endl;
-        i++;
-    }
+	if ( executor.getGrade() > this->getExecGrade() )
+		throw AForm::GradeTooLowException();
+	else if (executor.getGrade() > this->getExecGrade()) {
+		throw AForm::GradeTooLowException();
+	} else {
+		static int  i;
+		if ( i % 2 == 0 )
+			std::cout << "* Clic Clang Bzzt! * " << _target << " has been robotomized successfully" << std::endl;
+		else
+			std::cout << "Robotomy failed! " << _target << " is still human" << std::endl;
+		i++;
+	}
 }
 
 /******************************************************************************/
@@ -23,10 +25,10 @@ void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 /******************************************************************************/
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) 
-    : AForm("Robotomy_Form", 72, 45), _target(target) {}
+	: AForm(GREEN "robotomy request" RESET, 72, 45), _target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) 
-    : AForm(obj), _target(obj._target) {}
+	: AForm(obj), _target(obj._target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
@@ -34,9 +36,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 /*							OPERATOR OVERLOAD								  */
 /******************************************************************************/
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& obj) {
-    ( void )obj;
-    return *this;
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj) {
+	this->_target = obj._target;
+	return *this;
 }
-
-

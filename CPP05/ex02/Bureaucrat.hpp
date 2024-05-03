@@ -27,13 +27,13 @@ class Bureaucrat {
 
 private :
 
-	static const std::string _defaultName;
 	const std::string		 _name;
 	int						 _grade;
-	Bureaucrat();
+
 
 public :
 
+	Bureaucrat();
 	Bureaucrat(const std::string& name, int grade);
 	Bureaucrat(const Bureaucrat& obj);
 	Bureaucrat& operator=(const Bureaucrat& obj);

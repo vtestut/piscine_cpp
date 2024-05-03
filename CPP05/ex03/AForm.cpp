@@ -41,9 +41,6 @@ bool 		AForm::getStatus() 		const { return _status; }
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-AForm::AForm() : _formName("Basic AForm"), _signGrade(Bureaucrat::lowestGrade),
-			_execGrade(Bureaucrat::lowestGrade), _status(false) {}
-
 AForm::AForm(const std::string name, int signGrade, int executeGrade)
     	: _formName(name), _signGrade(signGrade), _execGrade(executeGrade), _status(false) {
 	if (signGrade < Bureaucrat::highestGrade || executeGrade < Bureaucrat::highestGrade)
@@ -62,13 +59,9 @@ AForm::~AForm() {}
 /******************************************************************************/
 
 AForm& AForm::operator=(const AForm& obj) {
-	if (this != &obj) {
-		*const_cast<std::string*>(&this->_formName) = obj._formName;
-		*const_cast<int*>(&this->_signGrade) = obj._signGrade;
-		*const_cast<int*>(&this->_execGrade) = obj._execGrade;
-		this->_status = obj._status;
-	}
-	return *this;
+    if ( this != &obj)
+        _status = obj.getStatus();
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const AForm& obj) {

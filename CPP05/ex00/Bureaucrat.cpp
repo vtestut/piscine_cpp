@@ -1,7 +1,5 @@
 # include "Bureaucrat.hpp"
 
-const std::string Bureaucrat::_defaultName = "Newbie";
-
 /******************************************************************************/
 /*							PUBLIC											  */
 /******************************************************************************/
@@ -30,19 +28,15 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 /*							ACCESSORS										  */
 /******************************************************************************/
 
-std::string Bureaucrat::getName() const { 
-	return _name; 
-}
+std::string Bureaucrat::getName() const { return _name; }
 
-int Bureaucrat::getGrade() const { 
-	return _grade; 
-}
+int Bureaucrat::getGrade() const { return _grade; }
 
 /******************************************************************************/
 /*						CONSTRUCTORS & DESTRUCTORS							  */
 /******************************************************************************/
 
-Bureaucrat::Bureaucrat() : _name(_defaultName) , _grade(_lowestGrade) {
+Bureaucrat::Bureaucrat() : _name("Noob") , _grade(_lowestGrade) {
 	std::cout << CYAN "constructor called" RESET << std::endl;
 }
 
@@ -67,11 +61,9 @@ Bureaucrat::~Bureaucrat() {
 /******************************************************************************/
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
-	if (this != &obj) {
-		_grade = obj._grade;
-		*const_cast<std::string*>(&_name) = obj._name;
-	}
-	return *this;
+    if ( this != &obj)
+        _grade = obj._grade;
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj) {

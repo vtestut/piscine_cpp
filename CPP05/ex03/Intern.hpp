@@ -11,16 +11,16 @@ class Intern {
 
 public :
 
-    Intern();
-    Intern(const Intern& obj);
-    ~Intern();
+	Intern();
+	Intern(const Intern& obj);
+	Intern& operator=(const Intern& obj);
 
-    Intern& operator=(const Intern& obj);
+	~Intern();
 
-    AForm*   makeForm(std::string name, std::string target);
-    static AForm* createRobotomyRequestForm(std::string target);
-    static AForm* createPresidentialPardonForm(std::string target);
-    static AForm* createShrubberyCreationForm(std::string target);
+	AForm* makeForm(const std::string& name, const std::string& target);
+	static AForm* createRobotomyRequestForm(const std::string& target);
+	static AForm* createPresidentialPardonForm(const std::string& target);
+	static AForm* createShrubberyCreationForm(const std::string& target);
 };
 
 #endif

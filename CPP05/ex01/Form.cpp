@@ -58,13 +58,9 @@ Form::~Form() {}
 /******************************************************************************/
 
 Form& Form::operator=(const Form& obj) {
-	if (this != &obj) {
-		*const_cast<std::string*>(&this->_formName) = obj._formName;
-		*const_cast<int*>(&this->_signGrade) = obj._signGrade;
-		*const_cast<int*>(&this->_execGrade) = obj._execGrade;
-		this->_status = obj._status;
-	}
-	return *this;
+    if ( this != &obj)
+        _status = obj.getStatus();
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& obj) {
