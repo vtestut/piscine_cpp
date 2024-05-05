@@ -2,13 +2,14 @@
 # define _SCALARCONVERTER_HPP
 
 # include <cmath>
+# include <string>
 # include <cstdlib>
 # include <iomanip>
 # include <iostream>
 # include <limits>
 # include <sstream>
 # include <string>
-# include <vector>
+# include <cctype>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -22,7 +23,7 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define NO "!!! NO !!!\n"
+#define NO "❌❌❌\n"
 
 /******************************************************************************/
 /*									STRUCT									  */
@@ -30,13 +31,10 @@
 
 typedef struct s_num {
 	char	c;
-	bool	isValidChar;
 	int		n;
-	bool	isValidInt;
-	double	d;
-	bool	isValidDouble;
 	float	f;
-	bool	isValidFloat;
+	double	d;
+	bool	validChar, validInt, validFloat;
 } t_num;
 
 /******************************************************************************/
@@ -53,9 +51,9 @@ private :
 
 public :
 
+	static void convert(const std::string& input);
 	~ScalarConverter();
 
-	static void convert(const std::string& input);
 };
 
 #endif
