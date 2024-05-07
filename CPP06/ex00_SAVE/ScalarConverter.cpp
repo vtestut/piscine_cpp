@@ -5,10 +5,10 @@
 /******************************************************************************/
 
 bool tryConvertSpecial(const std::string& input, std::string& special);
-static bool convertSpecial(const std::string& input, std::string* special);
 bool tryConvertChar(const std::string& input, t_num& num);
-static bool convertChar(const std::string& input, t_num* num);
 bool tryConvertNumber(const std::string& input, t_num& num);
+static bool convertSpecial(const std::string& input, std::string* special);
+static bool convertChar(const std::string& input, t_num* num);
 static bool convertNum(const std::string& input, t_num* num);
 static bool parseSignAndFormat(const std::string& input, size_t& index, int& sign, bool& dotFound);
 static bool parseNumeric(const std::string& input, size_t start, double& result, bool& dotFound);
@@ -36,15 +36,8 @@ void ScalarConverter::convert(const std::string& input) {
 /*								UTILS										  */
 /******************************************************************************/
 
-bool tryConvertSpecial(const std::string& input, std::string& special) {
-	if (convertSpecial(input, &special)) {
-		std::cout << "  char: " << NO << std::endl;
-		std::cout << "   int: " << NO << std::endl;
-		std::cout << " float: " << special << 'f' << std::endl;
-		std::cout << "double: " << special << std::endl;
-		return true;
-	}
-	return false;
+static bool isPrintable(char c) {
+	return 32 <= c && c <= 126;
 }
 
 static bool convertSpecial(const std::string& input, std::string* special) {
@@ -62,17 +55,6 @@ static bool convertSpecial(const std::string& input, std::string* special) {
 	return false;
 }
 
-bool tryConvertChar(const std::string& input, t_num& num) {
-	if (convertChar(input, &num)) {
-		std::cout << "  char: " << num.c << std::endl;
-		std::cout << "   int: " << num.n << std::endl;
-		std::cout << " float: " << num.f << ".0f" << std::endl;
-		std::cout << "double: " << num.d << ".0" << std::endl;
-		return true;
-	}
-	return false;
-}
-
 // Convert a string that potentially holds a character literal
 // ! Convertir une chaîne qui contient potentiellement un littéral de caractère
 static bool convertChar(const std::string& input, t_num* num) {
@@ -84,45 +66,6 @@ static bool convertChar(const std::string& input, t_num* num) {
 		return true;
 	}
 	return false;
-}
-
-bool tryConvertNumber(const std::string& input, t_num& num) {
-	if (convertNum(input, &num)) {
-		std::cout << "  char: " << (num.validChar ? charToString(num.c) : NO) << std::endl;
-		std::cout << "   int: " << (num.validInt ? intToString(num.n) : NO) << std::endl;
-		std::cout << " float: " << (num.validFloat ? formatDouble(num.f) + 'f' : NO) << std::endl;
-		std::cout << "double: " << formatDouble(num.d) << std::endl;
-		return true;
-	}
-	return false;
-}
-
-// Adjusted function to handle float notation with 'f'
-// ! Fonction ajustée pour gérer la notation flottante avec 'f'
-static bool convertNum(const std::string& input, t_num* num) {
-	std::string numPart = input;
-	// Handle float notation
-	// ! Gérer la notation flottante
-	if (numPart.size() > 1 && numPart[numPart.size() - 1] == 'f') {
-		numPart = numPart.substr(0, numPart.size() - 1);
-	}
-
-	if (numPart.empty() || numPart == "." || numPart == "-.")
-		return false;
-
-	double result = 0;
-	bool dotFound = false;
-	int sign = 1;
-	size_t index = 0;
-
-	while (index < numPart.length() && !isdigit(numPart[index])) {
-		if (!parseSignAndFormat(numPart, index, sign, dotFound)) 
-			return false;
-	}
-	if (!parseNumeric(numPart, index, result, dotFound)) 
-		return false;
-	finalizeConversion(result, sign, num);
-	return std::isfinite(num->d);
 }
 
 // Parse the initial characters for sign and format validation
@@ -187,6 +130,34 @@ static void finalizeConversion(double parsedValue, int sign, t_num* num) {
 	}
 }
 
+// Adjusted function to handle float notation with 'f'
+// ! Fonction ajustée pour gérer la notation flottante avec 'f'
+static bool convertNum(const std::string& input, t_num* num) {
+	std::string numPart = input;
+	// Handle float notation
+	// ! Gérer la notation flottante
+	if (numPart.size() > 1 && numPart[numPart.size() - 1] == 'f') {
+		numPart = numPart.substr(0, numPart.size() - 1);
+	}
+
+	if (numPart.empty() || numPart == "." || numPart == "-.")
+		return false;
+
+	double result = 0;
+	bool dotFound = false;
+	int sign = 1;
+	size_t index = 0;
+
+	while (index < numPart.length() && !isdigit(numPart[index])) {
+		if (!parseSignAndFormat(numPart, index, sign, dotFound)) 
+			return false;
+	}
+	if (!parseNumeric(numPart, index, result, dotFound)) 
+		return false;
+	finalizeConversion(result, sign, num);
+	return std::isfinite(num->d);
+}
+
 // Function to format double values into a string with trimmed trailing zeros
 // ! Fonction pour formater les valeurs double en une chaîne avec des zéros finaux supprimés
 static std::string formatDouble(double d) {
@@ -202,8 +173,26 @@ static std::string formatDouble(double d) {
 	return str;
 }
 
-static bool isPrintable(char c) {
-	return 32 <= c && c <= 126;
+bool tryConvertSpecial(const std::string& input, std::string& special) {
+	if (convertSpecial(input, &special)) {
+		std::cout << "  char: " << NO << std::endl;
+		std::cout << "   int: " << NO << std::endl;
+		std::cout << " float: " << special << 'f' << std::endl;
+		std::cout << "double: " << special << std::endl;
+		return true;
+	}
+	return false;
+}
+
+bool tryConvertChar(const std::string& input, t_num& num) {
+	if (convertChar(input, &num)) {
+		std::cout << "  char: " << num.c << std::endl;
+		std::cout << "   int: " << num.n << std::endl;
+		std::cout << " float: " << num.f << ".0f" << std::endl;
+		std::cout << "double: " << num.d << ".0" << std::endl;
+		return true;
+	}
+	return false;
 }
 
 std::string charToString(char c) {
@@ -218,17 +207,13 @@ std::string intToString(int n) {
 	return ss.str();
 }
 
-/******************************************************************************/
-/*								PRIVATE										  */
-/******************************************************************************/
-
-ScalarConverter::ScalarConverter() {};
-
-ScalarConverter::ScalarConverter(const ScalarConverter &obj) { 
-  *this = obj; 
-};
-
-ScalarConverter& ScalarConverter::operator = (ScalarConverter const &obj) {
-  (void)obj;
-  return *this;
-};
+bool tryConvertNumber(const std::string& input, t_num& num) {
+	if (convertNum(input, &num)) {
+		std::cout << "  char: " << (num.validChar ? charToString(num.c) : NO) << std::endl;
+		std::cout << "   int: " << (num.validInt ? intToString(num.n) : NO) << std::endl;
+		std::cout << " float: " << (num.validFloat ? formatDouble(num.f) + 'f' : NO) << std::endl;
+		std::cout << "double: " << formatDouble(num.d) << std::endl;
+		return true;
+	}
+	return false;
+}

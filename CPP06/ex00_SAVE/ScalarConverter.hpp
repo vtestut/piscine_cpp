@@ -43,7 +43,7 @@ typedef struct s_num {
 
 class ScalarConverter {
 
-private :
+private : // ! operato = & contructeur copy
 
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& obj);
