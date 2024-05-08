@@ -21,19 +21,16 @@ int main(int argc, char** argv) {
             "+inff",
             "'a'",
             "' '",
-            "hello",
+            "coucou",
+            "-.578176",
             "1686468451514548498468465",
-            "2.5e10",
-            "2.5e-10",
-            "-2.5e-10",
             "2147483647",
             "2147483648",
             "-2147483648",
-            "-2147483649",
-            "+2.5e10f"
+            "-2147483649"
         };
         for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++) {
-            std::cout << CYAN "Test input: " << tests[i] << RESET << std::endl;
+            std::cout << YELLOW "Input = " << tests[i] << RESET << std::endl;
             ScalarConverter::convert(tests[i]);
             std::cout << GREEN "----------------------------------------" RESET << std::endl;
         }

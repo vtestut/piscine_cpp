@@ -6,8 +6,8 @@
 # include <cstdlib>
 # include <iomanip>
 # include <iostream>
-# include <limits>
-# include <sstream>
+# include <limits> // ! std::numeric_limits
+# include <sstream> // ! std::ostringstream & std::stringstream
 # include <string>
 # include <cctype>
 
@@ -23,7 +23,7 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define NO "Non displayable"
+# define NOT RED "Not displayable" RESET
 
 /******************************************************************************/
 /*									STRUCT									  */
