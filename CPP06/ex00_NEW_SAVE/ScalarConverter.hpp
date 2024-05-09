@@ -23,7 +23,7 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define NON RED "Non displayable" RESET
+# define NOT RED "Not displayable" RESET
 
 /******************************************************************************/
 /*									STRUCT									  */
@@ -51,7 +51,7 @@ private :
 
 public :
 
-	static void convert(const std::string& value);
+	static void convert(const std::string& input);
 	~ScalarConverter() {};
 
 };

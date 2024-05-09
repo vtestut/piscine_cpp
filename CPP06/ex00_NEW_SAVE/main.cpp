@@ -4,14 +4,14 @@ int main(int argc, char** argv) {
 
     if (argc == 1) {
         const std::string tests[] = {
-            "0",
-            "nan",
-            "42.0f",
+            "42",
             "-42",
             "56",
             "3.14159",
             "3.14159f",
+            "0",
             "-0",
+            "nan",
             "inf",
             "+inf",
             "-inf",
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
             "-2147483649"
         };
         for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++) {
-            std::cout << YELLOW "Value = " << tests[i] << RESET << std::endl;
+            std::cout << YELLOW "Input = " << tests[i] << RESET << std::endl;
             ScalarConverter::convert(tests[i]);
             std::cout << GREEN "----------------------------------------" RESET << std::endl;
         }
