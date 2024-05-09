@@ -2,10 +2,9 @@
 # define _BASE_HPP
 
 # include <iostream>
-# include <cstdlib>   // rand
+# include <cstdlib>
 # include <exception>
 # include <ctime>
-// # include <typeinfo>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -35,7 +34,9 @@ class A : public Base {};
 class B : public Base {};
 class C : public Base {};
 
-std::ostream& operator<<(std::ostream& os, Base* base);
+Base *generate();
+void identify(Base* p);
+void identify(Base& p);
 
 #endif
 

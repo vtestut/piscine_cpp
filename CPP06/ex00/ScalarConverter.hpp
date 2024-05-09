@@ -1,15 +1,13 @@
 #ifndef  _SCALARCONVERTER_HPP
 # define _SCALARCONVERTER_HPP
 
-# include <cmath>
-# include <string>
-# include <cstdlib>
-# include <iomanip>
 # include <iostream>
-# include <limits> // ! std::numeric_limits
-# include <sstream> // ! std::ostringstream & std::stringstream
-# include <string>
+# include <iomanip>
+# include <sstream>
+# include <string> 
+# include <cmath>
 # include <cctype>
+# include <limits>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -35,7 +33,7 @@ typedef struct s_num {
 	float	f;
 	double	d;
 	bool	validChar, validInt, validFloat;
-} t_num;
+} t_struct;
 
 /******************************************************************************/
 /*									CLASS									  */
@@ -53,7 +51,24 @@ public :
 
 	static void convert(const std::string& value);
 	~ScalarConverter() {};
-
 };
+
+/******************************************************************************/
+/*									PROTOYPES								  */
+/******************************************************************************/
+
+bool printSpecials(const std::string& value, std::string& special);
+bool trySpecialConversion(const std::string& value, std::string* special);
+bool printChar(const std::string& value, t_struct& vals);
+bool tryCharConversion(const std::string& value, t_struct* vals);
+bool printNumber(const std::string& value, t_struct& vals);
+bool tryNumberConversion(const std::string& value, t_struct* vals);
+bool parseSign(const std::string& value, size_t& index, int& sign, bool& dotFound);
+bool parseAndConvert(const std::string& value, size_t index, double& result, bool& dotFound);
+void doConversions(double parsedValue, int sign, t_struct* vals);
+bool isPrintable(char c);
+std::string charToString(char c);
+std::string intToString(int n);
+std::string numToString(double d);
 
 #endif

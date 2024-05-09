@@ -1,33 +1,29 @@
 #include "ScalarConverter.hpp"
 
 /******************************************************************************/
-/*									PROTOYPES								  */
+/*								PRIVATE										  */
 /******************************************************************************/
 
-bool tryConvertSpecial(const std::string& value, std::string& special);
-static bool convertSpecial(const std::string& value, std::string* special);
-bool tryConvertChar(const std::string& value, t_num& num);
-static bool convertChar(const std::string& value, t_num* num);
-bool tryConvertNumber(const std::string& value, t_num& num);
-static bool convertNum(const std::string& value, t_num* num);
-static bool parseSignAndFormat(const std::string& value, size_t& index, int& sign, bool& dotFound);
-static bool parseNumeric(const std::string& value, size_t start, double& result, bool& dotFound);
-static void finalizeConversion(double parsedValue, int sign, t_num* num);
-static std::string formatDouble(double d);
-static bool isPrintable(char c);
-std::string charToString(char c);
-std::string intToString(int n);
+ScalarConverter::ScalarConverter() {};
+
+ScalarConverter::ScalarConverter(const ScalarConverter &obj) { 
+  *this = obj; 
+};
+
+ScalarConverter& ScalarConverter::operator=(ScalarConverter const &obj) {
+  (void)obj;
+  return *this;
+};
 
 /******************************************************************************/
 /*								PUBLIC										  */
 /******************************************************************************/
 
 void ScalarConverter::convert(const std::string& value) {
-
 	std::string special;
-	t_num num;
+	t_struct vals;
 
-	if (tryConvertSpecial(value, special) || tryConvertChar(value, num) || tryConvertNumber(value, num))
+	if (printSpecials(value, special) || printChar(value, vals) || printNumber(value, vals))
 		return;
 	std::cout << RED "Impossible conversion" RESET << std::endl;
 }
@@ -36,8 +32,8 @@ void ScalarConverter::convert(const std::string& value) {
 /*								UTILS										  */
 /******************************************************************************/
 
-bool tryConvertSpecial(const std::string& value, std::string& special) {
-	if (convertSpecial(value, &special)) {
+bool printSpecials(const std::string& value, std::string& special) {
+	if (trySpecialConversion(value, &special)) {
 		std::cout << "  char: " << NON << std::endl;
 		std::cout << "   int: " << NON << std::endl;
 		std::cout << " float: " << special << 'f' << std::endl;
@@ -47,59 +43,62 @@ bool tryConvertSpecial(const std::string& value, std::string& special) {
 	return false;
 }
 
-static bool convertSpecial(const std::string& value, std::string* special) {
-	bool isSpecialDouble = value == "inf" || value == "-inf" || value == "+inf" || value == "nan";
-	bool isSpecialFloat = value == "inff" || value == "-inff" || value == "+inff" || value == "nanf";
-	
+bool trySpecialConversion(const std::string& value, std::string* special) {
+	bool isSpecialDouble = false;
+	bool isSpecialFloat = false;
+
+	if (value == "inf" || value == "-inf" || value == "+inf" || value == "nan")
+		isSpecialDouble = true;
+	if (value == "inff" || value == "-inff" || value == "+inff" || value == "nanf")
+		isSpecialFloat = true;
 	if (isSpecialDouble || isSpecialFloat) {
 		*special = value;
-		if (isSpecialFloat) {
+		if (isSpecialFloat)
 			(*special).resize(special->size() - 1);
-		}
 		return true;
 	}
 	return false;
 }
 
-bool tryConvertChar(const std::string& value, t_num& num) {
-	if (convertChar(value, &num)) {
-		std::cout << "  char: " << num.c << std::endl;
-		std::cout << "   int: " << num.n << std::endl;
-		std::cout << " float: " << num.f << ".0f" << std::endl;
-		std::cout << "double: " << num.d << ".0" << std::endl;
+bool printChar(const std::string& value, t_struct& vals) {
+	if (tryCharConversion(value, &vals)) {
+		std::cout << "  char: " << vals.c << std::endl;
+		std::cout << "   int: " << vals.n << std::endl;
+		std::cout << " float: " << vals.f << ".0f" << std::endl;
+		std::cout << "double: " << vals.d << ".0" << std::endl;
 		return true;
 	}
 	return false;
 }
 
-static bool convertChar(const std::string& value, t_num* num) {
+bool tryCharConversion(const std::string& value, t_struct* vals) {
 	if (value.size() == 3 && value[0] == '\'' && isPrintable(value[1]) && value[2] == '\'') {
-		num->c = value[1];
-		num->n = static_cast<int>(num->c);
-		num->f = static_cast<float>(num->c);
-		num->d = static_cast<double>(num->c);
+		vals->c = value[1];
+		vals->n = static_cast<int>(vals->c);
+		vals->f = static_cast<float>(vals->c);
+		vals->d = static_cast<double>(vals->c);
 		return true;
 	}
 	return false;
 }
 
-bool tryConvertNumber(const std::string& value, t_num& num) {
-	if (convertNum(value, &num)) {
-		std::cout << "  char: " << (num.validChar ? charToString(num.c) : NON) << std::endl;
-		std::cout << "   int: " << (num.validInt ? intToString(num.n) : NON) << std::endl;
-		std::cout << " float: " << (num.validFloat ? formatDouble(num.f) + 'f' : NON) << std::endl;
-		std::cout << "double: " << formatDouble(num.d) << std::endl;
+bool printNumber(const std::string& value, t_struct& vals) {
+	if (tryNumberConversion(value, &vals)) {
+		std::cout << "  char: " << (vals.validChar ? charToString(vals.c) : NON) << std::endl;
+		std::cout << "   int: " << (vals.validInt ? intToString(vals.n) : NON) << std::endl;
+		std::cout << " float: " << (vals.validFloat ? numToString(vals.f) + 'f' : NON) << std::endl;
+		std::cout << "double: " << numToString(vals.d) << std::endl;
 		return true;
 	}
 	return false;
 }
 
-static bool convertNum(const std::string& value, t_num* num) {
-	std::string numPart = value;
-	if (numPart.size() > 1 && numPart[numPart.size() - 1] == 'f') { 
-		numPart = numPart.substr(0, numPart.size() - 1);
-	}
-	if (numPart.empty() || numPart == "." || numPart == "-.")
+bool tryNumberConversion(const std::string& value, t_struct* vals) {
+	std::string val = value;
+
+	if (val.size() > 1 && val[val.size() - 1] == 'f')
+		val = val.substr(0, val.size() - 1);
+	if (val.empty() || val == "." || val == "-.")
 		return false;
 
 	double result = 0;
@@ -107,18 +106,19 @@ static bool convertNum(const std::string& value, t_num* num) {
 	int sign = 1;
 	size_t index = 0;
 
-	while (index < numPart.length() && !isdigit(numPart[index])) {
-		if (!parseSignAndFormat(numPart, index, sign, dotFound))
+	while (index < val.length() && !isdigit(val[index])) {
+		if (!parseSign(val, index, sign, dotFound))
 			return false;
 	}
-	if (!parseNumeric(numPart, index, result, dotFound))
+	if (!parseAndConvert(val, index, result, dotFound))
 		return false;
-	finalizeConversion(result, sign, num);
+	doConversions(result, sign, vals);
 	return true;
 }
 
-static bool parseSignAndFormat(const std::string& value, size_t& index, int& sign, bool& dotFound) {
+bool parseSign(const std::string& value, size_t& index, int& sign, bool& dotFound) {
 	char c = value[index];
+
 	if (c == '+') {
 		if (index != 0) 
 			return false;
@@ -128,19 +128,20 @@ static bool parseSignAndFormat(const std::string& value, size_t& index, int& sig
 			sign = -1;
 		else 
 			return false;
-	} 
+	}
 	else if (c == '.') {
 		dotFound = true;
-	} 
+	}
 	else
 		return false;
 	index++;
 	return true;
 }
 
-static bool parseNumeric(const std::string& value, size_t start, double& result, bool& dotFound) {
-	double decimalFactor = 0.1;
-	for (size_t i = start; i < value.length(); i++) 
+bool parseAndConvert(const std::string& value, size_t index, double& result, bool& dotFound) {
+	double decimal = 0.1;
+
+	for (size_t i = index; i < value.length(); i++) 
 	{
 		char c = value[i];
 		if (c == '.') {
@@ -151,8 +152,8 @@ static bool parseNumeric(const std::string& value, size_t start, double& result,
 		else if (isdigit(c)) {
 			int digit = c - '0';
 			if (dotFound) {
-				result += decimalFactor * digit;
-				decimalFactor *= 0.1;
+				result += decimal * digit;
+				decimal *= 0.1;
 			} 
 			else 
 				result = 10 * result + digit;
@@ -163,30 +164,30 @@ static bool parseNumeric(const std::string& value, size_t start, double& result,
 	return true;
 }
 
-static void finalizeConversion(double parsedValue, int sign, t_num* num) {
-	num->d = sign * parsedValue;
-	num->validInt = false;
-	num->validChar = false;
-	num->validFloat = false;
+void doConversions(double parsedValue, int sign, t_struct* vals) {
+	vals->d = sign * parsedValue;
+	vals->validInt = false;
+	vals->validChar = false;
+	vals->validFloat = false;
 
-	if (std::isfinite(num->d)) {
-		if (std::numeric_limits<int>::min() <= num->d && num->d <= std::numeric_limits<int>::max()) {
-			num->n = static_cast<int>(num->d);
-			num->validInt = true;
-			if (num->n >= std::numeric_limits<char>::min() && num->n <= std::numeric_limits<char>::max() && isPrintable(static_cast<char>(num->n))) {
-				num->c = static_cast<char>(num->n);
-				num->validChar = true;
+	if (std::isfinite(vals->d)) {
+		if (std::numeric_limits<int>::min() <= vals->d && vals->d <= std::numeric_limits<int>::max()) {
+			vals->n = static_cast<int>(vals->d);
+			vals->validInt = true;
+			if (vals->n >= std::numeric_limits<char>::min() && vals->n <= std::numeric_limits<char>::max() && isPrintable(static_cast<char>(vals->n))) {
+				vals->c = static_cast<char>(vals->n);
+				vals->validChar = true;
 			}
 		}
-		if (-std::numeric_limits<float>::max() <= num->d && num->d <= std::numeric_limits<float>::max()) {
-    		num->f = static_cast<float>(num->d);
-    		if (std::isfinite(num->f))
-        		num->validFloat = true;
+		if (-std::numeric_limits<float>::max() <= vals->d && vals->d <= std::numeric_limits<float>::max()) {
+    		vals->f = static_cast<float>(vals->d);
+    		if (std::isfinite(vals->f))
+        		vals->validFloat = true;
 		} 
 	}
 }
 
-static bool isPrintable(char c) {
+bool isPrintable(char c) {
 	return 32 <= c && c <= 126;
 }
 
@@ -202,11 +203,13 @@ std::string intToString(int n) {
 	return ss.str();
 }
 
-static std::string formatDouble(double d) {
+std::string numToString(double d) {
 	std::ostringstream ss;
 	ss << std::fixed << std::setprecision(20) << d;
+
 	std::string str = ss.str();
 	size_t decimalPos = str.find('.');
+
 	if (decimalPos != std::string::npos) {
 		size_t lastNonZero = str.find_last_not_of('0');
 		if (lastNonZero < str.size() - 1)
@@ -216,18 +219,3 @@ static std::string formatDouble(double d) {
 	}
 	return str;
 }
-
-/******************************************************************************/
-/*								PRIVATE										  */
-/******************************************************************************/
-
-ScalarConverter::ScalarConverter() {};
-
-ScalarConverter::ScalarConverter(const ScalarConverter &obj) { 
-  *this = obj; 
-};
-
-ScalarConverter& ScalarConverter::operator=(ScalarConverter const &obj) {
-  (void)obj;
-  return *this;
-};

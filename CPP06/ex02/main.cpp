@@ -1,36 +1,16 @@
 #include "Base.hpp"
 
-Base *generate(void);
-void identify(Base* p);
-void identify(Base& p);
-
 int main() {
-	A a;
-	B b;
-	C c;
+    srand(time(NULL));
+    Base* instances[3];
 
-	std::srand(std::time(NULL));
-	Base* r1 = generate();
-	Base* r2 = generate();
-	Base* r3 = generate();
-
-	identify(&a);
-	identify(&b);
-	identify(&c);
-	identify(r1);
-	identify(r2);
-	identify(r3);
-
-	std::cout << std::endl;
-
-	identify(a);
-	identify(b);
-	identify(c);
-	identify(*r1);
-	identify(*r2);
-	identify(*r3);
-
-	delete r1;
-	delete r2;
-	delete r3;
+    for (int i = 0; i < 3; ++i) {
+        instances[i] = generate();
+        identify(instances[i]);
+        identify(*instances[i]);
+		std::cout << std::endl;
+    }
+    for (int i = 0; i < 3; ++i)
+        delete instances[i];
+    return 0;
 }

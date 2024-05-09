@@ -7,6 +7,7 @@ int main(int argc, char** argv) {
             "0",
             "nan",
             "42.0f",
+            "'*'",
             "-42",
             "56",
             "3.14159",
@@ -20,6 +21,7 @@ int main(int argc, char** argv) {
             "-inff",
             "+inff",
             "'a'",
+            "'2'",
             "' '",
             "coucou",
             "-.578176",
@@ -30,15 +32,17 @@ int main(int argc, char** argv) {
             "-2147483649"
         };
         for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++) {
-            std::cout << YELLOW "Value = " << tests[i] << RESET << std::endl;
+            std::cout << YELLOW "Valeur = " << tests[i] << RESET << std::endl;
             ScalarConverter::convert(tests[i]);
             std::cout << GREEN "----------------------------------------" RESET << std::endl;
         }
         return 0;
-    } else if (argc == 2) {
+    } 
+    else if (argc == 2) {
 		ScalarConverter::convert(argv[1]);
         return 0;
-    } else {
+    } 
+    else
         std::cout << "0 or 1 arg only" << std::endl;
-    } return 0;
+    return 0;
 }
