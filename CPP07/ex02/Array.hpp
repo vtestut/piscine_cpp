@@ -1,64 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 03:58:03 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/12 04:55:10 by vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  ARRAY_HPP
+# define ARRAY_HPP
 
-#pragma once
+# include <cstdlib>
+# include <ctime>
+# include <stdexcept>
+# include <iostream>
 
-#include <iostream>
+/******************************************************************************/
+/*									DEFINES									  */
+/******************************************************************************/
 
-template < typename T >
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define CYAN	"\033[36m"
+# define YELLOW	"\033[93m"
+
+# define RESET	"\033[0m"
+# define CLEAR	"\033[2J\033[1;1H"
+
+# define ARR_INT_SIZE 10  // !!!!!!!!!!!!!!!!!!!!!!
+
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
+
+template <typename T>
 class Array {
 
-private:
-    T*              _arr;
-    unsigned int    _size;
+private :
 
-public:
-    Array( void ) : _arr( new T() ), _size( 0 ) {};
-    Array( unsigned int n ) : _arr( new T[n] ), _size( n ) {};
-    Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
-        for ( unsigned int i( 0 ); i < _size; i++ )
-            _arr[i] = rhs._arr[i];
-    };
+    T* _elems;
+    unsigned int _size;
 
-    Array& operator=( const Array& rhs ) {
-        if ( this != &rhs ) {
-            delete [] _arr;
-            _arr = new T[rhs.size()];
-            _size = rhs._size;
-            for ( unsigned int i( 0 ); i < _size; i++ )
-                _arr[i] = rhs._arr[i];
-        }
-        return *this;
-    }
+public :
 
-    T& operator[]( unsigned int i ) const {
-        if ( i >= _size )
-            throw OutOfBoundsException();
-        return _arr[i];
-    }
+    Array();
+    explicit Array(unsigned int n);  // ! explicit ???
+    Array(const Array& other);
+    Array& operator=(const Array& other);
+    ~Array();
 
-    unsigned int  size( void ) const { return _size; }
+    T& operator[](unsigned int i);  // ! operator[] ????
+    const T& operator[](unsigned int i) const;
+    unsigned int size() const;
 
-    ~Array( void ) { delete [] _arr; }
-
-    class OutOfBoundsException : public std::exception {
-        public:
-            virtual const char* what() const throw() { return "Index is out of bounds";}
-    };
 };
 
-template < typename T >
-std::ostream& operator<<( std::ostream& out, const Array<T>& arr ) {
-    for ( unsigned int i( 0 ); i < arr.size(); i++ )
-        out << arr[i] << " ";
-    return out;
-}
+template <class T>
+std::ostream& operator<<(std::ostream& os, const Array<T>& arr);
+
+# include "Array.tpp"
+
+#endif

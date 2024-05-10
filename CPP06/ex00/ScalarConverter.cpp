@@ -4,13 +4,11 @@
 /*								PRIVATE										  */
 /******************************************************************************/
 
-ScalarConverter::ScalarConverter() {};
-
-ScalarConverter::ScalarConverter(const ScalarConverter &obj) { 
+ScalarConverter::ScalarConverter(const ScalarConverter& obj) { 
   *this = obj; 
 };
 
-ScalarConverter& ScalarConverter::operator=(ScalarConverter const &obj) {
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& obj) {
   (void)obj;
   return *this;
 };

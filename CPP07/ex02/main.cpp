@@ -1,45 +1,35 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 04:18:26 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/12 05:03:39 by vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Array.hpp"
 
-#define SIZE 10
+int main() {
+	Array<int> empty;
+	std::cout << empty << std::endl;
 
-int main( void )
-{
-    std::cout << "-----------------------------------------------------" << std::endl;
+	Array<int> ints(ARR_INT_SIZE);
+	std::cout << ints << std::endl;
+	std::srand(std::time(NULL));
+	for (int i = 0; i < ARR_INT_SIZE; ++i)
+		ints[i] = std::rand() % 10;
+	std::cout << ints << std::endl;
 
-    Array< float > test;
+	try {
+		ints[-1] = 0;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		ints[ARR_INT_SIZE] = 0;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-    Array< int > intArray( SIZE );
-    Array< int > intArray2( SIZE - 5 );
+	Array<std::string> s1(3);
+	std::cout << s1 << std::endl;
+	s1[1] = "yolowesh";
+	std::cout << s1 << std::endl;
 
-    for ( unsigned int i = 0; i < intArray.size(); i++ )
-        intArray[i] = i * 2;
-
-    std::cout << "Int Array 1: " << intArray << std::endl;
-
-    intArray2 = intArray;
-
-    std::cout << "int Array 2: " << intArray2 << std::endl;
-
-    try {
-        std::cout << "Accessing a valid index: " << intArray[5] << std::endl;
-        std::cout << "Accessing an invalid index: " << intArray[SIZE] << std::endl;
-    } catch ( Array< int >::OutOfBoundsException& e ) {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-
-    std::cout << "-----------------------------------------------------" << std::endl;
-
-    return ( 0 );
+	Array<std::string> s2 = s1;
+	s2[0] = "Le temps est l'image mobile de la realite immobile.";
+	s2[2] = "Pierre qui roule n'amasse pas mousse.";
+	std::cout << s1 << std::endl;
+	std::cout << s2 << std::endl;
 }

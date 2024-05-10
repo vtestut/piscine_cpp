@@ -18,7 +18,7 @@
 # define CLEAR	"\033[2J\033[1;1H"
 
 /******************************************************************************/
-/*									CLASS									  */
+/*									STRUCT									  */
 /******************************************************************************/
 
 struct Data {
@@ -26,17 +26,21 @@ struct Data {
 	int			n;
 };
 
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
+
 class Serializer {
 
 private:
 
-	Serializer();
-	Serializer(const Serializer & obj);
-	Serializer & operator=(const Serializer & obj);
+	Serializer() {};
+	Serializer(const Serializer& obj);
+	Serializer & operator=(const Serializer& obj);
 
 public:
 
-	~Serializer();
+	~Serializer() {};
 
 	static uintptr_t serialize(Data* ptr);
 	static Data* deserialize(uintptr_t raw);

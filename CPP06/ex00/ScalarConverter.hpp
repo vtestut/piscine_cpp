@@ -27,7 +27,7 @@
 /*									STRUCT									  */
 /******************************************************************************/
 
-typedef struct s_num {
+typedef struct s_struct {
 	char	c;
 	int		n;
 	float	f;
@@ -43,7 +43,7 @@ class ScalarConverter {
 
 private :
 
-	ScalarConverter();
+	ScalarConverter() {};
 	ScalarConverter(const ScalarConverter& obj);
 	ScalarConverter& operator=(const ScalarConverter& obj);
 

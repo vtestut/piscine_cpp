@@ -34,6 +34,10 @@ class A : public Base {};
 class B : public Base {};
 class C : public Base {};
 
+/******************************************************************************/
+/*									PROTOYPES								  */
+/******************************************************************************/
+
 Base *generate();
 void identify(Base* p);
 void identify(Base& p);

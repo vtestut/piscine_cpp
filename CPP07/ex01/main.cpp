@@ -1,64 +1,39 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 03:41:27 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/12 03:51:53by vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "Iter.hpp"
 
-#include "iter.hpp"
+int main() {
+	int arrInt[] = {1, 2, 3, 4, 5};
+	double arrDouble[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+	float arrFloat[] = {1.0f, 2.5f, 3.75f, 4.8f, 5.9f};
+	char arrChar[] = {'a', 'b', 'c', 'd', 'e'};
+	std::string arrString[] = {"am", "stram", "gram"};
 
-#define N 5
+	std::cout << YELLOW "INT: " RESET << std::endl;
+	iter<int, void (*)(const int&)>(arrInt, 5, print);
+	std::cout << std::endl;
 
-int main( void )
-{
-    int arr1[] = { 1, 2, 3, 4, 5 };
+	// ! pk ? iter<int, void (*)(const int&)> ???
 
-    std::cout << "arr1: " << std::endl;
-    iter(arr1, N, &print);
 
-    double arr2[] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+	std::cout << YELLOW "DOUBLE: " RESET << std::endl;
+	iter<double, void (*)(const double&)>(arrDouble, 5, print);
+	std::cout << std::endl;
 
-    std::cout << "\narr2: " << std::endl;
-    iter(arr2, N, &print);
+	std::cout << YELLOW "FLOAT: " RESET << std::endl;
+	iter<float, void (*)(const float&)>(arrFloat, 5, print);
+	std::cout << std::endl;
 
-    char arr3[] = { 'a', 'b', 'c', 'd', 'e' };
+	std::cout << YELLOW "CHAR: " RESET << std::endl;
+	iter<char, void (*)(const char&)>(arrChar, 5, print);
+	std::cout << std::endl;
 
-    std::cout << "\narr3: " << std::endl;
-    iter(arr3, N, &print);
+	std::cout << YELLOW "STRING: " RESET << std::endl;
+	iter<std::string, void (*)(const std::string&)>(arrString, 3, print);
+	std::cout << std::endl;
 
-    std::string arr4[] = { "one", "two", "three", "four", "five" };
+	std::cout << YELLOW "NULL: " RESET << std::endl;
+	int* nullArr = NULL;
+	iter<int, void (*)(const int&)>(nullArr, 5, print<int>);
+	std::cout << std::endl;
 
-    std::cout << "\narr4: " << std::endl;
-    iter(arr4, N, &print);
-
-    return 0;
+	return 0;
 }
-
-/* ************************************************************************** */
-
-// class Awsome{
-
-// public:
-//     Awsome(void): _n(42) {return;}
-//     int get(void)const {return this->_n;}
-// private:
-//     int _n;
-// };
-
-// std::ostream &operator<<(std::ostream &o, Awsome const &rhs) {o<<rhs.get(); return o;}
-
-// template <typename T>
-// void print(T const &x){std::cout << x << std::endl; return;}
-
-// int main(){
-//     int tab[] = {0,1,2,3,4};
-//     Awsome tab2[5];
-
-//     iter(tab, 5, print);
-//     iter(tab2, 5, print);
-// }
