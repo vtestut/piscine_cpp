@@ -18,8 +18,6 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define ARR_INT_SIZE 10  // !!!!!!!!!!!!!!!!!!!!!!
-
 /******************************************************************************/
 /*									CLASS									  */
 /******************************************************************************/
@@ -29,20 +27,21 @@ class Array {
 
 private :
 
-    T* _elems;
-    unsigned int _size;
+	T* _elems;
+	unsigned int _size;
 
 public :
 
-    Array();
-    explicit Array(unsigned int n);  // ! explicit ???
-    Array(const Array& other);
-    Array& operator=(const Array& other);
-    ~Array();
+	Array();
+	Array(const Array& other);
+	explicit Array(unsigned int n);  // ! explicit ???
+	Array& operator=(const Array& other);
+	~Array();
+	
+	unsigned int size() const;
 
-    T& operator[](unsigned int i);  // ! operator[] ????
-    const T& operator[](unsigned int i) const;
-    unsigned int size() const;
+	T& operator[](unsigned int i);  // ! operator[] ????
+	const T& operator[](unsigned int i) const;
 
 };
 

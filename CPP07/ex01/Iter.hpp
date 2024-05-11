@@ -14,25 +14,30 @@
 # define YELLOW  "\033[93m"
 # define RESET   "\033[0m"
 
+# define LEN 5
+
 /******************************************************************************/
 /*									TEMPLATES								  */
 /******************************************************************************/
 
-template <typename T, typename F>
-void iter(T* array, size_t lenght, F func) 
+
+template <typename Type, typename Func>
+void iter(Type* array, size_t lenght, Func function) 
 {
-	if (array == NULL) {
-		std::cerr << "Error: Array pointer is NULL." << std::endl;
+	if (!array) 
+	{
+		std::cout << "Array is NULL" << std::endl;
 		return;
 	}
 	for (size_t i = 0; i < lenght; ++i)
-		func(array[i]);
+		function(array[i]);
 }
 
-template<typename T>
-void print(const T& elem)
+template<typename Type>
+void print(const Type& obj)
 {
-	std::cout << elem << std::endl;
+	std::cout << obj << std::endl;
 }
+
 
 #endif

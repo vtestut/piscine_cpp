@@ -18,26 +18,28 @@
 /*									TEMPLATES								  */
 /******************************************************************************/
 
-// ! une reference est tjr non null
-
-template <typename T> 
-void swap(T& a, T& b) 
+template <typename Type> 
+void swap(Type& a, Type& b) 
 {
-	T tmp = a;
+	Type tmp = a;
 	a = b;
 	b = tmp;
 }
 
-template <typename T> 
-T min(T& a, T& b ) 
+template <typename Type> 
+Type min(Type& a, Type& b ) 
 {
-	return ( a < b ? a : b );
+	if (a < b) 
+		return a;
+	return b;
 }
 
-template <typename T> 
-T max(T& a, T& b) 
+template <typename Type> 
+Type max(Type& a, Type& b) 
 {
-	return ( a > b ? a : b );
+	if (a > b)
+		return a;
+	return b;
 }
 
 #endif

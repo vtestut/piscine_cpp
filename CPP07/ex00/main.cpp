@@ -1,6 +1,8 @@
 #include "Whatever.hpp"
+// #include <cassert>
 
-void test2() {
+void test2() 
+{
 	std::cout << std::endl << YELLOW "MORE TESTS" RESET << std::endl;
 	char char1 = 'a';
 	char char2 = 'z';
@@ -35,7 +37,7 @@ void test2() {
 	std::cout << "max() = " << max(double1, double2) << RESET << std::endl;
 
 
-	std::string str1 = "Apple", str2 = "Banana";
+	std::string str1 = "AAAA", str2 = "BBBB";
 	std::cout << std::endl << YELLOW "STRING TESTS: str1 = " << str1 << ", str2 = " << str2 << RESET << std::endl;
 	swap(str1, str2);
 	std::cout << "swap: str1 = " << str1 << ", str2 = " << str2 << RESET << std::endl;
@@ -43,7 +45,8 @@ void test2() {
 	std::cout << "max() = " << max(str1, str2) << RESET << std::endl;
 }
 
-int main( void ) {
+int main( void ) 
+{
 	int a = 2;
 	int b = 3;
 	std::cout << std::endl << YELLOW "MAIN TEST" RESET << std::endl;
