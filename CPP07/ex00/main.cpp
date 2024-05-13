@@ -4,6 +4,7 @@
 void test2() 
 {
 	std::cout << std::endl << YELLOW "MORE TESTS" RESET << std::endl;
+
 	char char1 = 'a';
 	char char2 = 'z';
 	std::cout << std::endl << YELLOW "CHAR TESTS: char1 = " << char1 << ", char2 = " << char2 << RESET << std::endl;
@@ -47,9 +48,10 @@ void test2()
 
 int main( void ) 
 {
+	std::cout << std::endl << YELLOW "MAIN TEST" RESET << std::endl;
+	
 	int a = 2;
 	int b = 3;
-	std::cout << std::endl << YELLOW "MAIN TEST" RESET << std::endl;
 	::swap( a, b );
 	std::cout << "a = " << a << ", b = " << b << std::endl;
 	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;

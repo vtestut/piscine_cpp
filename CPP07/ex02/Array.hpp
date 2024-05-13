@@ -2,7 +2,7 @@
 # define ARRAY_HPP
 
 # include <cstdlib>
-# include <ctime>
+// # include <ctime>
 # include <stdexcept>
 # include <iostream>
 
@@ -33,20 +33,20 @@ private :
 public :
 
 	Array();
-	Array(const Array& other);
-	explicit Array(unsigned int n);  // ! explicit ???
-	Array& operator=(const Array& other);
+	explicit Array(unsigned int n);
+	Array(const Array& obj);
+	Array& operator=(const Array& obj);
 	~Array();
 	
 	unsigned int size() const;
 
-	T& operator[](unsigned int i);  // ! operator[] ????
+	T& operator[](unsigned int i);
 	const T& operator[](unsigned int i) const;
 
 };
 
 template <class T>
-std::ostream& operator<<(std::ostream& os, const Array<T>& arr);
+std::ostream& operator<<(std::ostream& os, const Array<T>& obj);
 
 # include "Array.tpp"
 
