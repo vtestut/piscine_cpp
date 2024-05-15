@@ -1,73 +1,84 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Span.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 20:25:44 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/25 14:04:01 by vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Span.hpp"
 
-Span::Span( unsigned int n ) : _n( n ) {
+/******************************************************************************/
+/*								PUBLIC										  */
+/******************************************************************************/
+
+void Span::addNumber(int number) {
+	if (_container.size() >= _sizeMax) {
+		throw std::out_of_range(RED "Can't add more numbers" RESET);
+	}
+	_container.push_back(number);
 }
 
-Span::Span( const Span& src ) {
-    *this = src;
+void Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end) 
+{
+	// Calculer le nombre d'éléments entre les itérateurs start et end
+	std::vector<int>::difference_type dist = std::distance(start, end);
+
+	// Vérifier s'il y a assez de place dans le conteneur pour ajouter les nouveaux éléments
+	if (dist > static_cast<std::vector<int>::difference_type>(_sizeMax - _container.size()))
+		throw std::out_of_range(RED "Can't add more numbers" RESET);
+
+	// Ajouter les éléments de la plage [start, end) à la fin du conteneur
+	_container.insert(_container.end(), start, end);
 }
 
-Span& Span::operator=( Span const &rhs ) {
-    if ( this != &rhs ) {
-        this->_n = rhs._n;
-        this->_list = rhs._list;
-    }
-    return *this;
+int Span::shortestSpan() const {
+	if (_container.size() < 2)
+		throw std::logic_error(RED "Not enough numbers (short)" RESET);
+
+	// Trie les nombres pour faciliter le calcul des écarts consécutifs
+	std::vector<int> sortedNumbers = _container;
+	std::sort(sortedNumbers.begin(), sortedNumbers.end());
+
+	// Initialise minSpan avec l'écart entre les deux premiers éléments triés
+	int minSpan = sortedNumbers[1] - sortedNumbers[0];
+
+	// Parcourt les éléments triés pour trouver le plus petit écart
+	for (size_t i = 1; i < sortedNumbers.size() - 1; ++i) {
+		int span = sortedNumbers[i + 1] - sortedNumbers[i];
+		// Met à jour minSpan si un écart plus petit est trouvé
+		if (span < minSpan) {
+			minSpan = span;
+		}
+	}
+	return minSpan;
 }
 
-Span::~Span( void ) {}
+/* template< class ForwardIt >
+ForwardIt min_element( ForwardIt first, ForwardIt last );
+retourne un itérateur pointant vers le plus petit élément
+L'appel à std::min_element(_container.begin(), _container.end()) retourne un itérateur (disons it) 
+pointant vers le plus petit élément de la plage spécifiée.
+Cet itérateur est de type std::vector<int>::iterator si _container est un vecteur d'entiers.*/
+int Span::longestSpan() const {
+	if (_container.size() < 2) {
+		throw std::logic_error(RED "Not enough numbers (long)" RESET);
+	}
 
+	int min = *std::min_element(_container.begin(), _container.end());
+	int max = *std::max_element(_container.begin(), _container.end());
 
-void Span::addNumber( int n ) {
-    if ( _list.size() > _n )
-        throw std::out_of_range("Span::addNumber: list is full");
-    _list.push_back( n );
+	return max - min;
 }
 
-void Span::addNumber( std::list<int>::const_iterator itBegin, std::list<int>::const_iterator itEnd ) {
-    if ( _list.size() > _n )
-        throw std::out_of_range("Span::addNumber: list is full");
-    _list.insert( _list.end(), itBegin, itEnd );
-}
+/******************************************************************************/
+/*						CONSTRUCTORS & DESTRUCTORS							  */
+/******************************************************************************/
 
-const std::list< int >* Span::getList( void ) const {
-    return &_list;
-}
+Span::Span(unsigned int n) : _sizeMax(n) {}
 
-unsigned int    Span::longestSpan( void ) const {
-    if ( _list.size() < 2 )
-        throw std::out_of_range("Span::longestSpan: list is empty");
-    return ( *std::max_element( _list.begin(), _list.end() ) - *std::min_element( _list.begin(), _list.end() ) );
-}
+Span::Span(const Span& obj) : _container(obj._container), _sizeMax(obj._sizeMax) {}
 
-unsigned int Span::shortestSpan( void ) const {
-    if ( _list.size() < 2 )
-        throw std::out_of_range("Span::shortestSpan: list is empty");
-    unsigned int  min = Span::longestSpan();
-    for ( std::list<int>::const_iterator it = _list.begin(); it != _list.end(); ++it ) {
-        for ( std::list<int>::const_iterator it2 = _list.begin(); it2 != _list.end(); ++it2 ) {
-            if ( it == it2 ) continue;
-            if ( std::abs( *it2 - *it ) <  static_cast< int >( min ) )
-                min = std::abs( *it2 - *it );
-        }
-    }
-    return min;
-}
+/******************************************************************************/
+/*							OPERATOR OVERLOAD								  */
+/******************************************************************************/
 
-std::ostream& operator<<( std::ostream& os, const Span& span ) {
-    for ( std::list<int>::const_iterator it = span.getList()->begin(); it != span.getList()->end(); ++it )
-        os << *it << " ";
-    return os;
+Span& Span::operator=(const Span& obj) {
+	if (this != &obj) {
+		_container = obj._container;
+		_sizeMax = obj._sizeMax;
+	}
+	return *this;
 }

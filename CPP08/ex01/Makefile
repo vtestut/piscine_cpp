@@ -1,59 +1,39 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/24 17:30:02 by vtestut          #+#    #+#              #
-#    Updated: 2022/08/15 20:13:35 by vtestut         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	=	a.out
+CXX		=	c++
 
-NAME		= Span
-	
-CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
-RM			= rm -rf
+FLAGS	=	-Wall
+FLAGS	+=	-Wextra
+FLAGS	+=	-Werror
+FLAGS	+=	-std=c++98
 
-OBJDIR = build
+SRCDIR	=	.
+# HDRDIR	=	includes
+OBJDIR	=	objs
 
-FILES		= main Span
+SOURCES	=	$(wildcard $(SRCDIR)/*.cpp)
+HEADERS =	$(wildcard $(SRCDIR)/*.hpp)
+OBJECTS	=	$(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
-SRC			= $(FILES:=.cpp)
-OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= Span.hpp
+#****************************************************#
+#*						RULES						*#
+#****************************************************#
 
-#Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+all: ${NAME}
 
-#Debug 
-ifeq ($(DEBUG), 1)
-   OPTS = -g
-endif
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS)
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(FLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re
-
-all: $(NAME)
-
-$(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@printf "$(_SUCCESS) $(GREEN)- Executable ready.\n$(RESET)"
-
-$(OBJDIR)/%.o: %.cpp $(HEADER)
-	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
+${NAME}: ${OBJECTS}
+	$(CXX) $(FLAGS) ${OBJECTS} -o $@
 
 clean:
-	@$(RM) $(OBJDIR) $(OBJ)
-	@printf "$(YELLOW)    - Object files removed.$(RESET)\n"
+	@rm -rf ${OBJDIR}		
 
 fclean: clean
-	@$(RM) $(NAME)
-	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+	@if [ -f ${NAME} ]; then rm ${NAME}; fi
+	@echo "make fclean : done"
 
-re: fclean all
+re: fclean ${NAME}
+
+.PHONY: all clean fclean re

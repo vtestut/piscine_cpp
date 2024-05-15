@@ -1,41 +1,48 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vtestut <vtestut@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 20:25:58 by vtestut          #+#    #+#             */
-/*   Updated: 2022/08/17 16:09:52 by vtestut         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef  _SPAN_HPP
+# define _SPAN_HPP
 
-#pragma once
+# include <iostream>
+# include <vector>
+# include <algorithm>
+# include <stdexcept>
+# include <iterator>
 
-#include <iostream>
-#include <list>
-#include <exception>
+/******************************************************************************/
+/*									DEFINES									  */
+/******************************************************************************/
 
-class Span
-{
-private:
-    std::list<int>  _list;
-    unsigned int    _n;
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define CYAN	"\033[36m"
+# define YELLOW	"\033[93m"
 
-    Span( void );
+# define RESET	"\033[0m"
+# define CLEAR	"\033[2J\033[1;1H"
 
-public:
-    Span( unsigned int );
-    Span( const Span& );
-    ~Span( void );
+/******************************************************************************/
+/*									CLASS									  */
+/******************************************************************************/
 
-    Span&               operator=( const Span& );
-    void                addNumber( int );
-    void                addNumber( std::list<int>::const_iterator, std::list<int>::const_iterator );
-    unsigned int        longestSpan( void ) const;
-    unsigned int        shortestSpan( void ) const;
+class Span {
 
-    const std::list< int >*   getList( void ) const;
+private :
+
+	Span();
+	std::vector<int> _container;
+	unsigned int 	 _sizeMax;
+
+public :
+
+	Span(unsigned int n);
+	Span(const Span& obj);
+	Span& operator=(const Span& obj);
+	~Span() {};
+
+	void addNumber(int number);
+	void addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end);
+	int	 shortestSpan() const;
+	int  longestSpan() const;
+
 };
 
-std::ostream& operator<<( std::ostream&, const Span& );
+#endif
