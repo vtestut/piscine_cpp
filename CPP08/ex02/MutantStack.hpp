@@ -63,8 +63,10 @@ void printIterator(InputIterator begin, InputIterator end) {
 	std::cout << CYAN "{";
 	bool is_first = true;
 	for (InputIterator it = begin; it != end; ++it) {
-		if (is_first) is_first = false;
-		else std::cout << ", ";
+		if (is_first)
+			is_first = false;
+		else 
+			std::cout << ", ";
 		std::cout << *it;
 	}
 	std::cout << "}" RESET << std::endl;
