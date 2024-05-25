@@ -34,27 +34,25 @@ private :
 public :
 
 	Date();
+	Date(const Date& obj);
 	explicit Date(const std::string& s);
-	Date& operator=(const Date& other);
-	Date(const Date& other);
+	Date& operator=(const Date& obj);
 	~Date();
 
-	bool operator==(const Date& other) const;
-	bool operator!=(const Date& other) const;
-	bool operator>(const Date& other) const;
-	bool operator>=(const Date& other) const;
-	bool operator<(const Date& other) const;
-	bool operator<=(const Date& other) const;
+	bool isLeapYear() const;
+	bool isValid() const;
+	std::string toString() const;
 
 	int getYear() const;
 	int getMonth() const;
 	int getDay() const;
 
-	bool isLeapYear() const; // Vérifie si l'année est bissextile
-	bool isValid() const;
-
-	std::string toString() const;
-
+	bool operator==(const Date& obj) const;
+	bool operator!=(const Date& obj) const;
+	bool operator>(const Date& obj) const;
+	bool operator>=(const Date& obj) const;
+	bool operator<(const Date& obj) const;
+	bool operator<=(const Date& obj) const;
 };
 
 /******************************************************************************/

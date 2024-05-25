@@ -1,11 +1,17 @@
-#ifndef  _UTILS_HPP
-# define _UTILS_HPP
+#ifndef  _RPN_HPP
+# define _RPN_HPP
 
 # include <iostream>
-# include <fstream>
-# include <sstream>
+# include <stack>
+# include <queue>
 # include <string>
-# include <sys/stat.h>
+# include <fstream>
+# include <stdlib.h>
+# include <iomanip>
+# include <stdexcept>
+# include <limits>
+# include <algorithm>
+# include <exception>
 
 /******************************************************************************/
 /*									DEFINES									  */
@@ -19,15 +25,24 @@
 # define RESET	"\033[0m"
 # define CLEAR	"\033[2J\033[1;1H"
 
-# define SPACES " \f\n\r\t\v"
-
 /******************************************************************************/
-/*									PROTOYPES								  */
+/*									CLASS									  */
 /******************************************************************************/
 
-bool complain(const std::string& message);
-bool parseDouble(const std::string& s, double& out);
-bool readFile(const char* path, std::stringstream& content);
-std::string strtrim(const std::string& s);
+class RPN : std::stack<float> {
+
+private :
+
+	RPN ();
+
+public :
+
+	RPN (std::string arg);
+	RPN (const RPN& o);
+	~RPN();
+	RPN& operator=(const RPN& o);
+	
+	void run ();
+};
 
 #endif
