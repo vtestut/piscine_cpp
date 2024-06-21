@@ -16,17 +16,17 @@ bool parseDouble(const std::string& s, double& out) {
 }
 
 bool readFile(const char* path, std::stringstream& content) {
-	struct stat sb;
-	if (stat(path, &sb) != 0)
+	struct stat sb; // structure définie dans la bibliothèque standard <sys/stat.h>
+	if (stat(path, &sb) != 0) // sert à récupérer les informations sur l'état d'un fichier
 		return printError("does not exist");
-	if (!S_ISREG(sb.st_mode))
+	if (!S_ISREG(sb.st_mode)) // utilise le macro S_ISREG pour vérifier si le fichier est un fichier régulier. st_mode : Indique les droits d'accès du fichier ainsi que le type de fichier (par exemple, fichier régulier, répertoire, lien symbolique, etc.).
 		return printError("is not a regular file");
 	std::ifstream ifs(path);
 	if (!ifs.is_open())
 		return printError("could not be opened");
 	content << ifs.rdbuf();
 	ifs.close();
-	if (content.tellp() == 0)
+	if (content.tellp() == 0) // vérifie si le fichier était vide
 		return printError("is empty");
 	return true;
 }

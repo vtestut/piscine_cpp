@@ -1,48 +1,36 @@
-#ifndef  _RPN_HPP
+#ifndef _RPN_HPP
 # define _RPN_HPP
 
 # include <iostream>
-# include <stack>
-# include <queue>
+# include <deque>
 # include <string>
-# include <fstream>
-# include <stdlib.h>
-# include <iomanip>
 # include <stdexcept>
-# include <limits>
 # include <algorithm>
-# include <exception>
 
-/******************************************************************************/
-/*									DEFINES									  */
-/******************************************************************************/
+# define RED    "\033[31m"
+# define GREEN  "\033[32m"
+# define CYAN   "\033[36m"
+# define YELLOW "\033[93m"
+# define RESET  "\033[0m"
 
-# define RED	"\033[31m"
-# define GREEN	"\033[32m"
-# define CYAN	"\033[36m"
-# define YELLOW	"\033[93m"
+class RPN {
 
-# define RESET	"\033[0m"
-# define CLEAR	"\033[2J\033[1;1H"
+    private:
 
-/******************************************************************************/
-/*									CLASS									  */
-/******************************************************************************/
+    std::deque<float> deque;
 
-class RPN : std::stack<float> {
+    RPN();
 
-private :
+    public:
+    
+    RPN(std::string arg);
+    RPN(const RPN & other);
+    RPN& operator=(const RPN & other);
+    
+    ~RPN();
+    
 
-	RPN ();
-
-public :
-
-	RPN (std::string arg);
-	RPN (const RPN& o);
-	~RPN();
-	RPN& operator=(const RPN& o);
-	
-	void run ();
+    void run();
 };
 
 #endif

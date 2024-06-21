@@ -1,0 +1,26 @@
+Explication de la logique du programme
+
+Le programme implémente un calculateur pour les expressions en notation polonaise inversée 
+(Reverse Polish Notation, RPN) en utilisant std::deque au lieu de std::stack. 
+L'avantage de std::deque par rapport à std::stack est qu'il permet l'accès direct aux deux extrémités, 
+ce qui est pratique pour ce type d'opérations.
+
+Flux du programme :
+
+    Initialisation : Le constructeur prend une chaîne de caractères qui représente la séquence de nombres et 
+	d'opérations en RPN, puis supprime tous les espaces pour simplifier le traitement.
+
+    Traitement de la chaîne : Chaque caractère est examiné; si c'est un chiffre, 
+	il est converti en nombre et ajouté à deque. S'il s'agit d'un opérateur et 
+	que deux nombres au moins sont présents dans deque, les deux derniers nombres sont retirés, 
+	l'opération correspondante est effectuée, et le résultat est remis dans deque.
+
+    Gestion des erreurs : Si un caractère non reconnu est trouvé ou s'il y a un problème avec 
+	le nombre d'éléments nécessaires pour une opération (comme la division par zéro ou le manque d'opérandes), 
+	une exception est lancée.
+
+    Affichage du résultat : Si tout se passe comme prévu, 
+	le résultat final (le dernier élément de deque) est affiché par la méthode run.
+
+Le programme est ainsi capable de traiter et de calculer des expressions en notation RPN, 
+en gérant les erreurs courantes telles que la division par zéro et les entrées incorrectes.

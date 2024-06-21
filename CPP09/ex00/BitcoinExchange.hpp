@@ -31,29 +31,30 @@
 
 class BitcoinExchange {
 
-private :
-
-	BitcoinExchange& operator=(const BitcoinExchange& obj);
-	BitcoinExchange(const BitcoinExchange& obj);
+	private :
 
 	std::map<Date, double> _data;
 
-public :
+	BitcoinExchange(const BitcoinExchange & obj);
+	BitcoinExchange& operator=(const BitcoinExchange & obj);
+
+	public :
 
 	BitcoinExchange();
+	
 	~BitcoinExchange();
 
-	bool update(std::stringstream& dataStream);
-	bool findValue(const std::string& line) const;
+	bool update(std::stringstream & dataStream);
+	bool findValue(const std::string & line) const;
 };
 
 /******************************************************************************/
 /*									PROTOYPES								  */
 /******************************************************************************/
 
-bool printError(const std::string& message);
-bool parseDouble(const std::string& s, double& out);
-bool readFile(const char* path, std::stringstream& content);
-std::string strtrim(const std::string& s);
+bool printError(const std::string & message);
+bool parseDouble(const std::string & s, double& out);
+bool readFile(const char * path, std::stringstream & content);
+std::string strtrim(const std::string & s);
 
 #endif
