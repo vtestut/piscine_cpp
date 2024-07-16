@@ -21,7 +21,7 @@ RPN::RPN(std::string arg) {
             // Convertit le caractère en float et l'ajoute à la fin de la deque.
             deque.push_back(*it - '0');
         } else if ((*it == '+' || *it == '-' || *it == '*' || *it == '/') && deque.size() >= 2) {
-            // Prend les deux derniers éléments pour l'opération.
+            // extrait les deux derniers éléments pour l'opération.
             float b = deque.back(); deque.pop_back();
             float a = deque.back(); deque.pop_back();
 

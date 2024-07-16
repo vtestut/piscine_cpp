@@ -61,17 +61,17 @@ int main(int argc, char *argv[]) {
     std::cout << *it << " ";
   std::cout << std::endl;
 
-  PmergeMe p;
-  std::list<unsigned int>   res_list = p.run(l);
-  std::vector<unsigned int> res_vect = p.run(v);
+    PmergeMe p;
+    std::list<unsigned int>   res_list = p.run(l);
+    std::vector<unsigned int> res_vect = p.run(v);
 
-  std::cout << "After:        ";
-  for (lst_iter it = res_list.begin(); it != res_list.end(); ++it)
-    std::cout << *it << " ";
-  std::cout << std::endl;
+    std::cout << "After:        ";
+    for (lst_iter it = res_list.begin(); it != res_list.end(); ++it)
+      std::cout << *it << " ";
+    std::cout << std::endl;
 
-  std::cout << "Time to process a range of " << l.size() << " elements with std::list   : " << std::setw(10) << p.t_lst << " mircosec\n";
-  std::cout << "Time to process a range of " << l.size() << " elements with std::vector : " << std::setw(10) << p.t_vec << " microsec\n";
+    std::cout << "Time to process a range of " << l.size() << " elements with std::list   : " << std::setw(10) << p.t_lst << " mircosec\n";
+    std::cout << "Time to process a range of " << l.size() << " elements with std::vector : " << std::setw(10) << p.t_vec << " microsec\n";
 
   return 0;
 }

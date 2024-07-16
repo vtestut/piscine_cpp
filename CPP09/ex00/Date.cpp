@@ -4,6 +4,7 @@
 /*								PUBLIC										  */
 /******************************************************************************/
 
+// s'assure qu'une année est bissextile si elle est divisible par 4, mais exclut les années qui sont divisibles par 100 sauf si elles sont également divisibles par 400.
 bool Date::isLeapYear() const {
 	return _year % 4 == 0 && (_year % 400 == 0 || _year % 100 != 0);
 }

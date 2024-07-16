@@ -2,9 +2,10 @@
 
 int main(int argc, char** argv) {
 	if (argc != 2) {
-		std::cerr << "Usage: " << argv[0] << " <input file>" << std::endl;
-		std::cerr << "date | value" << std::endl;
-		std::cerr << "2020-10-04 | 30" << std::endl;
+		std::cerr << "Error: could not open file." << std::endl;
+		// std::cerr << "Usage: " << argv[0] << " <input file>" << std::endl;
+		// std::cerr << "date | value" << std::endl;
+		// std::cerr << "2020-10-04 | 30" << std::endl;
 		return 1;
 	}
 
@@ -15,7 +16,7 @@ int main(int argc, char** argv) {
 
 	BitcoinExchange bitcoinExchange;
 	if (!bitcoinExchange.update(dataStream)) {
-		std::cerr << "Failed to parse " << "files/data.csv" << "." << std::endl;
+		std::cerr << "Failed to parse " << "files/data.csv." << std::endl;
 		return 1;
 	}
 
